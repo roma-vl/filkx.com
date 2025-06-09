@@ -5,12 +5,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>filkx.com — Cutting-edge Web Development</title>
 
+    <!-- SEO Basics -->
+    <meta name="description" content="filkx.com — Професійна веб-розробка, унікальний UX/UI дизайн, оптимізація для SEO та бізнес-рішення нового покоління." />
+    <meta name="keywords" content="веб-розробка, UX/UI дизайн, Laravel, Vue, Tailwind, SEO, Рома, фріланс, сайт під ключ, вебдизайн" />
+    <meta name="author" content="Рома — Filkx" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#1f2937" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://filkx.com/" />
+    <meta property="og:title" content="filkx.com — Cutting-edge Web Development" />
+    <meta property="og:description" content="Рома — веб-розробник, який створює сайти, що викликають усмішку та приносять результат." />
+    <meta property="og:image" content="https://filkx.com/og-image.jpg" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://filkx.com/" />
+    <meta property="twitter:title" content="filkx.com — Cutting-edge Web Development" />
+    <meta property="twitter:description" content="Стильні та функціональні сайти для бізнесу. SEO, дизайн, UX — все включено!" />
+    <meta property="twitter:image" content="https://filkx.com/og-image.jpg" />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://filkx.com/" />
+
+    <!-- Favicon -->
+    <link rel="icon" href="./favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
+    <link rel="manifest" href="./site.webmanifest" />
+
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
 
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "url": "https://filkx.com/",
+        "name": "filkx.com",
+        "description": "Рома — професійний веб-розробник. Створює ефективні сайти для бізнесу.",
+        "publisher": {
+          "@type": "Person",
+          "name": "Рома"
+        }
+      }
+    </script>
     <style>
       body {
         font-family: 'Inter', sans-serif;
@@ -64,13 +107,13 @@
     </style>
   </head>
 
-  <body class="">
+  <body class="bg-gray-900">
     <!-- Слой із кульками -->
-    <div  class="relative bg-gray-900 text-white overflow-hidden  min-h-screen flex flex-col">
-    <div id="orb-container" class="absolute inset-0 pointer-events-none"></div>
+    <div  class=" relative bg-gray-900 text-white overflow-hidden  min-h-screen flex flex-col">
+<!--    <div id="orb-container" class="absolute inset-0 pointer-events-none"></div>-->
 
     <!-- Хедер -->
-    <header class="relative z-10 py-6 px-6 flex justify-between items-center">
+    <header class="container  max-w-7xl mx-auto m-4 bg-gray-900 relative z-10 py-6 px-6 flex justify-between items-center">
       <a href="#" class="text-2xl font-extrabold bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text">filkx</a>
       <nav class="space-x-6">
         <a href="#portfolio" class="hover:text-purple-400">Портфоліо</a>
@@ -81,16 +124,16 @@
     </header>
 
     <!-- Hero-секція -->
-    <section class="relative z-10 flex flex-col md:flex-row items-center px-6 min-h-[100vh]">
-
-      <div class="container mx-auto flex flex-col md:flex-row items-center gap-12">
+    <section class=" max-w-7xl mx-auto m-4 bg-gray-900 relative z-10 flex flex-col md:flex-row items-center px-6 min-h-[100vh]">
+      <div id="orb-container" class="absolute inset-0 pointer-events-none"></div>
+      <div class=" mx-auto flex flex-col md:flex-row items-center gap-12">
 
         <!-- Текст зліва -->
         <div class="md:w-1/2 text-center md:text-left space-y-6">
           <h1 class="text-5xl font-extrabold leading-tight">
             Професійні веб-рішення<br />
           </h1>
-          <p class="text-gray-300 text-lg max-w-md">
+          <p class="text-gray-300 text-lg ">
             Веб-розробник Рома — створюю стильні, функціональні та інноваційні сайти, що працюють на ваш бізнес і викликають усмішку.
           </p>
 
@@ -103,7 +146,7 @@
         </div>
 
         <!-- Зображення справа -->
-        <div class="md:w-1/2 flex justify-center">
+        <div class="md:w-1/2 w-full flex justify-center">
           <img
             src="https://demo.themesberg.com/leaf/assets/img/forest.svg"
             alt="Forest SVG"
@@ -116,7 +159,7 @@
     </div>
 
     <!-- Секція Портфоліо -->
-    <section id="portfolio" class="relative z-10 py-16 px-6 bg-gray-800">
+    <section id="portfolio" class="container max-w-7xl mx-auto relative z-10 py-16 px-6 bg-gray-900/50 rounded-lg mt-4">
       <div class="container mx-auto max-w-7xl">
         <h2 class="text-4xl font-extrabold text-center mb-12 bg-gradient-to-r from-purple-400 via-indigo-500 to-indigo-700 bg-clip-text text-transparent">
           Наші роботи
@@ -174,11 +217,11 @@
       </div>
     </section>
 
-    <section class="py-20 bg-gray-900 text-white relative z-10">
+    <section class=" container max-w-7xl mx-auto py-20 bg-gray-900 text-white relative z-10">
       <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
         <!-- Textual content -->
-        <div class="animate-fade">
-          <h2 class="text-4xl font-extrabold mb-6 bg-gradient-to-r from-purple-400 to-pink-500 text-transparent bg-clip-text">
+        <div class="">
+          <h2 class=" animate-fade text-4xl font-extrabold mb-6 bg-gradient-to-r from-purple-400 to-pink-500 text-transparent bg-clip-text">
             Інтуїтивний інтерфейс
           </h2>
           <p class="text-lg text-white/80 mb-6">
@@ -189,16 +232,16 @@
           </a>
         </div>
 
-        <!-- Illustration / Screenshot -->
-        <div class="animate-fade delay-200">
-          <img src="https://gl.ua/sites/default/files/styles/1256x604ms/public/2021-05/19198999.jpg" alt="UI Illustration" class="w-full max-w-md mx-auto drop-shadow-2xl">
+        <div class="">
+          <img src="https://gl.ua/sites/default/files/styles/1256x604ms/public/2021-05/19198999.jpg" alt="UI Illustration" class="
+          w-full max-w-md mx-auto drop-shadow-2xl  portfolio-item rounded-xl" >
         </div>
       </div>
     </section>
 
 
     <!-- Clients Logos -->
-    <section id="clients" class="py-12 bg-gray-800 text-center">
+    <section id="clients" class="container max-w-7xl mx-auto py-12 bg-gray-800 text-center rounded-xl">
       <h2 class="text-3xl font-bold mb-8 animate-fade text-gray-100">Нам довіряють</h2>
       <div class="flex flex-wrap justify-center gap-8 px-4">
         <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Google-flutter-logo.svg" class="h-10 opacity-70 hover:opacity-100 transition" alt="client">
@@ -209,21 +252,21 @@
     </section>
 
     <!-- Pricing Section -->
-    <section id="pricing" class="py-20 bg-gray-900 text-center">
-      <h2 class="text-3xl font-bold mb-10 animate-fade">Тарифи</h2>
+    <section id="pricing" class="container max-w-7xl mx-auto py-20 bg-gray-900 text-center">
+      <h2 class="text-3xl font-bold mb-10 animate-fade text-gray-100">Тарифи</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto px-4">
         <div class="bg-gray-800 rounded-xl shadow-xl p-6 hover:scale-105 transition">
-          <h3 class="text-xl font-semibold mb-4">Базовий</h3>
+          <h3 class="text-xl font-semibold mb-4 text-gray-100 ">Базовий</h3>
           <p class="text-white/90 mb-4">Лендинг або базовий сайт</p>
           <p class="text-purple-400 font-bold text-2xl">$399</p>
         </div>
         <div class="bg-purple-600 text-white rounded-xl shadow-xl p-6 hover:scale-105 transition">
-          <h3 class="text-xl font-semibold mb-4">Стандарт</h3>
+          <h3 class="text-xl font-semibold mb-4 text-gray-100">Стандарт</h3>
           <p class="mb-4">Інтеграція, CMS, SEO</p>
           <p class="font-bold text-2xl">$999</p>
         </div>
         <div class="bg-gradient-to-br from-pink-600 to-yellow-500 rounded-xl shadow-xl p-6 hover:scale-105 transition-transform duration-500">
-          <h3 class="text-xl font-semibold mb-4 text-white">Індивідуальний запит</h3>
+          <h3 class="text-xl font-semibold mb-4 text-white text-gray-100">Індивідуальний запит</h3>
           <p class="text-white/90 mb-4">Є божевільна ідея або нестандартне бачення?</p>
           <p class="text-white/90 mb-4">Давай запустимо її разом.</p>
           <button id="contact" class="bg-white text-pink-700 hover:bg-gray-100 font-semibold py-2 px-4 rounded transition">Зв’язатися</button>
