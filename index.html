@@ -113,18 +113,28 @@
 <!--    <div id="orb-container" class="absolute inset-0 pointer-events-none"></div>-->
 
     <!-- Хедер -->
-    <header class="container  max-w-7xl mx-auto m-4 bg-gray-900 relative z-10 py-6 px-6 flex justify-between items-center">
-      <a href="#" class="text-2xl font-extrabold bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text">filkx</a>
-      <nav class="space-x-6">
-        <a href="#portfolio" class="hover:text-purple-400">Портфоліо</a>
-        <a href="#clients" class="hover:text-purple-400">Клієнти</a>
-        <a href="#pricing" class="hover:text-purple-400">Тарифи</a>
-        <a href="#contact" class="bg-white text-purple-700 px-4 py-2 rounded">Контакт</a>
-      </nav>
-    </header>
+      <header class="container max-w-7xl mx-auto m-4 bg-gray-900 relative  py-6 px-6 flex justify-between items-center">
+        <a href="#" class="text-2xl font-extrabold bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text">filkx</a>
 
-    <!-- Hero-секція -->
-    <section class=" max-w-7xl mx-auto m-4 bg-gray-900 relative z-10 flex flex-col md:flex-row items-center px-6 min-h-[100vh]">
+        <!-- Бургер іконка, показується на мобайлах -->
+        <button id="burger-btn" class="md:hidden focus:outline-none" aria-label="Toggle menu" aria-expanded="false">
+          <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+
+        <!-- Навігація -->
+        <nav id="nav-menu" class="hidden md:flex md:space-x-6 z-10">
+          <a href="#portfolio" class="hover:text-purple-400">Портфоліо</a>
+          <a href="#clients" class="hover:text-purple-400">Клієнти</a>
+          <a href="#pricing" class="hover:text-purple-400">Тарифи</a>
+          <a href="#contact" class="hover:text-purple-400">Контакт</a>
+        </nav>
+      </header>
+
+
+      <!-- Hero-секція -->
+    <section class=" max-w-7xl mx-auto m-4 bg-gray-900 relative flex flex-col md:flex-row items-center px-6 min-h-[100vh]">
       <div id="orb-container" class="absolute inset-0 pointer-events-none"></div>
       <div class=" mx-auto flex flex-col md:flex-row items-center gap-12">
 
@@ -134,7 +144,7 @@
             Професійні веб-рішення<br />
           </h1>
           <p class="text-gray-300 text-lg ">
-            Веб-розробник Рома — створюю стильні, функціональні та інноваційні сайти, що працюють на ваш бізнес і викликають усмішку.
+            Filkx — створюємо стильні, функціональні та інноваційні сайти, що працюють на вас і ваш бізнес.
           </p>
 
           <a
@@ -159,7 +169,7 @@
     </div>
 
     <!-- Секція Портфоліо -->
-    <section id="portfolio" class="container max-w-7xl mx-auto relative z-10 py-16 px-6 bg-gray-900/50 rounded-lg mt-4">
+    <section id="portfolio" class="container max-w-7xl mx-auto relative  py-16 px-6 bg-gray-900/50 rounded-lg mt-4">
       <div class="container mx-auto max-w-7xl">
         <h2 class="text-4xl font-extrabold text-center mb-12 bg-gradient-to-r from-purple-400 via-indigo-500 to-indigo-700 bg-clip-text text-transparent">
           Наші роботи
@@ -217,7 +227,7 @@
       </div>
     </section>
 
-    <section class=" container max-w-7xl mx-auto py-20 bg-gray-900 text-white relative z-10">
+    <section class=" container max-w-7xl mx-auto py-20 bg-gray-900 text-white relative ">
       <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
         <!-- Textual content -->
         <div class="">
@@ -275,7 +285,7 @@
     </section>
 
     <!-- Футер -->
-    <footer class="relative z-10 py-6 text-center text-gray-400 bg-gray-800">
+    <footer class="relative  py-6 text-center text-gray-400 bg-gray-800">
       © 2025 filkx.com
     </footer>
 
@@ -304,6 +314,22 @@
       }
 
       setInterval(createOrb, 2000); // нова кулька кожні 2 секунди
+
+      const burgerBtn = document.getElementById('burger-btn');
+      const navMenu = document.getElementById('nav-menu');
+
+      burgerBtn.addEventListener('click', () => {
+        const isHidden = navMenu.classList.contains('hidden');
+        if (isHidden) {
+          navMenu.classList.remove('hidden');
+          navMenu.classList.add('flex', 'flex-col', 'absolute', 'top-full', 'right-6', 'bg-gray-900', 'rounded', 'shadow-lg', 'p-4', 'space-y-4', 'w-40');
+          burgerBtn.setAttribute('aria-expanded', 'true');
+        } else {
+          navMenu.classList.add('hidden');
+          navMenu.classList.remove('flex', 'flex-col', 'absolute', 'top-full', 'right-6', 'bg-gray-900', 'rounded', 'shadow-lg', 'p-4', 'space-y-4', 'w-40');
+          burgerBtn.setAttribute('aria-expanded', 'false');
+        }
+      });
     </script>
   </body>
 </html>
