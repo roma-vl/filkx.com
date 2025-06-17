@@ -330,6 +330,27 @@
           burgerBtn.setAttribute('aria-expanded', 'false');
         }
       });
+
+      window.addEventListener('resize', () => {
+        if (window.innerWidth >= 768) { // md breakpoint
+          navMenu.classList.remove('hidden', 'flex-col', 'absolute', 'top-full', 'right-6', 'bg-gray-900', 'rounded', 'shadow-lg', 'p-4', 'space-y-4', 'w-40');
+          navMenu.classList.add('flex'); // тільки desktop стиль
+          burgerBtn.setAttribute('aria-expanded', 'false');
+        } else {
+          navMenu.classList.add('hidden'); // сховати на моб
+        }
+      });
+
+      navMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          if (window.innerWidth < 768) {
+            navMenu.classList.add('hidden');
+            navMenu.classList.remove('flex', 'flex-col', 'absolute', 'top-full', 'right-6', 'bg-gray-900', 'rounded', 'shadow-lg', 'p-4', 'space-y-4', 'w-40');
+            burgerBtn.setAttribute('aria-expanded', 'false');
+          }
+        });
+      });
+
     </script>
   </body>
 </html>
