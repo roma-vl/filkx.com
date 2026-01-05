@@ -34,7 +34,7 @@ export default defineNuxtConfig({
     // Vite configuration
     vite: {
         server: {
-            allowedHosts: ['dev.filkx.com']
+            allowedHosts: process.env.ALLOWED_HOSTS ? process.env.ALLOWED_HOSTS.split(',') : ['dev.filkx.com', 'localhost']
         }
     }
 })

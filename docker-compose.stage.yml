@@ -1,0 +1,42 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    expose:
+      - "3000"
+    ports:
+      - "3001:3000" # Use a different port for staging if hosted on same machine
+    env_file:
+      - .env.stage
+    restart: always
+    networks:
+      - filkx
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    # Staging might use a different DB or just separate one
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-filkx_stage}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-secret_stage}
+      POSTGRES_DB: ${POSTGRES_DB:-filkx_stage_db}
+    volumes:
+      - pgdata_stage:/var/lib/postgresql/data
+    networks:
+      - filkx
+    restart: always
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U filkx_stage -d filkx_stage_db" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+networks:
+  filkx:
+    driver: bridge
+
+volumes:
+  pgdata_stage:

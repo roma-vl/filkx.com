@@ -31,11 +31,11 @@ restart:
 logs:
 	docker compose logs -f app
 
-# Open a shell in the app-cli container
+# CLI access to app container
 app-shell:
 	docker compose run --rm app-cli sh
 
-# Open a shell in the database container
+# CLI access to database
 db-shell:
 	docker compose exec db psql -U filkx -d filkx_db
 
@@ -43,3 +43,23 @@ db-shell:
 clean:
 	docker compose down -v
 	rm -rf .nuxt
+
+# --- Production / Staging Commands ---
+
+prod-build:
+	docker compose -f docker-compose.prod.yml build
+
+prod-up:
+	docker compose -f docker-compose.prod.yml up -d
+
+prod-down:
+	docker compose -f docker-compose.prod.yml down
+
+stage-build:
+	docker compose -f docker-compose.stage.yml build
+
+stage-up:
+	docker compose -f docker-compose.stage.yml up -d
+
+stage-down:
+	docker compose -f docker-compose.stage.yml down

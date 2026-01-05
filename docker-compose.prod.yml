@@ -1,0 +1,41 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    expose:
+      - "3000"
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+    restart: always
+    networks:
+      - filkx
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-filkx}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-secret}
+      POSTGRES_DB: ${POSTGRES_DB:-filkx_db}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - filkx
+    restart: always
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U filkx -d filkx_db" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+networks:
+  filkx:
+    driver: bridge
+
+volumes:
+  pgdata:
