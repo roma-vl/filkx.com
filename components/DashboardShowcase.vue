@@ -87,7 +87,7 @@
 <script setup lang="ts">
 import { ExternalLink, Layers, Monitor, Activity } from 'lucide-vue-next'
 
-const bars = ref(Array.from({length: 40}, () => 20 + Math.random() * 60))
+const bars = ref(Array.from({length: 40}, () => 40)) // Static initial value for SSR
 
 const features = [
   { icon: Activity, label: 'Latent-free streaming', desc: 'Менше 100мс затримки' },
@@ -95,6 +95,9 @@ const features = [
 ]
 
 onMounted(() => {
+  // Initialize with random values on client only
+  bars.value = bars.value.map(() => 20 + Math.random() * 60)
+  
   const interval = setInterval(() => {
     bars.value = bars.value.map(v => Math.max(10, Math.min(100, v + (Math.random() - 0.5) * 15)))
   }, 1500)

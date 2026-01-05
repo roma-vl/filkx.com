@@ -22,6 +22,7 @@ model ContactSubmission {
   name      String
   email     String
   message   String
+  status    String   @default("NEW")
   createdAt DateTime @default(now()) @map("created_at") @db.Timestamp(6)
 
   @@map("contact_submissions")
