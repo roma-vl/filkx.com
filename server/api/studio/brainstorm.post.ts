@@ -25,7 +25,7 @@ export default defineEventHandler(async (event) => {
     }
 
     try {
-        const response = await $fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${config.geminiApiKey}`, {
+        const response = await $fetch(`https://generativelanguage.googleapis.com/v1beta/models/${config.geminiModel}:generateContent?key=${config.geminiApiKey}`, {
             method: 'POST',
             body: {
                 contents: [{

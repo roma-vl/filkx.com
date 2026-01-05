@@ -42,7 +42,7 @@
           </div>
 
           <a
-            href="https://live.filkx.com"
+          :href="useRuntimeConfig().public.appUrl"
             target="_blank"
             class="flex items-center justify-center gap-3 w-full py-6 rounded-2xl bg-indigo-50/95 text-space-950 border border-transparent hover:border-indigo-500/50 hover:bg-indigo-950 hover:text-white font-black uppercase tracking-widest transition-all duration-500 shadow-xl"
           >

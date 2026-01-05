@@ -26,8 +26,12 @@ export default defineNuxtConfig({
         // Private keys that are only available server-side
         databaseUrl: process.env.DATABASE_URL || '',
         geminiApiKey: process.env.GEMINI_API_KEY || '',
+        geminiModel: process.env.GEMINI_MODEL || 'gemini-1.5-flash',
         jwtSecret: process.env.JWT_SECRET || 'fallback-secret-for-dev',
+        adminEmail: process.env.ADMIN_EMAIL,
+        adminPassword: process.env.ADMIN_PASSWORD,
         public: {
+            appUrl: process.env.NUXT_PUBLIC_APP_URL || 'http://localhost:3000',
             nodeVersion: process.version
         }
     },

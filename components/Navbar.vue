@@ -39,7 +39,7 @@
         <!-- External Product Link -->
         <div class="h-6 w-[1px] bg-white/10 mx-2"></div>
         <a
-          href="https://live.filkx.com"
+          :href="useRuntimeConfig().public.appUrl"
           target="_blank"
           class="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-gray-500 hover:text-indigo-400 transition-colors group"
         >
