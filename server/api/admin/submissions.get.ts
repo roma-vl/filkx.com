@@ -1,11 +1,20 @@
 export default defineEventHandler(async (event) => {
-    // In a real app, you would add authentication middleware here
+    const user = getAuthUser(event) as any
+    if (!user || user.role !== 'admin') {
+        throw createError({
+            statusCode: 401,
+            statusMessage: 'Unauthorized access'
+        })
+    }
+
     try {
-        const db = useDb()
-        const { rows } = await db.query(
-            'SELECT * FROM contact_submissions ORDER BY created_at DESC'
-        )
-        return rows
+        const prisma = useDb()
+        const submissions = await prisma.contactSubmission.findMany({
+            orderBy: {
+                createdAt: 'desc'
+            }
+        })
+        return submissions
     } catch (error) {
         console.error("Admin fetch error:", error)
         throw createError({

@@ -1,14 +1,28 @@
 <template>
   <div class="pt-32 pb-40 px-6">
     <div class="container-wide">
-      <div class="flex items-center justify-between mb-16 reveal">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-8 mb-16 reveal">
         <div>
           <h1 class="text-4xl md:text-6xl font-display font-black text-white mb-4">Admin Dashboard</h1>
-          <p class="text-gray-400 text-lg">Contact Submissions Management</p>
+          <div class="flex items-center gap-3">
+             <div class="w-8 h-8 rounded-full bg-indigo-600/20 border border-indigo-500/30 flex items-center justify-center text-indigo-400 text-[10px] font-black uppercase">
+                {{ user?.email?.charAt(0) }}
+             </div>
+             <p class="text-gray-400 text-sm font-medium">Logged in as <span class="text-white">{{ user?.email }}</span></p>
+          </div>
         </div>
-        <div class="flex items-center gap-4 px-6 py-3 rounded-2xl glass border border-indigo-500/20">
-          <div class="w-3 h-3 rounded-full bg-indigo-500 animate-pulse"></div>
-          <span class="text-xs font-black text-indigo-400 uppercase tracking-widest">{{ submissions?.length || 0 }} Submissions</span>
+        <div class="flex items-center gap-4">
+            <button
+                @click="logout"
+                class="px-8 py-3 rounded-2xl border border-white/10 hover:border-red-500/50 hover:bg-red-500/10 text-white font-black text-[10px] uppercase tracking-widest transition-all cursor-pointer outline-none flex items-center gap-2"
+            >
+                <LogOut :size="14" />
+                Logout
+            </button>
+            <div class="flex items-center gap-4 px-6 py-3 rounded-2xl glass border border-indigo-500/20">
+                <div class="w-3 h-3 rounded-full bg-indigo-500 animate-pulse"></div>
+                <span class="text-xs font-black text-indigo-400 uppercase tracking-widest">{{ submissions?.length || 0 }} Submissions</span>
+            </div>
         </div>
       </div>
 
@@ -21,7 +35,7 @@
           <div
             v-for="sub in submissions"
             :key="sub.id"
-            class="glass p-8 rounded-3xl border border-white/5 hover:border-indigo-500/30 transition-all group"
+            class="glass p-8 rounded-3xl border border-white/5 hover:border-indigo-500/30 transition-all group reveal"
           >
             <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-6">
               <div class="flex items-center gap-6">
@@ -53,8 +67,14 @@
 </template>
 
 <script setup lang="ts">
-import { Loader2 } from 'lucide-vue-next'
+import { Loader2, LogOut } from 'lucide-vue-next'
+import { useAuth } from '~/composables/useAuth'
 
+definePageMeta({
+  middleware: 'admin'
+})
+
+const { user, logout } = useAuth()
 const { data: submissions, pending } = useFetch('/api/admin/submissions')
 
 useHead({

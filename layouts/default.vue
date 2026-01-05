@@ -21,11 +21,17 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
+import { useAuth } from '~/composables/useAuth'
+import { useReveal } from '~/composables/useReveal'
 
 const isLoading = ref(true)
+const { fetchUser } = useAuth()
 const { refreshReveal } = useReveal()
 
-onMounted(() => {
+// Primary call for SSR/Initialization
+fetchUser()
+
+onMounted(async () => {
   setTimeout(() => {
     isLoading.value = false
     // Trigger animations after loader is gone

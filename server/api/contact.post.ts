@@ -10,11 +10,10 @@ export default defineEventHandler(async (event) => {
     }
 
     try {
-        const db = useDb()
-        await db.query(
-            'INSERT INTO contact_submissions (name, email, message) VALUES ($1, $2, $3)',
-            [name, email, message]
-        )
+        const prisma = useDb()
+        await prisma.contactSubmission.create({
+            data: { name, email, message }
+        })
 
         return { status: 'success' }
     } catch (error) {

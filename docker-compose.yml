@@ -48,6 +48,8 @@ services:
       POSTGRES_DB: ${POSTGRES_DB:-filkx_db}
     volumes:
       - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5436:5432"
     networks:
       - filkx
     healthcheck:

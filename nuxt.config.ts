@@ -22,11 +22,11 @@ export default defineNuxtConfig({
             ]
         }
     },
-    // Runtime config for environment variables
     runtimeConfig: {
         // Private keys that are only available server-side
         databaseUrl: process.env.DATABASE_URL || '',
         geminiApiKey: process.env.GEMINI_API_KEY || '',
+        jwtSecret: process.env.JWT_SECRET || 'fallback-secret-for-dev',
         public: {
             nodeVersion: process.version
         }
