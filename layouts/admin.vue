@@ -79,8 +79,11 @@ import {
 import { useAuth } from '~/composables/useAuth'
 import { useReveal } from '~/composables/useReveal'
 
-const { user, logout } = useAuth()
+const { user, logout, fetchUser } = useAuth()
 const { refreshReveal } = useReveal()
+
+// Primary call for SSR/Initialization
+fetchUser()
 
 onMounted(() => {
   refreshReveal()

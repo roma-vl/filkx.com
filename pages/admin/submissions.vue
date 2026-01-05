@@ -171,6 +171,14 @@ const handleDelete = async (id: number) => {
   await updateStatus(id, 'DELETED')
 }
 
+watch(pending, (isPending) => {
+  if (!isPending) {
+    nextTick(() => {
+      refreshReveal()
+    })
+  }
+})
+
 onMounted(() => {
   refreshReveal()
 })

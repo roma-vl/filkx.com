@@ -12,6 +12,18 @@ export default defineEventHandler(async (event) => {
     try {
         const prisma = useDb()
 
+        // Check if registration is enabled
+        const regSetting = await prisma.systemSetting.findUnique({
+            where: { key: 'registration_enabled' }
+        })
+
+        if (regSetting?.value !== 'true') {
+            throw createError({
+                statusCode: 403,
+                statusMessage: 'Registration is currently disabled'
+            })
+        }
+
         // Check if user already exists
         const existingUser = await prisma.user.findUnique({
             where: { email }

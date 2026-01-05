@@ -27,3 +27,12 @@ model ContactSubmission {
 
   @@map("contact_submissions")
 }
+
+model SystemSetting {
+  id        Int      @id @default(autoincrement())
+  key       String   @unique
+  value     String
+  updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamp(6)
+
+  @@map("system_settings")
+}

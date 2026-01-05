@@ -3,16 +3,20 @@ export const useAuth = () => {
     const isLoading = useState('auth_loading', () => false)
 
     const fetchUser = async () => {
+        // If user already exists in state, return it immediately
         if (user.value) return user.value
 
         isLoading.value = true
         try {
-            // useFetch is better for SSR hydration
-            const { data } = await useFetch('/api/auth/session', {
-                key: 'auth_session'
+            // Use useFetch with a fixed key for proper hydration between SSR and CSR
+            const { data } = await useFetch<any>('/api/auth/session', {
+                key: 'auth_session_data'
             })
+
             if (data.value?.user) {
                 user.value = data.value.user
+            } else {
+                user.value = null
             }
             return user.value
         } catch (e) {
