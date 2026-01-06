@@ -17,18 +17,21 @@ FROM node:20-alpine AS runner
 WORKDIR /app
 
 ENV NODE_ENV=production
-# Set host to 0.0.0.0 so it's accessible outside the container
 ENV NUXT_HOST=0.0.0.0
 ENV NUXT_PORT=3000
 
-# Copy only the necessary build output
+# Copy build output
 COPY --from=builder /app/.output ./.output
 COPY --from=builder /app/package*.json ./
 
-# Install production dependencies only
+# Copy Prisma files for migration
+COPY --from=builder /app/prisma ./prisma
+
+# Install production dependencies + prisma CLI
 RUN npm install --omit=dev
+RUN npm install prisma --save-prod
 
 EXPOSE 3000
 
-# Start the application
 CMD ["node", ".output/server/index.mjs"]
+
