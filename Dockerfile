@@ -31,6 +31,8 @@ COPY --from=builder /app/prisma.config.js ./
 # Install production dependencies (includes prisma CLI from dependencies)
 RUN npm install --omit=dev
 
+RUN npx prisma generate --schema=./prisma/schema.prisma
+
 EXPOSE 3000
 
 CMD ["node", ".output/server/index.mjs"]
