@@ -4,7 +4,7 @@
 
 # Local development (foreground)
 dev:
-	docker compose up
+	docker compose up -d
 
 # Build images
 build:
