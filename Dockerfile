@@ -26,6 +26,7 @@ COPY --from=builder /app/package*.json ./
 
 # Copy Prisma files for migration
 COPY --from=builder /app/prisma ./prisma
+COPY --from=builder /app/prisma.config.js ./
 
 # Install production dependencies (includes prisma CLI from dependencies)
 RUN npm install --omit=dev
