@@ -9,8 +9,8 @@ services:
       - .env
     volumes:
       - .:/app
-      - node_modules:/app/node_modules
-      - .nuxt:/app/.nuxt
+      # - node_modules:/app/node_modules
+      # - .nuxt:/app/.nuxt
     command: npm run dev
     labels:
       - "traefik.enable=true"
@@ -32,8 +32,8 @@ services:
       dockerfile: Dockerfile
     volumes:
       - .:/app
-      - node_modules:/app/node_modules
-      - .nuxt:/app/.nuxt
+      # - node_modules:/app/node_modules
+      # - .nuxt:/app/.nuxt
     entrypoint: /bin/sh
     networks:
       - filkx
@@ -63,5 +63,4 @@ networks:
     external: true
 
 volumes:
-  pgdata:
-  node_modules:
+  pgdata: # node_modules:

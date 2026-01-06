@@ -32,7 +32,7 @@
           </div>
         </div>
         <NuxtLink
-          to="/start-project"
+          to="/book-a-call"
           class="px-12 py-6 rounded-2xl bg-indigo-50/95 text-space-950 border border-transparent hover:border-indigo-500/50 hover:bg-indigo-950 hover:text-white font-black text-xl uppercase tracking-widest transition-all duration-500 active:scale-95 shadow-xl relative z-10 text-center w-full lg:w-auto outline-none cursor-pointer"
         >
           Забронювати дзвінок

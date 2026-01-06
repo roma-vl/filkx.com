@@ -37,11 +37,7 @@ export default defineNuxtConfig({
     },
     // Nitro server options
     nitro: {
-        // Enable server routes auto import
-        preset: 'node-server',
-        externals: {
-            external: ['@prisma/client', '@prisma/adapter-pg', 'pg', '@prisma/config']
-        }
+        preset: 'node-server'
     },
     // Build options
     build: {

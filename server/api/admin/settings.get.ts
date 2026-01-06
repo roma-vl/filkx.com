@@ -8,7 +8,7 @@ export default defineEventHandler(async (event) => {
     }
 
     try {
-        const prisma = useDb()
+        const prisma = await useDb()
         const settings = await prisma.systemSetting.findMany()
 
         // Convert array to object for easier consumption

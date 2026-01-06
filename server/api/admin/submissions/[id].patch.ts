@@ -1,3 +1,6 @@
+import { SubmissionService } from '../../../services/submission.service'
+import { logger } from '../../../utils/logger'
+
 export default defineEventHandler(async (event) => {
     const user = getAuthUser(event) as any
     if (!user || user.role !== 'admin') {
@@ -19,15 +22,9 @@ export default defineEventHandler(async (event) => {
     }
 
     try {
-        const prisma = useDb()
-        const updated = await prisma.contactSubmission.update({
-            where: { id: parseInt(id) },
-            data: { status }
-        })
-
-        return updated
+        return await SubmissionService.updateStatus(parseInt(id), status)
     } catch (error) {
-        console.error("Status update error:", error)
+        logger.error(error, 'Admin update submission status error')
         throw createError({
             statusCode: 500,
             statusMessage: 'Failed to update status',

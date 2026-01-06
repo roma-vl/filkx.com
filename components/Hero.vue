@@ -21,7 +21,7 @@
           </p>
           <div class="flex flex-col sm:flex-row items-center gap-6 mb-24 reveal" style="transition-delay: 0.2s">
             <NuxtLink
-              to="/start-project"
+              to="/book-a-call"
               class="w-full sm:w-auto px-12 py-6 rounded-2xl bg-indigo-50/95 text-space-950 border border-transparent hover:border-indigo-500/50 hover:bg-indigo-950 hover:text-white font-black text-[11px] uppercase tracking-widest shadow-[0_20px_60px_rgba(79,70,229,0.1)] transition-all duration-500 hover:-translate-y-2 active:scale-95 flex items-center justify-center gap-3 cursor-pointer outline-none"
             >
               Розпочати проект

@@ -52,11 +52,10 @@
         </a>
 
         <NuxtLink
-          to="/start-project"
-          class="flex items-center gap-3 px-8 py-4 rounded-2xl bg-indigo-50/95 text-space-950 border border-transparent hover:border-indigo-500/50 hover:bg-indigo-950 hover:text-white font-black transition-all duration-500 text-[10px] uppercase tracking-widest shadow-xl shadow-indigo-500/5 active:scale-95 cursor-pointer outline-none"
+          to="/book-a-call"
+          class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-2.5 rounded-full font-bold text-xs uppercase tracking-widest transition-all duration-300 shadow-lg shadow-indigo-500/20 active:scale-95 no-underline"
         >
           Let's Talk
-          <ArrowRight :size="16" />
         </NuxtLink>
       </div>
 

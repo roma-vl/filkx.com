@@ -50,29 +50,50 @@
                 <CheckCircle class="text-green-400 mb-8" :size="80" />
                 <h3 class="text-4xl font-display font-black text-white mb-4">Отримано</h3>
                 <p class="text-gray-400 text-lg">Наш архітектор зв’яжеться з вами протягом робочого дня для глибинного інтерв’ю.</p>
+                <button @click="isSubmitted = false" class="mt-8 text-indigo-400 text-sm font-bold uppercase tracking-widest hover:text-white transition-colors">Надіслати ще раз</button>
               </div>
               
-              <form v-else @submit.prevent="handleSubmit" class="space-y-8">
+              <form v-else @submit.prevent="onSubmit" class="space-y-8">
                 <h2 class="text-4xl font-display font-black text-white mb-4">Розпочати співпрацю</h2>
+                
+                <div v-if="serverError" class="p-4 rounded-xl bg-red-500/10 border border-red-500/20 flex items-center gap-3 text-red-400 text-sm">
+                  <AlertCircle :size="18" />
+                  {{ serverError }}
+                </div>
+
                 <div class="space-y-6">
+                  <!-- Honeypot -->
+                  <input v-model="honeypot" type="text" class="hidden" tabindex="-1" autocomplete="off">
+
                   <div class="space-y-2">
-                    <label class="text-[10px] font-black text-gray-500 uppercase tracking-widest">Ваше ім'я</label>
-                    <input v-model="form.name" required type="text" placeholder="Elon Musk" class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-5 text-white focus:outline-none focus:border-indigo-500 transition-all duration-300">
+                    <label class="text-[10px] font-black text-gray-500 uppercase tracking-widest flex justify-between">
+                      Ваше ім'я
+                      <span v-if="errors.name" class="text-red-400 lowercase italic">{{ errors.name }}</span>
+                    </label>
+                    <input v-model="name" type="text" placeholder="Elon Musk" :class="[errors.name ? 'border-red-500/50' : 'border-white/10']" class="w-full bg-white/5 border rounded-2xl px-6 py-5 text-white focus:outline-none focus:border-indigo-500 transition-all duration-300">
                   </div>
+
                   <div class="space-y-2">
-                    <label class="text-[10px] font-black text-gray-500 uppercase tracking-widest">Email</label>
-                    <input v-model="form.email" required type="email" placeholder="elon@x.com" class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-5 text-white focus:outline-none focus:border-indigo-500 transition-all duration-300">
+                    <label class="text-[10px] font-black text-gray-500 uppercase tracking-widest flex justify-between">
+                      Email
+                      <span v-if="errors.email" class="text-red-400 lowercase italic">{{ errors.email }}</span>
+                    </label>
+                    <input v-model="email" type="email" placeholder="elon@x.com" :class="[errors.email ? 'border-red-500/50' : 'border-white/10']" class="w-full bg-white/5 border rounded-2xl px-6 py-5 text-white focus:outline-none focus:border-indigo-500 transition-all duration-300">
                   </div>
+
                   <div class="space-y-2">
-                    <label class="text-[10px] font-black text-gray-500 uppercase tracking-widest">Про проект</label>
-                    <textarea v-model="form.message" required rows="4" placeholder="Опишіть ваші бізнес-цілі..." class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-5 text-white focus:outline-none focus:border-indigo-500 transition-all duration-300 resize-none"></textarea>
+                    <label class="text-[10px] font-black text-gray-500 uppercase tracking-widest flex justify-between">
+                      Про проект
+                      <span v-if="errors.message" class="text-red-400 lowercase italic">{{ errors.message }}</span>
+                    </label>
+                    <textarea v-model="message" rows="4" placeholder="Опишіть ваші бізнес-цілі..." :class="[errors.message ? 'border-red-500/50' : 'border-white/10']" class="w-full bg-white/5 border rounded-2xl px-6 py-5 text-white focus:outline-none focus:border-indigo-500 transition-all duration-300 resize-none"></textarea>
                   </div>
                 </div>
                 
                 <button
                   type="submit"
                   :disabled="isLoading"
-                  class="w-full flex items-center justify-center gap-4 py-6 rounded-2xl bg-indigo-50/95 text-space-950 border border-transparent hover:border-indigo-500/50 hover:bg-indigo-950 hover:text-white font-black text-xl uppercase tracking-widest transition-all duration-500 shadow-xl active:scale-95 border-none cursor-pointer outline-none"
+                  class="w-full flex items-center justify-center gap-4 py-6 rounded-2xl bg-indigo-50/95 text-space-950 border border-transparent hover:border-indigo-500/50 hover:bg-indigo-950 hover:text-white font-black text-xl uppercase tracking-widest transition-all duration-500 shadow-xl active:scale-95 border-none cursor-pointer outline-none disabled:opacity-50"
                 >
                   <Loader2 v-if="isLoading" class="animate-spin" />
                   <span v-else class="flex items-center gap-3">
@@ -90,19 +111,24 @@
 </template>
 
 <script setup lang="ts">
-import { Send, CheckCircle, Sparkles, Loader2 } from 'lucide-vue-next'
+import { Send, CheckCircle, Sparkles, Loader2, AlertCircle } from 'lucide-vue-next'
+import { useContactForm } from '~/composables/useContactForm'
 
-const isSubmitted = ref(false)
-const isLoading = ref(false)
 const isAnalyzing = ref(false)
 const idea = ref('')
 const aiResponse = ref<any>(null)
 
-const form = reactive({
-  name: '',
-  email: '',
-  message: ''
-})
+const { 
+  isSubmitted, 
+  isLoading, 
+  serverError, 
+  errors,
+  name,
+  email,
+  message,
+  honeypot,
+  onSubmit 
+} = useContactForm()
 
 const handleBrainstorm = async () => {
   if (!idea.value || idea.value.length < 10) return
@@ -116,29 +142,14 @@ const handleBrainstorm = async () => {
     
     if (data.value) {
       aiResponse.value = {
-        stack: data.value.techStack.join(', '),
-        strategy: data.value.scalabilityPlan
+        stack: (data.value as any).techStack.join(', '),
+        strategy: (data.value as any).scalabilityPlan
       }
     }
   } catch (e) {
     console.error("Brainstorm error:", e)
   } finally {
     isAnalyzing.value = false
-  }
-}
-
-const handleSubmit = async () => {
-  isLoading.value = true
-  try {
-    await $fetch('/api/contact', {
-      method: 'POST',
-      body: form
-    })
-    isSubmitted.value = true
-  } catch (e) {
-    console.error("Form submission error:", e)
-  } finally {
-    isLoading.value = false
   }
 }
 </script>

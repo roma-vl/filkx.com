@@ -16,15 +16,27 @@ model User {
   @@map("users")
 }
 
-model ContactSubmission {
-  id        Int      @id @default(autoincrement())
+enum SubmissionStatus {
+  NEW
+  IN_PROGRESS
+  DONE
+  SPAM
+}
+
+model Submission {
+  id        Int              @id @default(autoincrement())
   name      String
   email     String
-  message   String
-  status    String   @default("NEW")
-  createdAt DateTime @default(now()) @map("created_at") @db.Timestamp(6)
+  phone     String?
+  message       String
+  preferredTime String?          @map("preferred_time")
+  ip            String?
+  userAgent String?          @map("user_agent")
+  source    String?          // landing, ad, ref
+  status    SubmissionStatus @default(NEW)
+  createdAt DateTime         @default(now()) @map("created_at") @db.Timestamp(6)
 
-  @@map("contact_submissions")
+  @@map("submissions")
 }
 
 model SystemSetting {
