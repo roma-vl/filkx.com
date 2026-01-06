@@ -25,6 +25,8 @@ services:
       POSTGRES_DB: ${POSTGRES_DB:-filkx_stage_db}
     volumes:
       - pgdata_stage:/var/lib/postgresql/data
+    ports:
+      - "54326:5432"
     networks:
       - filkx
     restart: always
