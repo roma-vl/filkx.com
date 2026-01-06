@@ -1,5 +1,5 @@
 services:
-  app:
+  staging-filkx-app:
     build:
       context: .
       dockerfile: Dockerfile
@@ -16,7 +16,7 @@ services:
       db:
         condition: service_healthy
 
-  db:
+  staging-filkx-db:
     # Staging might use a different DB or just separate one
     image: postgres:16-alpine
     environment:
