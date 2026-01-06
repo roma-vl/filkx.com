@@ -13,7 +13,7 @@ services:
     networks:
       - filkx
     depends_on:
-      db:
+      staging-filkx-db:
         condition: service_healthy
 
   staging-filkx-db:
