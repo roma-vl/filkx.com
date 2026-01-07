@@ -31,7 +31,7 @@ services:
       - filkx
     restart: always
     healthcheck:
-      test: [ "CMD-SHELL", "pg_isready -U filkx_stage -d filkx_stage_db" ]
+      test: [ "CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}" ]
       interval: 10s
       timeout: 5s
       retries: 5

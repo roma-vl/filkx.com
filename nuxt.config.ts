@@ -17,7 +17,7 @@ export default defineNuxtConfig({
             { code: 'uk', iso: 'uk-UA', name: 'Українська' }
         ],
         defaultLocale: 'en',
-        strategy: 'prefix',
+        strategy: 'prefix_except_default',
         detectBrowserLanguage: {
             useCookie: true,
             cookieKey: 'i18n_redirected',
