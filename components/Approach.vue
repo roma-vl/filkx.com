@@ -1,9 +1,9 @@
 <template>
-  <section id="approach" class="py-48 px-6 bg-white/[0.01]">
+  <section id="approach" class="py-24 lg:py-48 px-6 bg-white/[0.01]">
     <div class="container-wide">
-      <h2 class="text-5xl md:text-6xl font-display font-black text-white text-center mb-32 reveal">{{ $t('approach.title') }}</h2>
+      <h2 class="text-4xl md:text-6xl font-display font-black text-white text-center mb-16 lg:mb-32 reveal">{{ $t('approach.title') }}</h2>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 relative">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 relative">
         <!-- Background line -->
         <div class="hidden lg:block absolute top-12 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-indigo-500/30 to-transparent z-0"></div>
 

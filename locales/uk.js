@@ -154,9 +154,9 @@ export default {
             "title": "System-First Engineering",
             "subtitle": "Ми створюємо програмне забезпечення як актив. Наш підхід базується на принципах Clean Architecture та SOLID, що гарантує життєздатність продукту в довгостроковій перспективі.",
             "items": {
-                "backend": { "title": "Backend Engineering", "details": "Ми будуємо фундаменти на базі PHP 8.3+, використовуючи Laravel або Symfony для створення стабільних, типізованих та тестованих систем.", "features": ["Stateless API architecture", "Redis-based background jobs", "Event-driven business logic", "Complex database optimization"] },
-                "frontend": { "title": "Frontend & UI Logic", "details": "Розробляємо Single Page Applications (SPA) з чітким розділенням фронтенд-домену та API, забезпечуючи миттєву взаємодію користувача з даними.", "features": ["API-driven dynamic UI", "Optimized client-side performance", "Modular component architecture", "Real-time data synchronization"] },
-                "infra": { "title": "Infrastructure & Scale", "details": "Наші системи розгортаються в ізольованих Docker-середовищах, готових до горизонтального масштабування та автоматизованого моніторингу.", "features": ["Zero-downtime deployment", "Infrastructure as Code (IaC)", "Horizontal auto-scaling", "Health check monitoring systems"] }
+                "backend": { "title": "Backend Engineering", "details": "Ми будуємо фундаменти на базі PHP 8.3+, використовуючи Laravel або Symfony для створення стабільних, типізованих та тестованих систем.", "features": ["Stateless API архітектура", "Фонові завдання на базі Redis", "Подійно-орієнтована бізнес-логіка", "Складна оптимізація баз даних"] },
+                "frontend": { "title": "Frontend & UI Logic", "details": "Розробляємо Single Page Applications (SPA) з чітким розділенням фронтенд-домену та API, забезпечуючи миттєву взаємодію користувача з даними.", "features": ["Динамічний UI на базі API", "Оптимізована продуктивність клієнтської частини", "Модульна архітектура компонентів", "Синхронізація даних у реальному часі"] },
+                "infra": { "title": "Infrastructure & Scale", "details": "Наші системи розгортаються в ізольованих Docker-середовищах, готових до горизонтального масштабування та автоматизованого моніторингу.", "features": ["Деплой без простоїв (Zero-downtime)", "Інфраструктура як код (IaC)", "Горизонтальне авто-масштабування", "Системи моніторингу стану (Health check)"] }
             },
             "ecosystem": "Technology Ecosystem"
         },

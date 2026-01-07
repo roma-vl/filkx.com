@@ -30,7 +30,7 @@
               {{ $t('dashboard.description') }}
             </p>
           </div>
-          
+
           <div class="space-y-6">
             <div v-for="item in features" :key="item.label" class="flex items-start gap-5 p-6 rounded-3xl bg-white/[0.03] border border-white/5">
               <component :is="item.icon" class="text-indigo-400 shrink-0" :size="24" />
@@ -42,7 +42,7 @@
           </div>
 
           <a
-          :href="useRuntimeConfig().public.appUrl"
+          :href="useRuntimeConfig().public.liveStudioUrl"
             target="_blank"
             class="flex items-center justify-center gap-3 w-full py-6 rounded-2xl bg-indigo-50/95 text-space-950 border border-transparent hover:border-indigo-500/50 hover:bg-indigo-950 hover:text-white font-black uppercase tracking-widest transition-all duration-500 shadow-xl"
           >
@@ -63,7 +63,7 @@
               <span class="text-[10px] font-black text-green-500 uppercase">Operational</span>
             </div>
           </div>
-          
+
           <!-- Abstract Bar Chart representation -->
           <div class="h-64 md:h-[400px] w-full relative flex items-end gap-1.5 md:gap-3">
             <div
@@ -99,7 +99,7 @@ const features = computed(() => [
 onMounted(() => {
   // Initialize with random values on client only
   bars.value = bars.value.map(() => 20 + Math.random() * 60)
-  
+
   const interval = setInterval(() => {
     bars.value = bars.value.map(v => Math.max(10, Math.min(100, v + (Math.random() - 0.5) * 15)))
   }, 1500)

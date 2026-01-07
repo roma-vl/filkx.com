@@ -38,7 +38,7 @@
           <h4 class="text-[10px] font-black uppercase tracking-[0.3em] text-white mb-6">{{ $t('footer.sections.ecosystem') }}</h4>
           <nav class="flex flex-col gap-4 text-xs font-bold text-gray-500 uppercase tracking-widest">
             <a
-              :href="useRuntimeConfig().public.appUrl"
+              :href="useRuntimeConfig().public.liveStudioUrl"
               target="_blank"
               class="flex items-center gap-2 hover:text-white transition-colors group"
             >

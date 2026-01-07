@@ -64,6 +64,7 @@ export default defineNuxtConfig({
 
         public: {
             appUrl: process.env.NUXT_PUBLIC_APP_URL || 'http://localhost:3000',
+            liveStudioUrl: process.env.NUXT_PUBLIC_LIVE_STUDIO_URL || 'https://live.filkx.com',
             nodeVersion: process.version
         }
     },
