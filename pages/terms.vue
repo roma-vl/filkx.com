@@ -15,6 +15,15 @@
           <h1 class="text-3xl md:text-6xl font-display font-black text-white">{{ $t('pages.terms.title') }}</h1>
         </div>
 
+        <div class="mb-12 p-6 md:p-8 rounded-2xl bg-indigo-500/10 border border-indigo-500/20">
+          <ul class="grid gap-4">
+            <li v-for="item in tm('pages.terms.summary')" :key="item" class="flex items-start gap-3 text-indigo-200">
+              <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-indigo-400 shrink-0"></span>
+              <span class="text-base md:text-lg">{{ item }}</span>
+            </li>
+          </ul>
+        </div>
+
         <div class="space-y-8 md:space-y-12">
           <div v-for="s in sections" :key="s.title">
             <h2 class="text-xl md:text-2xl font-black text-indigo-400 mb-3 md:mb-4">{{ s.title }}</h2>
@@ -37,7 +46,7 @@ useHead({
   ]
 })
 
-const { t } = useI18n()
+const { t, tm } = useI18n()
 
 const sections = computed(() => [
   { title: t('pages.terms.sections.acceptance.title'), text: t('pages.terms.sections.acceptance.text') },

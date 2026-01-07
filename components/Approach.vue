@@ -13,8 +13,9 @@
           class="relative z-10 flex flex-col items-center text-center group reveal"
           :style="{ transitionDelay: `${i * 150}ms` }"
         >
-          <div class="w-24 h-24 rounded-[32px] glass border border-indigo-500/20 grid place-items-center mb-10 shadow-[0_20px_40px_rgba(0,0,0,0.5)] transition-all group-hover:bg-indigo-600/20 group-hover:scale-110 group-hover:border-indigo-500/50">
-            <span class="text-3xl font-display font-black text-indigo-400">{{ step.status }}</span>
+          <div class="w-24 h-24 rounded-[32px] glass border border-indigo-500/20 grid place-items-center mb-10 shadow-[0_20px_40px_rgba(0,0,0,0.5)] transition-all group-hover:bg-indigo-600/20 group-hover:scale-110 group-hover:border-indigo-500/50 relative overflow-hidden">
+            <component :is="step.icon" :size="40" class="text-indigo-400 relative z-10" />
+            <div class="absolute -bottom-2 -right-2 text-6xl font-black text-white/5 font-display select-none">{{ step.status }}</div>
           </div>
           <h3 class="text-2xl font-black text-white mb-5">{{ step.title }}</h3>
           <p class="text-gray-400 text-lg px-2 leading-relaxed">{{ step.desc }}</p>
@@ -43,15 +44,35 @@
 </template>
 
 <script setup lang="ts">
-import { CheckCircle2 } from 'lucide-vue-next'
+import { CheckCircle2, Compass, PencilRuler, ShieldCheck, Rocket } from 'lucide-vue-next'
 
 const { t } = useI18n()
 const localePath = useLocalePath()
 
 const steps = computed(() => [
-  { title: t('approach.steps.discovery.title'), desc: t('approach.steps.discovery.desc'), status: '01' },
-  { title: t('approach.steps.sprint.title'), desc: t('approach.steps.sprint.desc'), status: '02' },
-  { title: t('approach.steps.zero_defects.title'), desc: t('approach.steps.zero_defects.desc'), status: '03' },
-  { title: t('approach.steps.scale_ready.title'), desc: t('approach.steps.scale_ready.desc'), status: '04' }
+  { 
+    title: t('approach.steps.discovery.title'), 
+    desc: t('approach.steps.discovery.desc'), 
+    status: '01',
+    icon: Compass 
+  },
+  { 
+    title: t('approach.steps.sprint.title'), 
+    desc: t('approach.steps.sprint.desc'), 
+    status: '02',
+    icon: PencilRuler 
+  },
+  { 
+    title: t('approach.steps.zero_defects.title'), 
+    desc: t('approach.steps.zero_defects.desc'), 
+    status: '03',
+    icon: ShieldCheck 
+  },
+  { 
+    title: t('approach.steps.scale_ready.title'), 
+    desc: t('approach.steps.scale_ready.desc'), 
+    status: '04',
+    icon: Rocket 
+  }
 ])
 </script>

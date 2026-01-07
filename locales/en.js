@@ -220,7 +220,13 @@ export default {
                 "usage": { "title": "Usage", "text": "Your data is used exclusively for communication and preparation of technical proposals. We never share data with third parties." },
                 "security": { "title": "Security", "text": "All data is stored in encrypted form on secure cloud servers with limited personnel access." },
                 "rights": { "title": "Your Rights", "text": "You have the right to request the deletion of your personal information from our database at any time." }
-            }
+            },
+            "summary": [
+                "We only collect what is necessary for the platform to work.",
+                "Your data is protected and processed according to modern standards.",
+                "NDA available upon request.",
+                "The platform does not sell your data to third parties."
+            ]
         },
         "terms": {
             "title": "Terms of Service",
@@ -229,7 +235,13 @@ export default {
                 "services": { "title": "Services", "text": "Filkx Studio provides professional software development services based on individual contracts (NDA/MSA)." },
                 "ip": { "title": "Intellectual Property", "text": "After full payment for services, all property rights to the developed code transfer to the customer." },
                 "liability": { "title": "Limitation of Liability", "text": "We guarantee technical stability of developed systems according to SLA, but do not bear responsibility for the customer's business results." }
-            }
+            },
+            "summary": [
+                "NDA available upon request.",
+                "Code rights transfer to the client after payment.",
+                "Stability support according to SLA.",
+                "We guarantee technical quality, business results are yours."
+            ]
         },
         "health": {
             "title": "Nuxt SSR is working",
@@ -276,20 +288,20 @@ export default {
         "book_call": "Discuss your task",
         "steps": {
             "discovery": {
-                "title": "Scope & priorities",
-                "desc": "Understand goals, users, constraints. Define scope, budget, and success criteria."
+                "title": "Discovery",
+                "desc": "Define goals, users, and constraints. Establish fixed scope and budget."
             },
             "sprint": {
-                "title": "Design & build",
-                "desc": "UX flows, architecture, and incremental delivery every 1–2 weeks."
+                "title": "Design & Architecture",
+                "desc": "UX flows, prototypes, architecture, incremental releases every 1–2 weeks."
             },
             "zero_defects": {
-                "title": "Quality gate",
-                "desc": "Automated checks, reviews, and security basics on each release."
+                "title": "QA & Security",
+                "desc": "Automated tests, reviews, basic security practices on every release."
             },
             "scale_ready": {
-                "title": "Launch & support",
-                "desc": "Cloud deployment, monitoring, and post‑launch improvements."
+                "title": "Launch & Support",
+                "desc": "CI/CD, cloud, monitoring, post-release improvements. Six months of stability support."
             }
         }
     },
@@ -314,13 +326,14 @@ export default {
         "title": "Technology we trust in production",
         "description": "We use proven tools only. This keeps delivery predictable without trading off quality or performance.",
         "items": {
-            "php": { "name": "PHP 8.4", "desc": "backend core" },
-            "frameworks": { "name": "Laravel / Symfony", "desc": "battle‑tested frameworks" },
-            "frontend": { "name": "Vue 3 SPA / TypeScript", "desc": "modern frontend" },
-            "realtime": { "name": "Go / Node.js", "desc": "real‑time and workers" },
-            "db": { "name": "PostgreSQL", "desc": "reliable storage" },
-            "cache": { "name": "Redis", "desc": "cache and queues" },
-            "infra": { "name": "Docker / K8s", "desc": "infrastructure and deploy" }
+            "php": { "name": "PHP 8.3", "desc": "reliable backend core" },
+            "frameworks": { "name": "Laravel / Symfony", "desc": "fast start and scaling" },
+            "frontend": { "name": "Vue 3 SPA", "desc": "interactive frontend" },
+            "typescript": { "name": "TypeScript", "desc": "safe code, fewer bugs" },
+            "realtime": { "name": "Go / Node.js", "desc": "real‑time and worker tasks" },
+            "db": { "name": "PostgreSQL", "desc": "data stability" },
+            "cache": { "name": "Redis", "desc": "fast cache and queues" },
+            "infra": { "name": "Docker / K8s", "desc": "stable infrastructure, cost control" }
         },
         "cats": {
             "backend": "Backend Core",
@@ -338,28 +351,34 @@ export default {
         "description": "We deliver websites, SaaS, and internal platforms as complete products: scope, delivery, and support included.",
         "items": {
             "saas": {
-                "title": "SaaS platform",
-                "desc": "Multi‑tenant accounts, subscriptions, billing, and roles. From MVP to scale."
-            },
-            "api": {
-                "title": "API as a product",
-                "desc": "Clean versioned API, auth, docs, and onboarding for your partners or apps."
+                "title": "SaaS Platforms",
+                "desc": "From MVP to full SaaS: billing, roles, subscriptions. We ensure scaling doesn't break your product.",
+                "tech": "Stripe, Roles/Permissions, Queue"
             },
             "frontend": {
-                "title": "Web app / website",
-                "desc": "Fast UX, SEO‑ready when needed, clear flows that convert."
+                "title": "Websites & Apps",
+                "desc": "Fast UX, optimized scenarios, SEO-ready if needed. Texts and design for conversions.",
+                "tech": "Vue 3, Nuxt, SEO"
+            },
+            "api": {
+                "title": "API as a Product",
+                "desc": "Clear API, versioning, auth, and onboarding for partners or mobile apps.",
+                "tech": "REST, OpenAPI, OAuth2"
             },
             "realtime": {
-                "title": "Real‑time features",
-                "desc": "Live updates, chats, dashboards, and streaming with predictable costs."
+                "title": "Real-time Features",
+                "desc": "Chats, streaming, dashboards with live data. Cost control and reliability.",
+                "tech": "WebSockets, SSE, Redis"
             },
             "devops": {
-                "title": "Launch & infrastructure",
-                "desc": "Cloud setup, CI/CD, monitoring, and cost control."
+                "title": "Launch & Infrastructure",
+                "desc": "CI/CD, cloud, monitoring — your releases work stably.",
+                "tech": "Docker, K8s, AWS"
             },
             "backend": {
-                "title": "Business logic",
-                "desc": "Reliable processing of core workflows, reporting, and integrations."
+                "title": "Business Logic & Integrations",
+                "desc": "Processing key processes, analytics, integrations with other systems.",
+                "tech": "Laravel, Go, SQL"
             }
         }
     },

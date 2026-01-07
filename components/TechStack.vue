@@ -35,7 +35,7 @@ type TechItem = { name: string; desc: string }
 const tech = computed<TechItem[]>(() => {
   // Preserve logical order
   const items = tm('stack.items') as any
-  const order = ['php', 'frameworks', 'frontend', 'realtime', 'db', 'cache', 'infra']
+  const order = ['php', 'frameworks', 'frontend', 'typescript', 'realtime', 'db', 'cache', 'infra']
   return order
     .map((k) => items?.[k])
     .filter(Boolean)

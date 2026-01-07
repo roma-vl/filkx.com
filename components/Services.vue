@@ -19,7 +19,11 @@
             <component :is="s.icon" class="text-indigo-400" :size="40" :class="s.color" />
           </div>
           <h3 class="text-2xl font-black text-white mb-5 group-hover:text-indigo-300 transition-colors">{{ s.title }}</h3>
-          <p class="text-gray-400 text-lg leading-relaxed">{{ s.desc }}</p>
+          <p class="text-gray-400 text-lg leading-relaxed mb-6">{{ s.desc }}</p>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-sm text-gray-400 font-mono">
+             <span class="w-2 h-2 rounded-full bg-indigo-500"></span>
+             {{ s.tech }}
+          </div>
           <div class="absolute -right-16 -bottom-16 w-48 h-48 bg-indigo-600/5 rounded-full blur-[80px] group-hover:bg-indigo-600/15 transition-all"></div>
         </div>
       </div>
@@ -35,37 +39,43 @@ const { t } = useI18n()
 const services = computed(() => [
   { 
     title: t('services.items.saas.title'), 
-    desc: t('services.items.saas.desc'), 
+    desc: t('services.items.saas.desc'),
+    tech: t('services.items.saas.tech'),
     icon: Database, 
     color: 'text-indigo-400' 
   },
   { 
-    title: t('services.items.api.title'), 
-    desc: t('services.items.api.desc'), 
-    icon: Layers, 
-    color: 'text-violet-400' 
-  },
-  { 
     title: t('services.items.frontend.title'), 
-    desc: t('services.items.frontend.desc'), 
+    desc: t('services.items.frontend.desc'),
+    tech: t('services.items.frontend.tech'),
     icon: Layout, 
     color: 'text-blue-400' 
   },
   { 
+    title: t('services.items.api.title'), 
+    desc: t('services.items.api.desc'),
+    tech: t('services.items.api.tech'),
+    icon: Layers, 
+    color: 'text-violet-400' 
+  },
+  { 
     title: t('services.items.realtime.title'), 
-    desc: t('services.items.realtime.desc'), 
+    desc: t('services.items.realtime.desc'),
+    tech: t('services.items.realtime.tech'),
     icon: Zap, 
     color: 'text-amber-400' 
   },
   { 
     title: t('services.items.devops.title'), 
-    desc: t('services.items.devops.desc'), 
+    desc: t('services.items.devops.desc'),
+    tech: t('services.items.devops.tech'),
     icon: Terminal, 
     color: 'text-emerald-400' 
   },
   { 
     title: t('services.items.backend.title'), 
-    desc: t('services.items.backend.desc'), 
+    desc: t('services.items.backend.desc'),
+    tech: t('services.items.backend.tech'),
     icon: Server, 
     color: 'text-rose-400' 
   }
