@@ -1,12 +1,12 @@
 <template>
   <section id="approach" class="py-48 px-6 bg-white/[0.01]">
     <div class="container-wide">
-      <h2 class="text-5xl md:text-6xl font-display font-black text-white text-center mb-32 reveal">Наша Методологія</h2>
-      
+      <h2 class="text-5xl md:text-6xl font-display font-black text-white text-center mb-32 reveal">{{ $t('approach.title') }}</h2>
+
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 relative">
         <!-- Background line -->
         <div class="hidden lg:block absolute top-12 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-indigo-500/30 to-transparent z-0"></div>
-        
+
         <div
           v-for="(step, i) in steps"
           :key="step.status"
@@ -27,15 +27,15 @@
             <CheckCircle2 :size="40" />
           </div>
           <div class="text-center sm:text-left">
-            <h4 class="text-2xl md:text-3xl font-black text-white mb-2">Гарантія стабільності</h4>
-            <p class="text-gray-400 text-lg max-w-xl">Ми надаємо 6 місяців безкоштовної технічної підтримки для всіх наших проектів.</p>
+            <h4 class="text-2xl md:text-3xl font-black text-white mb-2">{{ $t('approach.guarantee_title') }}</h4>
+            <p class="text-gray-400 text-lg max-w-xl">{{ $t('approach.guarantee_desc') }}</p>
           </div>
         </div>
         <NuxtLink
-          to="/start-project"
+          :to="localePath('/book-a-call')"
           class="px-12 py-6 rounded-2xl bg-indigo-50/95 text-space-950 border border-transparent hover:border-indigo-500/50 hover:bg-indigo-950 hover:text-white font-black text-xl uppercase tracking-widest transition-all duration-500 active:scale-95 shadow-xl relative z-10 text-center w-full lg:w-auto outline-none cursor-pointer"
         >
-          Забронювати дзвінок
+          {{ $t('approach.book_call') }}
         </NuxtLink>
       </div>
     </div>
@@ -45,10 +45,13 @@
 <script setup lang="ts">
 import { CheckCircle2 } from 'lucide-vue-next'
 
-const steps = [
-  { title: 'Discovery', desc: 'Глибокий аналіз бізнес-моделі та архітектурне проектування.', status: '01' },
-  { title: 'Sprint Build', desc: 'Адаптивна розробка з регулярними апдейтами та фідбеком.', status: '02' },
-  { title: 'Zero Defects', desc: 'Автоматизоване тестування та аудит безпеки кожної ітерації.', status: '03' },
-  { title: 'Scale Ready', desc: 'Деплой у хмару та моніторинг стабільності під навантаженням.', status: '04' }
-]
+const { t } = useI18n()
+const localePath = useLocalePath()
+
+const steps = computed(() => [
+  { title: t('approach.steps.discovery.title'), desc: t('approach.steps.discovery.desc'), status: '01' },
+  { title: t('approach.steps.sprint.title'), desc: t('approach.steps.sprint.desc'), status: '02' },
+  { title: t('approach.steps.zero_defects.title'), desc: t('approach.steps.zero_defects.desc'), status: '03' },
+  { title: t('approach.steps.scale_ready.title'), desc: t('approach.steps.scale_ready.desc'), status: '04' }
+])
 </script>

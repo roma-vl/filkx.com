@@ -4,19 +4,19 @@
 
     <div class="w-full max-w-md reveal">
       <div class="text-center mb-12">
-        <NuxtLink to="/" class="inline-block mb-8 group">
+        <NuxtLink :to="localePath('/')" class="inline-block mb-8 group">
           <div class="w-16 h-16 rounded-2xl bg-indigo-600 grid place-items-center text-white shadow-[0_0_30px_rgba(79,70,229,0.4)] group-hover:scale-110 transition-transform">
             <IconsLogo :size="32" />
           </div>
         </NuxtLink>
-        <h1 class="text-4xl font-display font-black text-white mb-2">Create Admin</h1>
-        <p class="text-gray-500 font-medium tracking-wide uppercase text-[10px]">Secure Registration System</p>
+        <h1 class="text-4xl font-display font-black text-white mb-2">{{ $t('auth.register.title') }}</h1>
+        <p class="text-gray-500 font-medium tracking-wide uppercase text-[10px]">{{ $t('auth.register.subtitle') }}</p>
       </div>
 
       <div class="glass p-8 md:p-10 rounded-[40px] border border-white/5 shadow-2xl">
         <form @submit.prevent="handleRegister" class="space-y-6">
           <div class="space-y-2">
-            <label class="text-[10px] font-black text-gray-400 uppercase tracking-widest ml-1">Work Email</label>
+            <label class="text-[10px] font-black text-gray-400 uppercase tracking-widest ml-1">{{ $t('auth.register.email') }}</label>
             <input
               v-model="form.email"
               type="email"
@@ -26,7 +26,7 @@
             />
           </div>
           <div class="space-y-2">
-            <label class="text-[10px] font-black text-gray-400 uppercase tracking-widest ml-1">Secure Password</label>
+            <label class="text-[10px] font-black text-gray-400 uppercase tracking-widest ml-1">{{ $t('auth.register.password') }}</label>
             <input
               v-model="form.password"
               type="password"
@@ -47,14 +47,14 @@
           >
             <Loader2 v-if="isLoading" class="animate-spin" :size="18" />
             <UserPlus v-else :size="18" />
-            {{ isLoading ? 'Creating Account...' : 'Register' }}
+            {{ isLoading ? $t('auth.register.loading') : $t('auth.register.submit') }}
           </button>
         </form>
 
         <div class="mt-8 pt-8 border-t border-white/5 text-center">
           <p class="text-gray-500 text-xs font-medium">
-            Already have access? 
-            <NuxtLink to="/login" class="text-indigo-400 hover:text-indigo-300 font-black transition-colors ml-1">Sign In</NuxtLink>
+            {{ $t('auth.register.has_account') }}
+            <NuxtLink :to="localePath('/login')" class="text-indigo-400 hover:text-indigo-300 font-black transition-colors ml-1">{{ $t('auth.register.sign_in') }}</NuxtLink>
           </p>
         </div>
       </div>
@@ -71,6 +71,8 @@ definePageMeta({
 })
 
 const { register } = useAuth()
+const { t } = useI18n()
+const localePath = useLocalePath()
 const form = reactive({
   email: '',
   password: ''
@@ -83,9 +85,9 @@ const handleRegister = async () => {
   error.value = ''
   try {
     await register(form)
-    navigateTo('/admin')
+    navigateTo(localePath('/admin'))
   } catch (e: any) {
-    error.value = e.data?.statusMessage || 'Failed to register'
+    error.value = e.data?.statusMessage || t('auth.register.error_generic')
   } finally {
     isLoading.value = false
   }

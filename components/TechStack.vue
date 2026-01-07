@@ -3,9 +3,9 @@
     <div class="container-wide">
       <div class="grid lg:grid-cols-12 gap-24 items-center">
         <div class="lg:col-span-5 reveal">
-          <div class="inline-block px-5 py-2 rounded-xl bg-indigo-600/10 text-indigo-400 text-[10px] font-black uppercase tracking-[0.3em] mb-8 border border-indigo-500/20">Production Stack</div>
-          <h2 class="text-5xl md:text-6xl font-display font-black text-white mb-10 leading-tight">Технології для Enterprise рішень.</h2>
-          <p class="text-gray-400 text-xl mb-12 leading-relaxed">Ми не експериментуємо на проектах клієнтів. Наш стек — це перевірені інструменти, які забезпечують швидку розробку без втрати якості та продуктивності.</p>
+          <div class="inline-block px-5 py-2 rounded-xl bg-indigo-600/10 text-indigo-400 text-[10px] font-black uppercase tracking-[0.3em] mb-8 border border-indigo-500/20">{{ $t('stack.badge') }}</div>
+          <h2 class="text-5xl md:text-6xl font-display font-black text-white mb-10 leading-tight">{{ $t('stack.title') }}</h2>
+          <p class="text-gray-400 text-xl mb-12 leading-relaxed">{{ $t('stack.description') }}</p>
           <div class="flex gap-5">
             <div class="h-1.5 w-24 bg-indigo-600 rounded-full"></div>
             <div class="h-1.5 w-12 bg-indigo-600/20 rounded-full"></div>
@@ -28,14 +28,16 @@
 </template>
 
 <script setup lang="ts">
-const tech = [
-  { name: 'PHP 8.3', cat: 'Backend Core' },
-  { name: 'Laravel / Symfony', cat: 'Frameworks' },
-  { name: 'Vue 3 SPA', cat: 'Frontend' },
-  { name: 'TypeScript', cat: 'Type Safety' },
-  { name: 'Go / Node.js', cat: 'Real-time / Workers' },
-  { name: 'PostgreSQL', cat: 'Databases' },
-  { name: 'Redis', cat: 'Caching / Queues' },
-  { name: 'Docker / K8s', cat: 'Infrastructure' }
-]
+const { t } = useI18n()
+
+const tech = computed(() => [
+  { name: 'PHP 8.3', cat: t('stack.cats.backend') },
+  { name: 'Laravel / Symfony', cat: t('stack.cats.frameworks') },
+  { name: 'Vue 3 SPA', cat: t('stack.cats.frontend') },
+  { name: 'TypeScript', cat: t('stack.cats.types') },
+  { name: 'Go / Node.js', cat: t('stack.cats.realtime') },
+  { name: 'PostgreSQL', cat: t('stack.cats.db') },
+  { name: 'Redis', cat: t('stack.cats.cache') },
+  { name: 'Docker / K8s', cat: t('stack.cats.infra') }
+])
 </script>

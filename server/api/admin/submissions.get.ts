@@ -1,3 +1,6 @@
+import { SubmissionService } from '../../services/submission.service'
+import { logger } from '../../utils/logger'
+
 export default defineEventHandler(async (event) => {
     const user = getAuthUser(event) as any
     if (!user || user.role !== 'admin') {
@@ -8,15 +11,9 @@ export default defineEventHandler(async (event) => {
     }
 
     try {
-        const prisma = useDb()
-        const submissions = await prisma.contactSubmission.findMany({
-            orderBy: {
-                createdAt: 'desc'
-            }
-        })
-        return submissions
+        return await SubmissionService.listAll()
     } catch (error) {
-        console.error("Admin fetch error:", error)
+        logger.error(error, 'Admin fetch submissions error')
         throw createError({
             statusCode: 500,
             statusMessage: 'Failed to fetch submissions',

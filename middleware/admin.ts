@@ -9,10 +9,12 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
     }
 
     if (!user.value) {
-        return navigateTo('/login')
+        const localePath = useLocalePath()
+        return navigateTo(localePath('/login'))
     }
 
     if (user.value.role !== 'admin') {
-        return navigateTo('/')
+        const localePath = useLocalePath()
+        return navigateTo(localePath('/'))
     }
 })

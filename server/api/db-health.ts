@@ -1,6 +1,6 @@
 export default defineEventHandler(async (event) => {
     try {
-        const prisma = useDb()
+        const prisma = await useDb()
         await prisma.$queryRaw`SELECT 1`
         return { status: 'ok' }
     } catch (e) {

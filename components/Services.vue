@@ -2,9 +2,9 @@
   <section id="services" class="py-48 px-6">
     <div class="container-wide">
       <div class="text-center mb-32 reveal">
-        <h2 class="text-5xl md:text-6xl font-display font-black text-white mb-8">Наші Компетенції</h2>
+        <h2 class="text-5xl md:text-6xl font-display font-black text-white mb-8">{{ $t('services.title') }}</h2>
         <p class="text-gray-400 max-w-3xl mx-auto text-xl leading-relaxed">
-          Ми спеціалізуємося на побудові складних веб-систем, де надійність архітектури та швидкість обробки даних є пріоритетом номер один.
+          {{ $t('services.description') }}
         </p>
       </div>
 
@@ -30,42 +30,44 @@
 <script setup lang="ts">
 import { Database, Layout, Layers, Terminal, Server, Zap } from 'lucide-vue-next'
 
-const services = [
+const { t } = useI18n()
+
+const services = computed(() => [
   { 
-    title: 'SaaS Architecture', 
-    desc: 'Проектування та розробка багатокористувацьких платформ з ізольованими даними та гнучким керуванням підписками.', 
+    title: t('services.items.saas.title'), 
+    desc: t('services.items.saas.desc'), 
     icon: Database, 
     color: 'text-indigo-400' 
   },
   { 
-    title: 'API-First Engineering', 
-    desc: 'Створення stateless бекендів на Laravel/Symfony з повною підтримкою OAuth2, JWT та детальною документацією.', 
+    title: t('services.items.api.title'), 
+    desc: t('services.items.api.desc'), 
     icon: Layers, 
     color: 'text-violet-400' 
   },
   { 
-    title: 'Modern Frontends', 
-    desc: 'Високопродуктивні SPA на Vue 3, інтегровані з API через реактивні сховища та real-time з’єднання.', 
+    title: t('services.items.frontend.title'), 
+    desc: t('services.items.frontend.desc'), 
     icon: Layout, 
     color: 'text-blue-400' 
   },
   { 
-    title: 'Real-time Systems', 
-    desc: 'Обробка подій у реальному часі через WebSockets та Redis, побудована на Node.js або Go для критичних навантажень.', 
+    title: t('services.items.realtime.title'), 
+    desc: t('services.items.realtime.desc'), 
     icon: Zap, 
     color: 'text-amber-400' 
   },
   { 
-    title: 'Infrastructure & DevOps', 
-    desc: 'Контейнеризація Docker, оркестрація Kubernetes та налаштування CI/CD пайплайнів для Blue/Green деплою.', 
+    title: t('services.items.devops.title'), 
+    desc: t('services.items.devops.desc'), 
     icon: Terminal, 
     color: 'text-emerald-400' 
   },
   { 
-    title: 'High-Load Backend', 
-    desc: 'Оптимізація складних бізнес-процесів через черги (Redis/RabbitMQ) та фонову обробку в PHP 8.3/Go.', 
+    title: t('services.items.backend.title'), 
+    desc: t('services.items.backend.desc'), 
     icon: Server, 
     color: 'text-rose-400' 
   }
-]
+])
 </script>
