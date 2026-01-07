@@ -18,6 +18,7 @@ export class SubmissionService {
                 phone: isBooking ? (data as BookingInput).phone : null,
                 message: isBooking ? (data as BookingInput).description : (data as ContactInput).message,
                 preferredTime: isBooking ? (data as BookingInput).preferredTime : null,
+                type: isBooking ? 'BOOKING' : 'CONTACT',
                 source: data.source || (isBooking ? 'booking_page' : 'direct'),
                 ip: metadata.ip,
                 userAgent: metadata.userAgent,
@@ -25,7 +26,7 @@ export class SubmissionService {
             }
         })
 
-        logger.info({ submissionId: submission.id, type: isBooking ? 'booking' : 'contact' }, 'Submission saved successfully')
+        logger.info({ submissionId: submission.id, type: submission.type }, 'Submission saved successfully')
 
         return submission
     }

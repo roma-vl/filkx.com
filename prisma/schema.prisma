@@ -18,23 +18,31 @@ model User {
 
 enum SubmissionStatus {
   NEW
-  IN_PROGRESS
+  PROCESSING
   DONE
+  ARCHIVED
   SPAM
+  DELETED
+}
+
+enum SubmissionType {
+  CONTACT
+  BOOKING
 }
 
 model Submission {
-  id        Int              @id @default(autoincrement())
-  name      String
-  email     String
-  phone     String?
+  id            Int              @id @default(autoincrement())
+  name          String
+  email         String
+  phone         String?
   message       String
   preferredTime String?          @map("preferred_time")
+  type          SubmissionType   @default(CONTACT)
   ip            String?
-  userAgent String?          @map("user_agent")
-  source    String?          // landing, ad, ref
-  status    SubmissionStatus @default(NEW)
-  createdAt DateTime         @default(now()) @map("created_at") @db.Timestamp(6)
+  userAgent     String?          @map("user_agent")
+  source        String?          // landing, ad, ref
+  status        SubmissionStatus @default(NEW)
+  createdAt     DateTime         @default(now()) @map("created_at") @db.Timestamp(6)
 
   @@map("submissions")
 }
