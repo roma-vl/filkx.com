@@ -140,8 +140,8 @@ export default {
             "twitter_title": "Filkx Studio – Веб‑платформи та SaaS для бізнесу",
             "twitter_desc": "Filkx Studio створює веб‑платформи та SaaS: швидкий запуск, передбачуваний скоп, підтримка після релізу. Замовте розробку сайту або платформи для вашого бізнесу.",
             "twitter_image": "https://filkx.com/og-image.png",
-            "twitter_site": "@FilkxStudio",
-            "twitter_creator": "@FilkxStudio"
+            "twitter_site": "{handle}",
+            "twitter_creator": "{handle}"
         },
         "approach": { "title": "Методологія | Filkx Studio" },
         "services": { "title": "Послуги | Filkx Studio" },
@@ -216,7 +216,7 @@ export default {
                 "desc": "Коментар / Опис проекту",
                 "placeholders": {
                     "name": "Elon Musk",
-                    "email": "elon{'@'}x.com",
+                    "email": "{email}",
                     "phone": "+380...",
                     "time": "Сьогодні о 16:00",
                     "desc": "Коротко про вашу задачу..."
@@ -397,7 +397,7 @@ export default {
             },
             "placeholders": {
                 "name": "Ваше ім'я",
-                "email": "email@example.com",
+                "email": "{email}",
                 "project": "Опис задачі..."
             },
             "submit": "Надіслати запит",

@@ -47,7 +47,7 @@
                     {{ $t('pages.book_call.form.email') }}
                     <span v-if="errors.email" class="text-red-400 lowercase italic">{{ errors.email }}</span>
                   </label>
-                  <input v-model="email" type="email" :placeholder="$t('pages.book_call.form.placeholders.email')" class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-5 text-white focus:outline-none focus:border-indigo-500 transition-all duration-300">
+                  <input v-model="email" type="email" :placeholder="$t('pages.book_call.form.placeholders.email', { email: 'elon@x.com' })" class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-5 text-white focus:outline-none focus:border-indigo-500 transition-all duration-300">
                 </div>
                 <div class="space-y-2">
                   <label class="text-[10px] font-black text-gray-500 uppercase tracking-widest flex justify-between">

@@ -89,8 +89,8 @@ useHead({
     { name: 'twitter:title', content: t('seo.index.twitter_title') },
     { name: 'twitter:description', content: t('seo.index.twitter_desc') },
     { name: 'twitter:image', content: t('seo.index.twitter_image') },
-    { name: 'twitter:site', content: t('seo.index.twitter_site') },
-    { name: 'twitter:creator', content: t('seo.index.twitter_creator') }
+    { name: 'twitter:site', content: t('seo.index.twitter_site', { handle: '@FilkxStudio' }) },
+    { name: 'twitter:creator', content: t('seo.index.twitter_creator', { handle: '@FilkxStudio' }) }
   ],
   link: [
     { rel: 'canonical', href: 'https://filkx.com' + route.path },

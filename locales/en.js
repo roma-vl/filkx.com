@@ -140,8 +140,8 @@ export default {
             "twitter_title": "Filkx Studio – Web Platforms and SaaS for Business",
             "twitter_desc": "Filkx Studio creates web platforms and SaaS: fast launch, predictable scope, post-release support. Order site or platform development for your business.",
             "twitter_image": "https://filkx.com/og-image.png",
-            "twitter_site": "@FilkxStudio",
-            "twitter_creator": "@FilkxStudio"
+            "twitter_site": "{handle}",
+            "twitter_creator": "{handle}"
         },
         "approach": { "title": "Methodology | Filkx Studio" },
         "services": { "title": "Services | Filkx Studio" },
@@ -216,7 +216,7 @@ export default {
                 "time": "Preferred Time",
                 "placeholders": {
                     "name": "Elon Musk",
-                    "email": "elon{'@'}x.com",
+                    "email": "{email}",
                     "phone": "+1 555...",
                     "time": "Today at 4 PM",
                     "desc": "Briefly about your task..."
@@ -377,7 +377,7 @@ export default {
             },
             "placeholders": {
                 "name": "Your Name",
-                "email": "email@example.com",
+                "email": "{email}",
                 "project": "Task description..."
             },
             "submit": "Send Request",

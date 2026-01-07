@@ -78,7 +78,7 @@
                       {{ $t('contact.form_column.labels.email') }}
                       <span v-if="errors.email" class="text-red-400 lowercase italic">{{ errors.email }}</span>
                     </label>
-                    <input v-model="email" type="email" :placeholder="$t('contact.form_column.placeholders.email')" :class="[errors.email ? 'border-red-500/50' : 'border-white/10']" class="w-full bg-white/5 border rounded-2xl px-6 py-5 text-white focus:outline-none focus:border-indigo-500 transition-all duration-300">
+                    <input v-model="email" type="email" :placeholder="$t('contact.form_column.placeholders.email', { email: 'email@example.com' })" :class="[errors.email ? 'border-red-500/50' : 'border-white/10']" class="w-full bg-white/5 border rounded-2xl px-6 py-5 text-white focus:outline-none focus:border-indigo-500 transition-all duration-300">
                   </div>
 
                   <div class="space-y-2">
