@@ -12,7 +12,7 @@
             <span class="flex h-2 w-2 rounded-full bg-indigo-500 animate-pulse"></span>
             {{ $t('hero.badge') }}
           </div>
-          <h1 class="text-5xl md:text-7xl xl:text-8xl font-display font-black tracking-tighter leading-[1.05] mb-12 reveal">
+          <h1 class="text-5xl md:text-7xl xl:text-7xl font-display font-black tracking-tighter leading-[1.05] mb-12 reveal">
             <span class="block text-white">{{ $t('hero.title_prefix') }}</span>
             <span class="block bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-violet-400 to-blue-500 glow-text pb-4">{{ $t('hero.title_suffix') }}</span>
           </h1>
@@ -121,8 +121,8 @@ const floatingCards = computed(() => [
   { label: t('hero.cards.rest'), icon: Zap, top: '35%', right: '-15%', delay: '4s' },
   { label: t('hero.cards.docker'), icon: Share2, top: '10%', left: '-5%', delay: '1.5s', color: 'text-violet-400' },
   { label: t('hero.cards.redis'), icon: Layers, bottom: '20%', left: '-12%', delay: '3.5s', color: 'text-blue-400' },
-  { label: t('hero.cards.event'), icon: Box, bottom: '-8%', left: '10%', delay: '5s', color: 'text-emerald-400' },
-  { label: t('hero.cards.oauth'), icon: Lock, top: '60%', left: '-18%', delay: '2.5s', color: 'text-amber-400' },
+  { label: t('hero.cards.event'), icon: Box, bottom: '-8%', left: '30%', delay: '5s', color: 'text-emerald-400' },
+  { label: t('hero.cards.oauth'), icon: Lock, top: '40%', left: '-18%', delay: '2.5s', color: 'text-amber-400' },
   { label: t('hero.cards.postgres'), icon: Database, top: '-5%', left: '20%', delay: '6s', color: 'text-rose-400' },
 ])
 </script>
