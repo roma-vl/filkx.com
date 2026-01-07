@@ -2,7 +2,7 @@
   <div class="pt-32 pb-40 px-6">
     <div class="container-wide">
       <NuxtLink
-        to="/"
+        :to="localePath('/')"
         class="flex items-center gap-2 text-gray-400 hover:text-white transition-colors mb-12 font-bold group w-fit"
       >
         <ArrowLeft :size="20" class="group-hover:-translate-x-1 transition-transform" />
@@ -45,27 +45,28 @@ useHead({
 })
 
 const { t } = useI18n()
+const localePath = useLocalePath()
 
 const roadmap = computed(() => [
-  { 
-    title: t('pages.approach.roadmap.discovery.title'), 
-    desc: t('pages.approach.roadmap.discovery.desc'), 
-    icon: Target 
+  {
+    title: t('pages.approach.roadmap.discovery.title'),
+    desc: t('pages.approach.roadmap.discovery.desc'),
+    icon: Target
   },
-  { 
-    title: t('pages.approach.roadmap.design.title'), 
-    desc: t('pages.approach.roadmap.design.desc'), 
-    icon: Cpu 
+  {
+    title: t('pages.approach.roadmap.design.title'),
+    desc: t('pages.approach.roadmap.design.desc'),
+    icon: Cpu
   },
-  { 
-    title: t('pages.approach.roadmap.build.title'), 
-    desc: t('pages.approach.roadmap.build.desc'), 
-    icon: Rocket 
+  {
+    title: t('pages.approach.roadmap.build.title'),
+    desc: t('pages.approach.roadmap.build.desc'),
+    icon: Rocket
   },
-  { 
-    title: t('pages.approach.roadmap.deploy.title'), 
-    desc: t('pages.approach.roadmap.deploy.desc'), 
-    icon: ShieldCheck 
+  {
+    title: t('pages.approach.roadmap.deploy.title'),
+    desc: t('pages.approach.roadmap.deploy.desc'),
+    icon: ShieldCheck
   }
 ])
 </script>

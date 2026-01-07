@@ -3,7 +3,7 @@
     <!-- Sidebar -->
     <aside class="w-80 border-r border-white/5 bg-space-950/50 backdrop-blur-3xl flex flex-col fixed h-screen z-50">
       <div class="p-8">
-        <NuxtLink to="/" class="group flex items-center gap-3">
+        <NuxtLink :to="localePath('/')" class="group flex items-center gap-3">
           <div class="w-10 h-10 rounded-xl bg-indigo-600 grid place-items-center text-white shadow-[0_0_20px_rgba(79,70,229,0.3)] group-hover:scale-105 transition-transform">
             <IconsLogo :size="24" />
           </div>

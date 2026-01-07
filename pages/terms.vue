@@ -2,7 +2,7 @@
   <div class="pt-32 pb-40 px-6">
     <div class="container-wide max-w-4xl mx-auto">
       <NuxtLink
-        to="/"
+        :to="localePath('/')"
         class="flex items-center gap-2 text-gray-400 hover:text-white transition-colors mb-12 font-bold group w-fit"
       >
         <ArrowLeft :size="20" class="group-hover:-translate-x-1 transition-transform" />
@@ -14,7 +14,7 @@
           <FileText :size="48" class="text-indigo-500" />
           <h1 class="text-4xl md:text-6xl font-display font-black text-white">{{ $t('pages.terms.title') }}</h1>
         </div>
-        
+
         <div class="space-y-12">
           <div v-for="s in sections" :key="s.title">
             <h2 class="text-2xl font-black text-indigo-400 mb-4">{{ s.title }}</h2>
@@ -28,6 +28,7 @@
 
 <script setup lang="ts">
 import { ArrowLeft, FileText } from 'lucide-vue-next'
+const localePath = useLocalePath()
 
 useHead({
   title: 'Terms of Service | Filkx Studio',

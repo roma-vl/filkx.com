@@ -2,7 +2,7 @@
   <div class="pt-32 pb-40 px-6">
     <div class="container-wide">
       <NuxtLink
-        to="/"
+        :to="localePath('/')"
         class="flex items-center gap-2 text-gray-400 hover:text-white transition-colors mb-12 font-bold group w-fit"
       >
         <ArrowLeft :size="20" class="group-hover:-translate-x-1 transition-transform" />
@@ -19,8 +19,8 @@
       </div>
 
       <div class="space-y-12">
-        <div 
-          v-for="(s, i) in fullServices" 
+        <div
+          v-for="(s, i) in fullServices"
           :key="s.title"
           class="glass p-8 md:p-16 rounded-[48px] border border-white/5 reveal relative overflow-hidden group"
         >
@@ -31,7 +31,7 @@
               </div>
               <h2 class="text-4xl font-black text-white mb-6">{{ s.title }}</h2>
               <p class="text-gray-400 text-xl leading-relaxed mb-10">{{ s.details }}</p>
-              
+
               <div class="space-y-4">
                 <div v-for="f in s.features" :key="f" class="flex items-center gap-4 text-white font-medium">
                   <CheckCircle2 :size="20" class="text-green-400" />
@@ -66,27 +66,28 @@ useHead({
 })
 
 const { t } = useI18n()
+const localePath = useLocalePath()
 
 const fullServices = computed(() => [
-  { 
-    title: t('pages.services.items.backend.title'), 
-    icon: Database, 
+  {
+    title: t('pages.services.items.backend.title'),
+    icon: Database,
     color: 'text-indigo-400',
     details: t('pages.services.items.backend.details'),
     stack: ['Laravel / Symfony', 'PHP 8.3', 'PostgreSQL', 'Redis', 'Nginx'],
     features: t('pages.services.items.backend.features')
   },
-  { 
-    title: t('pages.services.items.frontend.title'), 
-    icon: Layout, 
+  {
+    title: t('pages.services.items.frontend.title'),
+    icon: Layout,
     color: 'text-violet-400',
     details: t('pages.services.items.frontend.details'),
     stack: ['Vue 3 (Composition API)', 'TypeScript', 'Pinia State Mgmt', 'Vite', 'WebSockets'],
     features: t('pages.services.items.frontend.features')
   },
-  { 
-    title: t('pages.services.items.infra.title'), 
-    icon: Server, 
+  {
+    title: t('pages.services.items.infra.title'),
+    icon: Server,
     color: 'text-emerald-400',
     details: t('pages.services.items.infra.details'),
     stack: ['Docker / Compose', 'Kubernetes', 'CI/CD Pipelines', 'AWS / GCP', 'Elasticsearch'],

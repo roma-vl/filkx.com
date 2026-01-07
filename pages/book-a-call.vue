@@ -7,7 +7,7 @@
         </div>
 
         <!-- Back Button -->
-        <NuxtLink to="/" class="inline-flex items-center gap-2 px-6 py-2 rounded-full border border-white/10 glass text-gray-400 hover:text-white transition-all duration-300 text-[10px] uppercase font-black tracking-widest no-underline group mb-8">
+        <NuxtLink :to="localePath('/')" class="inline-flex items-center gap-2 px-6 py-2 rounded-full border border-white/10 glass text-gray-400 hover:text-white transition-all duration-300 text-[10px] uppercase font-black tracking-widest no-underline group mb-8">
           <ArrowLeft :size="14" class="group-hover:-translate-x-1 transition-transform" />
           {{ $t('common.back') }}
         </NuxtLink>
@@ -19,7 +19,7 @@
             </div>
             <h1 class="text-4xl font-display font-black text-white mb-4">{{ $t('pages.book_call.success_title') }}</h1>
             <p class="text-gray-400 text-lg mb-10">{{ $t('pages.book_call.success_desc') }}</p>
-            <NuxtLink to="/" class="text-indigo-400 font-bold uppercase tracking-widest hover:text-white transition-colors">{{ $t('common.back_home') }}</NuxtLink>
+            <NuxtLink :to="localePath('/')" class="text-indigo-400 font-bold uppercase tracking-widest hover:text-white transition-colors">{{ $t('common.back_home') }}</NuxtLink>
           </div>
 
           <div v-else>
@@ -111,6 +111,8 @@ const {
   honeypot,
   onSubmit
 } = useBookingForm()
+
+const localePath = useLocalePath()
 
 useHead({
   title: 'Забронювати дзвінок | Filkx Studio',

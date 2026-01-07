@@ -2,7 +2,7 @@
   <div class="pt-32 pb-40 px-6">
     <div class="container-wide">
       <NuxtLink
-        to="/"
+        :to="localePath('/')"
         class="flex items-center gap-2 text-gray-400 hover:text-white transition-colors mb-12 font-bold group w-fit"
       >
         <ArrowLeft :size="20" class="group-hover:-translate-x-1 transition-transform" />
@@ -38,22 +38,23 @@ useHead({
 })
 
 const { t } = useI18n()
+const localePath = useLocalePath()
 
 const pillars = computed(() => [
-  { 
-    title: t('pages.stack.pillars.backend.title'), 
-    icon: Code2, 
-    text: t('pages.stack.pillars.backend.text') 
+  {
+    title: t('pages.stack.pillars.backend.title'),
+    icon: Code2,
+    text: t('pages.stack.pillars.backend.text')
   },
-  { 
-    title: t('pages.stack.pillars.frontend.title'), 
-    icon: Zap, 
-    text: t('pages.stack.pillars.frontend.text') 
+  {
+    title: t('pages.stack.pillars.frontend.title'),
+    icon: Zap,
+    text: t('pages.stack.pillars.frontend.text')
   },
-  { 
-    title: t('pages.stack.pillars.infra.title'), 
-    icon: Cpu, 
-    text: t('pages.stack.pillars.infra.text') 
+  {
+    title: t('pages.stack.pillars.infra.title'),
+    icon: Cpu,
+    text: t('pages.stack.pillars.infra.text')
   }
 ])
 </script>

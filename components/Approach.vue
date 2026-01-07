@@ -2,11 +2,11 @@
   <section id="approach" class="py-48 px-6 bg-white/[0.01]">
     <div class="container-wide">
       <h2 class="text-5xl md:text-6xl font-display font-black text-white text-center mb-32 reveal">{{ $t('approach.title') }}</h2>
-      
+
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 relative">
         <!-- Background line -->
         <div class="hidden lg:block absolute top-12 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-indigo-500/30 to-transparent z-0"></div>
-        
+
         <div
           v-for="(step, i) in steps"
           :key="step.status"
@@ -32,7 +32,7 @@
           </div>
         </div>
         <NuxtLink
-          to="/book-a-call"
+          :to="localePath('/book-a-call')"
           class="px-12 py-6 rounded-2xl bg-indigo-50/95 text-space-950 border border-transparent hover:border-indigo-500/50 hover:bg-indigo-950 hover:text-white font-black text-xl uppercase tracking-widest transition-all duration-500 active:scale-95 shadow-xl relative z-10 text-center w-full lg:w-auto outline-none cursor-pointer"
         >
           {{ $t('approach.book_call') }}
@@ -46,6 +46,7 @@
 import { CheckCircle2 } from 'lucide-vue-next'
 
 const { t } = useI18n()
+const localePath = useLocalePath()
 
 const steps = computed(() => [
   { title: t('approach.steps.discovery.title'), desc: t('approach.steps.discovery.desc'), status: '01' },

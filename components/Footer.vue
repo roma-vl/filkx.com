@@ -5,7 +5,7 @@
         <!-- Logo & About -->
         <div class="md:col-span-1">
           <NuxtLink
-            to="/"
+            :to="localePath('/')"
             class="flex items-center gap-4 group cursor-pointer p-0 mb-6"
           >
             <div class="w-11 h-11 rounded-2xl bg-indigo-600 grid place-items-center text-white shadow-lg">
@@ -25,7 +25,7 @@
             <NuxtLink
               v-for="link in mainLinks"
               :key="link.path"
-              :to="link.path"
+              :to="localePath(link.path)"
               class="text-left hover:text-indigo-400 transition-colors"
             >
               {{ link.name }}
@@ -52,8 +52,8 @@
         <div>
           <h4 class="text-[10px] font-black uppercase tracking-[0.3em] text-white mb-6">{{ $t('footer.sections.legal') }}</h4>
           <nav class="flex flex-col gap-4 text-xs font-bold text-gray-500 uppercase tracking-widest">
-            <NuxtLink to="/privacy" class="text-left hover:text-white transition-colors">{{ $t('footer.links.privacy') }}</NuxtLink>
-            <NuxtLink to="/terms" class="text-left hover:text-white transition-colors">{{ $t('footer.links.terms') }}</NuxtLink>
+            <NuxtLink :to="localePath('/privacy')" class="text-left hover:text-white transition-colors">{{ $t('footer.links.privacy') }}</NuxtLink>
+            <NuxtLink :to="localePath('/terms')" class="text-left hover:text-white transition-colors">{{ $t('footer.links.terms') }}</NuxtLink>
           </nav>
         </div>
       </div>
@@ -75,6 +75,7 @@
 import { ExternalLink } from 'lucide-vue-next'
 
 const { t } = useI18n()
+const localePath = useLocalePath()
 
 const mainLinks = computed(() => [
   { name: t('nav.services'), path: '/services' },

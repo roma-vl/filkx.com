@@ -4,7 +4,7 @@
 
     <div class="w-full max-w-md reveal">
       <div class="text-center mb-12">
-        <NuxtLink to="/" class="inline-block mb-8 group">
+        <NuxtLink :to="localePath('/')" class="inline-block mb-8 group">
           <div class="w-16 h-16 rounded-2xl bg-indigo-600 grid place-items-center text-white shadow-[0_0_30px_rgba(79,70,229,0.4)] group-hover:scale-110 transition-transform">
             <IconsLogo :size="32" />
           </div>
@@ -53,8 +53,8 @@
 
         <div class="mt-8 pt-8 border-t border-white/5 text-center">
           <p class="text-gray-500 text-xs font-medium">
-            {{ $t('auth.register.has_account') }} 
-            <NuxtLink to="/login" class="text-indigo-400 hover:text-indigo-300 font-black transition-colors ml-1">{{ $t('auth.register.sign_in') }}</NuxtLink>
+            {{ $t('auth.register.has_account') }}
+            <NuxtLink :to="localePath('/login')" class="text-indigo-400 hover:text-indigo-300 font-black transition-colors ml-1">{{ $t('auth.register.sign_in') }}</NuxtLink>
           </p>
         </div>
       </div>
@@ -72,6 +72,7 @@ definePageMeta({
 
 const { register } = useAuth()
 const { t } = useI18n()
+const localePath = useLocalePath()
 const form = reactive({
   email: '',
   password: ''
@@ -84,7 +85,7 @@ const handleRegister = async () => {
   error.value = ''
   try {
     await register(form)
-    navigateTo('/admin')
+    navigateTo(localePath('/admin'))
   } catch (e: any) {
     error.value = e.data?.statusMessage || t('auth.register.error_generic')
   } finally {

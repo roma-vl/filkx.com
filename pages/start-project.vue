@@ -2,7 +2,7 @@
   <div class="pt-32 pb-40 px-6">
     <div class="container-wide max-w-5xl mx-auto">
         <NuxtLink
-          to="/"
+          :to="localePath('/')"
           class="flex items-center gap-2 text-gray-400 hover:text-white transition-colors mb-12 font-bold group w-fit"
         >
           <ArrowLeft :size="20" class="group-hover:-translate-x-1 transition-transform" />
@@ -54,7 +54,7 @@
               <div class="p-8 rounded-3xl bg-white/5 border border-white/5">
                 <h3 class="text-indigo-400 font-black uppercase text-xs tracking-widest mb-4">{{ $t('pages.start_project.step2.stack_label') }}</h3>
                 <p class="text-white text-lg leading-relaxed">{{ aiResponse.techStack.join(', ') }}</p>
-                
+
                 <h3 class="text-indigo-400 font-black uppercase text-xs tracking-widest mt-8 mb-4">{{ $t('pages.start_project.step2.scale_label') }}</h3>
                 <p class="text-white text-sm leading-relaxed">{{ aiResponse.scalabilityPlan }}</p>
               </div>
@@ -110,6 +110,8 @@ useHead({
   ]
 })
 
+const localePath = useLocalePath()
+
 const step = ref(1)
 const idea = ref('')
 const details = reactive({ name: '', email: '', budget: '10k-50k' })
@@ -120,13 +122,13 @@ const isSubmitted = ref(false)
 const handleBrainstorm = async () => {
   if (!idea.value || idea.value.length < 15) return
   isAnalyzing.value = true
-  
+
   try {
     const { data } = await useFetch('/api/studio/brainstorm', {
       method: 'POST',
       body: { concept: idea.value }
     })
-    
+
     if (data.value) {
       aiResponse.value = data.value
       step.value = 2

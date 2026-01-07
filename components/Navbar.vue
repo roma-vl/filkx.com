@@ -10,7 +10,7 @@
     <div class="container-wide flex items-center justify-between">
       <!-- Logo -->
       <NuxtLink
-        to="/"
+        :to="localePath('/')"
         class="flex items-center gap-4 group cursor-pointer border-none bg-transparent outline-none p-0"
         @click="isMobileMenuOpen = false"
       >
@@ -53,8 +53,8 @@
 
         <!-- Language Switcher -->
         <div class="flex items-center gap-1 text-[10px] font-black uppercase tracking-[0.2em] text-gray-400">
-           <NuxtLink 
-             v-for="locale in availableLocales" 
+           <NuxtLink
+             v-for="locale in availableLocales"
              :key="locale.code"
              :to="switchLocalePath(locale.code)"
              class="hover:text-white transition-colors cursor-pointer"
@@ -97,8 +97,8 @@
         </NuxtLink>
          <!-- Mobile Language Switcher -->
         <div class="flex gap-8 text-2xl font-black uppercase tracking-widest text-gray-400">
-             <NuxtLink 
-               v-for="l in locales" 
+             <NuxtLink
+               v-for="l in locales"
                :key="l.code"
                :to="switchLocalePath(l.code)"
                :class="locale === l.code ? 'text-indigo-400' : 'hover:text-white'"
