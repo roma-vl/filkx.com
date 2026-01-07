@@ -22,6 +22,68 @@ export default {
             "view_all": "View All",
             "no_pending": "No pending requests"
         },
+        "submissions": {
+            "title": "Submissions & Bookings",
+            "subtitle": "Manage all customer inquiries",
+            "total_found": "Total found",
+            "filters": {
+                "all": "All",
+                "new": "New",
+                "processing": "Processing",
+                "done": "Done",
+                "archived": "Archive",
+                "all_types": "All Types",
+                "contact": "Contact",
+                "booking": "Booking"
+            },
+            "status": {
+                "new": "New",
+                "processing": "Processing",
+                "done": "Done",
+                "archived": "Archived",
+                "deleted": "Deleted",
+                "change": "Change Status"
+            },
+            "fields": {
+                "preferred_time": "Preferred time",
+                "message": "Message"
+            },
+            "actions": {
+                "delete_confirm": "Move to trash?",
+                "delete_error": "Failed to update status"
+            },
+            "empty": "Nothing found",
+            "pagination": {
+                "page": "Page",
+                "of": "of"
+            }
+        },
+        "users": {
+            "title": "Users Management",
+            "subtitle": "Access Control & Admins",
+            "status_active": "Active",
+            "edit": "Edit",
+            "invite_coming_soon": "Invite System coming soon"
+        },
+        "ai": {
+            "title": "AI Strategy Engine",
+            "subtitle": "Gemini 1.5 Flash Optimization",
+            "main_prompt": "Main Prompt",
+            "performance": "Performance",
+            "tokens": "Tokens",
+            "optimized": "Optimized",
+            "avg_response": "Avg Response",
+            "success_rate": "Success Rate"
+        },
+        "menu": {
+            "dashboard": "Dashboard",
+            "submissions": "Submissions",
+            "users": "Users",
+            "ai_config": "AI Config",
+            "settings": "Settings",
+            "logout": "Logout",
+            "administrator": "Administrator"
+        },
         "settings": {
             "title": "System Settings",
             "subtitle": "Global configurations for the Filkx Studio platform.",

@@ -22,6 +22,68 @@ export default {
             "view_all": "Всі заявки",
             "no_pending": "Немає нових заявок"
         },
+        "submissions": {
+            "title": "Заявки та Бронювання",
+            "subtitle": "Керування всіма зверненнями клієнтів",
+            "total_found": "Всього знайдено",
+            "filters": {
+                "all": "Все",
+                "new": "Нові",
+                "processing": "В роботі",
+                "done": "Завершені",
+                "archived": "Архів",
+                "all_types": "Всі типи",
+                "contact": "Контакт",
+                "booking": "Дзвінок"
+            },
+            "status": {
+                "new": "Нова",
+                "processing": "В роботі",
+                "done": "Завершена",
+                "archived": "Архів",
+                "deleted": "Видалено",
+                "change": "Змінити статус"
+            },
+            "fields": {
+                "preferred_time": "Бажаний час",
+                "message": "Повідомлення"
+            },
+            "actions": {
+                "delete_confirm": "Перемістити в кошик?",
+                "delete_error": "Не вдалося оновити статус"
+            },
+            "empty": "Нічого не знайдено",
+            "pagination": {
+                "page": "Сторінка",
+                "of": "з"
+            }
+        },
+        "users": {
+            "title": "Керування користувачами",
+            "subtitle": "Контроль доступу та адміністратори",
+            "status_active": "Активний",
+            "edit": "Редагувати",
+            "invite_coming_soon": "Система запрошень незабаром"
+        },
+        "ai": {
+            "title": "AI Стратегія",
+            "subtitle": "Оптимізація Gemini 1.5 Flash",
+            "main_prompt": "Основний промпт",
+            "performance": "Продуктивність",
+            "tokens": "Токени",
+            "optimized": "Оптимізовано",
+            "avg_response": "Сер. відповідь",
+            "success_rate": "Успішність"
+        },
+        "menu": {
+            "dashboard": "Дашборд",
+            "submissions": "Заявки",
+            "users": "Користувачі",
+            "ai_config": "AI Конфіг",
+            "settings": "Налаштування",
+            "logout": "Вийти",
+            "administrator": "Адміністратор"
+        },
         "settings": {
             "title": "Налаштування системи",
             "subtitle": "Глобальні конфігурації платформи.",
