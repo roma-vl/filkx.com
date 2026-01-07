@@ -1,22 +1,22 @@
 services:
-  app:
+  filkx-app:
     build:
       context: .
       dockerfile: Dockerfile
     expose:
       - "3000"
     ports:
-      - "3000:3000"
+      - "3002:3000"
     env_file:
       - .env
     restart: always
     networks:
       - filkx
     depends_on:
-      db:
+      filkx-db:
         condition: service_healthy
 
-  db:
+  filkx-db:
     image: postgres:16-alpine
     environment:
       POSTGRES_USER: ${POSTGRES_USER:-filkx}
@@ -28,7 +28,7 @@ services:
       - filkx
     restart: always
     healthcheck:
-      test: [ "CMD-SHELL", "pg_isready -U filkx -d filkx_db" ]
+      test: [ "CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}" ]
       interval: 10s
       timeout: 5s
       retries: 5

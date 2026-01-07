@@ -2,9 +2,9 @@
   <section id="services" class="py-48 px-6">
     <div class="container-wide">
       <div class="text-center mb-32 reveal">
-        <h2 class="text-5xl md:text-6xl font-display font-black text-white mb-8">Наші Компетенції</h2>
+        <h2 class="text-5xl md:text-6xl font-display font-black text-white mb-8">{{ $t('services.title') }}</h2>
         <p class="text-gray-400 max-w-3xl mx-auto text-xl leading-relaxed">
-          Ми спеціалізуємося на побудові складних веб-систем, де надійність архітектури та швидкість обробки даних є пріоритетом номер один.
+          {{ $t('services.description') }}
         </p>
       </div>
 
@@ -19,7 +19,7 @@
             <component :is="s.icon" class="text-indigo-400" :size="40" :class="s.color" />
           </div>
           <h3 class="text-2xl font-black text-white mb-5 group-hover:text-indigo-300 transition-colors">{{ s.title }}</h3>
-          <p class="text-gray-400 text-lg leading-relaxed">{{ s.desc }}</p>
+          <p class="text-gray-400 text-lg leading-relaxed mb-6">{{ s.desc }}</p>
           <div class="absolute -right-16 -bottom-16 w-48 h-48 bg-indigo-600/5 rounded-full blur-[80px] group-hover:bg-indigo-600/15 transition-all"></div>
         </div>
       </div>
@@ -28,44 +28,21 @@
 </template>
 
 <script setup lang="ts">
-import { Database, Layout, Layers, Terminal, Server, Zap } from 'lucide-vue-next'
+import { ShieldCheck, Layers, Zap } from 'lucide-vue-next'
 
-const services = [
-  { 
-    title: 'SaaS Architecture', 
-    desc: 'Проектування та розробка багатокористувацьких платформ з ізольованими даними та гнучким керуванням підписками.', 
-    icon: Database, 
-    color: 'text-indigo-400' 
-  },
-  { 
-    title: 'API-First Engineering', 
-    desc: 'Створення stateless бекендів на Laravel/Symfony з повною підтримкою OAuth2, JWT та детальною документацією.', 
-    icon: Layers, 
-    color: 'text-violet-400' 
-  },
-  { 
-    title: 'Modern Frontends', 
-    desc: 'Високопродуктивні SPA на Vue 3, інтегровані з API через реактивні сховища та real-time з’єднання.', 
-    icon: Layout, 
-    color: 'text-blue-400' 
-  },
-  { 
-    title: 'Real-time Systems', 
-    desc: 'Обробка подій у реальному часі через WebSockets та Redis, побудована на Node.js або Go для критичних навантажень.', 
-    icon: Zap, 
-    color: 'text-amber-400' 
-  },
-  { 
-    title: 'Infrastructure & DevOps', 
-    desc: 'Контейнеризація Docker, оркестрація Kubernetes та налаштування CI/CD пайплайнів для Blue/Green деплою.', 
-    icon: Terminal, 
-    color: 'text-emerald-400' 
-  },
-  { 
-    title: 'High-Load Backend', 
-    desc: 'Оптимізація складних бізнес-процесів через черги (Redis/RabbitMQ) та фонову обробку в PHP 8.3/Go.', 
-    icon: Server, 
-    color: 'text-rose-400' 
-  }
-]
+const { tm, rt } = useI18n()
+
+// Map icons to index
+const icons = [ShieldCheck, Layers, Zap]
+
+const services = computed(() => {
+  const blocks = tm('services.blocks') as any[]
+  if (!blocks) return []
+  return blocks.map((b, i) => ({
+    title: rt(b.title),
+    desc: rt(b.text), // Note: user JSON used 'text', ensure locale keys match
+    icon: icons[i] || Zap,
+    color: i === 0 ? 'text-indigo-400' : i === 1 ? 'text-violet-400' : 'text-amber-400'
+  }))
+})
 </script>

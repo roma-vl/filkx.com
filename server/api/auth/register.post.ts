@@ -10,7 +10,7 @@ export default defineEventHandler(async (event) => {
     }
 
     try {
-        const prisma = useDb()
+        const prisma = await useDb()
 
         // Check if registration is enabled
         const regSetting = await prisma.systemSetting.findUnique({

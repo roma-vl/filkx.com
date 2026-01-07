@@ -3,9 +3,9 @@
     <div class="container-wide">
       <div class="grid lg:grid-cols-12 gap-24 items-center">
         <div class="lg:col-span-5 reveal">
-          <div class="inline-block px-5 py-2 rounded-xl bg-indigo-600/10 text-indigo-400 text-[10px] font-black uppercase tracking-[0.3em] mb-8 border border-indigo-500/20">Production Stack</div>
-          <h2 class="text-5xl md:text-6xl font-display font-black text-white mb-10 leading-tight">Технології для Enterprise рішень.</h2>
-          <p class="text-gray-400 text-xl mb-12 leading-relaxed">Ми не експериментуємо на проектах клієнтів. Наш стек — це перевірені інструменти, які забезпечують швидку розробку без втрати якості та продуктивності.</p>
+          <div class="inline-block px-5 py-2 rounded-xl bg-indigo-600/10 text-indigo-400 text-[10px] font-black uppercase tracking-[0.3em] mb-8 border border-indigo-500/20">{{ $t('stack.badge') }}</div>
+          <h2 class="text-5xl md:text-6xl font-display font-black text-white mb-10 leading-tight">{{ $t('stack.title') }}</h2>
+          <p class="text-gray-400 text-xl mb-12 leading-relaxed">{{ $t('stack.description') }}</p>
           <div class="flex gap-5">
             <div class="h-1.5 w-24 bg-indigo-600 rounded-full"></div>
             <div class="h-1.5 w-12 bg-indigo-600/20 rounded-full"></div>
@@ -19,7 +19,7 @@
             :style="{ transitionDelay: `${i * 50}ms` }"
           >
             <span class="text-white font-black mb-2 group-hover:text-indigo-400 transition-colors text-lg text-center">{{ t.name }}</span>
-            <span class="text-[9px] text-gray-500 uppercase font-black tracking-widest">{{ t.cat }}</span>
+            <span class="text-[11px] text-gray-500 font-medium text-center leading-snug">{{ t.desc }}</span>
           </div>
         </div>
       </div>
@@ -28,14 +28,16 @@
 </template>
 
 <script setup lang="ts">
-const tech = [
-  { name: 'PHP 8.3', cat: 'Backend Core' },
-  { name: 'Laravel / Symfony', cat: 'Frameworks' },
-  { name: 'Vue 3 SPA', cat: 'Frontend' },
-  { name: 'TypeScript', cat: 'Type Safety' },
-  { name: 'Go / Node.js', cat: 'Real-time / Workers' },
-  { name: 'PostgreSQL', cat: 'Databases' },
-  { name: 'Redis', cat: 'Caching / Queues' },
-  { name: 'Docker / K8s', cat: 'Infrastructure' }
-]
+const { tm, rt } = useI18n()
+
+type TechItem = { name: string; desc: string }
+
+const tech = computed(() => {
+  const blocks = tm('stack.blocks') as any[]
+  if (!blocks) return []
+  return blocks.map(b => ({
+    name: rt(b.title),
+    desc: rt(b.text) // In locs I used "text" key for stack
+  }))
+})
 </script>

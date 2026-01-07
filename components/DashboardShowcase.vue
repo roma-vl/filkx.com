@@ -24,13 +24,13 @@
         <!-- Project Details -->
         <div class="lg:col-span-4 space-y-10">
           <div>
-            <h4 class="text-[10px] font-black text-gray-500 uppercase tracking-[0.3em] mb-4">Product Spotlight</h4>
-            <h3 class="text-4xl md:text-5xl font-display font-black text-white mb-6">Live Studio</h3>
+            <h4 class="text-[10px] font-black text-gray-500 uppercase tracking-[0.3em] mb-4">{{ $t('dashboard.spotlight') }}</h4>
+            <h3 class="text-4xl md:text-5xl font-display font-black text-white mb-6">{{ $t('dashboard.title') }}</h3>
             <p class="text-gray-400 text-lg leading-relaxed">
-              Власна real-time платформа, побудована командою Filkx. Демонстрація нашої експертизи в обробці потокових даних та високонавантажених API.
+              {{ $t('dashboard.description') }}
             </p>
           </div>
-          
+
           <div class="space-y-6">
             <div v-for="item in features" :key="item.label" class="flex items-start gap-5 p-6 rounded-3xl bg-white/[0.03] border border-white/5">
               <component :is="item.icon" class="text-indigo-400 shrink-0" :size="24" />
@@ -42,11 +42,11 @@
           </div>
 
           <a
-          :href="useRuntimeConfig().public.appUrl"
+          :href="useRuntimeConfig().public.liveStudioUrl"
             target="_blank"
             class="flex items-center justify-center gap-3 w-full py-6 rounded-2xl bg-indigo-50/95 text-space-950 border border-transparent hover:border-indigo-500/50 hover:bg-indigo-950 hover:text-white font-black uppercase tracking-widest transition-all duration-500 shadow-xl"
           >
-            Дослідити продукт
+            {{ $t('dashboard.explore') }}
             <ExternalLink :size="18" />
           </a>
         </div>
@@ -63,7 +63,7 @@
               <span class="text-[10px] font-black text-green-500 uppercase">Operational</span>
             </div>
           </div>
-          
+
           <!-- Abstract Bar Chart representation -->
           <div class="h-64 md:h-[400px] w-full relative flex items-end gap-1.5 md:gap-3">
             <div
@@ -87,17 +87,19 @@
 <script setup lang="ts">
 import { ExternalLink, Layers, Monitor, Activity } from 'lucide-vue-next'
 
+const { t } = useI18n()
+
 const bars = ref(Array.from({length: 40}, () => 40)) // Static initial value for SSR
 
-const features = [
-  { icon: Activity, label: 'Latent-free streaming', desc: 'Менше 100мс затримки' },
-  { icon: Layers, label: 'Microservice Mesh', desc: 'Повністю Dockerized' }
-]
+const features = computed(() => [
+  { icon: Activity, label: t('dashboard.features.stream.label'), desc: t('dashboard.features.stream.desc') },
+  { icon: Layers, label: t('dashboard.features.mesh.label'), desc: t('dashboard.features.mesh.desc') }
+])
 
 onMounted(() => {
   // Initialize with random values on client only
   bars.value = bars.value.map(() => 20 + Math.random() * 60)
-  
+
   const interval = setInterval(() => {
     bars.value = bars.value.map(v => Math.max(10, Math.min(100, v + (Math.random() - 0.5) * 15)))
   }, 1500)

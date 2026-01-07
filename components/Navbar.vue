@@ -3,14 +3,14 @@
     :class="[
       'fixed top-0 left-0 right-0 z-[60] transition-all duration-500',
       isScrolled || isMobileMenuOpen || !isHome
-        ? 'py-4 bg-space-950/90 backdrop-blur-xl border-b border-white/[0.05] shadow-2xl'
+        ? 'py-4 bg-space-950/90 backdrop-blur-xl shadow-2xl'
         : 'py-10 bg-transparent'
     ]"
   >
     <div class="container-wide flex items-center justify-between">
       <!-- Logo -->
       <NuxtLink
-        to="/"
+        :to="localePath('/')"
         class="flex items-center gap-4 group cursor-pointer border-none bg-transparent outline-none p-0"
         @click="isMobileMenuOpen = false"
       >
@@ -25,21 +25,21 @@
         <NuxtLink
           v-for="link in links"
           :key="link.path"
-          :to="link.path"
+          :to="localePath(link.path)"
           class="text-[10px] font-black uppercase tracking-[0.2em] transition-colors relative group py-2"
-          :class="route.path === link.path ? 'text-indigo-400' : 'text-gray-400 hover:text-white'"
+          :class="route.path === localePath(link.path) ? 'text-indigo-400' : 'text-gray-400 hover:text-white'"
         >
           {{ link.name }}
           <span
             class="absolute bottom-0 left-1/2 -translate-x-1/2 h-1 bg-indigo-500 rounded-full transition-all"
-            :class="route.path === link.path ? 'w-full' : 'w-0 group-hover:w-full'"
+            :class="route.path === localePath(link.path) ? 'w-full' : 'w-0 group-hover:w-full'"
           ></span>
         </NuxtLink>
 
         <!-- External Product Link -->
         <div class="h-6 w-[1px] bg-white/10 mx-2"></div>
         <a
-          :href="useRuntimeConfig().public.appUrl"
+          :href="useRuntimeConfig().public.liveStudioUrl"
           target="_blank"
           class="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-gray-500 hover:text-indigo-400 transition-colors group"
         >
@@ -47,16 +47,28 @@
             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
             <span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-indigo-500"></span>
           </span>
-          Live Studio
+          {{ $t('nav.live_studio') }}
           <ExternalLink :size="10" class="opacity-40 group-hover:opacity-100 transition-opacity" />
         </a>
 
+        <!-- Language Switcher -->
+        <div class="flex items-center gap-1 text-[10px] font-black uppercase tracking-[0.2em] text-gray-400">
+           <NuxtLink
+             v-for="locale in availableLocales"
+             :key="locale.code"
+             :to="switchLocalePath(locale.code)"
+             class="hover:text-white transition-colors cursor-pointer"
+           >
+              {{ locale.code }}
+           </NuxtLink>
+        </div>
+
         <NuxtLink
-          to="/start-project"
-          class="flex items-center gap-3 px-8 py-4 rounded-2xl bg-indigo-50/95 text-space-950 border border-transparent hover:border-indigo-500/50 hover:bg-indigo-950 hover:text-white font-black transition-all duration-500 text-[10px] uppercase tracking-widest shadow-xl shadow-indigo-500/5 active:scale-95 cursor-pointer outline-none"
+          :to="localePath('/book-a-call')"
+          class="gap-2 px-6 py-3 rounded-xl bg-indigo-50/95 text-space-950 border border-transparent hover:border-indigo-500/50 hover:bg-indigo-950 hover:text-white font-black text-[10px] uppercase tracking-widest shadow-[0_10px_30px_rgba(79,70,229,0.1)] transition-all duration-500 hover:-translate-y-1 active:scale-95 flex items-center justify-center cursor-pointer outline-none no-underline group/btn"
         >
-          Let's Talk
-          <ArrowRight :size="16" />
+          {{ $t('nav.lets_talk') }}
+          <ArrowRight :size="14" class="group-hover/btn:translate-x-1 transition-transform" />
         </NuxtLink>
       </div>
 
@@ -73,31 +85,55 @@
     <Transition name="fade">
       <div
         v-if="isMobileMenuOpen"
-        class="md:hidden fixed inset-0 top-[88px] h-[calc(100vh-88px)] bg-space-950/98 backdrop-blur-2xl z-50 p-10 flex flex-col items-center justify-center gap-12"
+        class="md:hidden fixed inset-0 top-0 h-screen bg-space-950 z-[55] p-10 flex flex-col items-center justify-center gap-8"
       >
+        <!-- Close button inside overlay for better UX if needed, or rely on the one in navbar -->
+        <div class="absolute top-6 right-6">
+           <button
+            class="text-white p-2 bg-transparent border-none outline-none cursor-pointer"
+            @click="isMobileMenuOpen = false"
+          >
+            <X :size="32" />
+          </button>
+        </div>
+
         <NuxtLink
           v-for="link in links"
           :key="link.path"
-          :to="link.path"
-          class="text-4xl font-display font-black text-white"
+          :to="localePath(link.path)"
+          class="text-3xl font-display font-black text-white"
           @click="isMobileMenuOpen = false"
         >
           {{ link.name }}
         </NuxtLink>
+         <!-- Mobile Language Switcher -->
+        <div class="flex gap-8 text-2xl font-black uppercase tracking-widest text-gray-400">
+             <NuxtLink
+               v-for="l in locales"
+               :key="l.code"
+               :to="switchLocalePath(l.code)"
+               :class="locale === l.code ? 'text-indigo-400' : 'hover:text-white'"
+               @click="isMobileMenuOpen = false"
+             >
+                {{ l.name }}
+             </NuxtLink>
+        </div>
+
         <a
-          href="https://live.filkx.com"
+          :href="useRuntimeConfig().public.liveStudioUrl"
           target="_blank"
           class="text-3xl font-display font-black text-indigo-400 flex items-center gap-4"
         >
-          Live Studio
+          {{ $t('nav.live_studio') }}
           <ExternalLink :size="24" />
         </a>
         <NuxtLink
-          to="/start-project"
-          class="w-full py-6 rounded-3xl bg-indigo-50 text-space-950 font-black text-2xl shadow-2xl active:scale-95 text-center"
+          :to="localePath('/book-a-call')"
+          class="w-full py-5 rounded-2xl bg-indigo-50/95 text-space-950 border border-transparent hover:border-indigo-500/50 hover:bg-indigo-950 hover:text-white font-black text-sm uppercase tracking-widest shadow-[0_10px_30px_rgba(79,70,229,0.1)] transition-all duration-500 active:scale-95 text-center flex items-center justify-center gap-4 group/mbtn outline-none"
           @click="isMobileMenuOpen = false"
         >
-          Contact Us
+          {{ $t('nav.contact') }}
+          <ArrowRight :size="20" class="group-hover/mbtn:translate-x-2 transition-transform" />
         </NuxtLink>
       </div>
     </Transition>
@@ -105,12 +141,20 @@
 </template>
 
 <script setup lang="ts">
-import { Menu, X, ArrowRight, ExternalLink } from 'lucide-vue-next'
+import { Menu, X, ArrowRight, ExternalLink, Globe } from 'lucide-vue-next'
+
+const { t, locale, locales } = useI18n()
+const switchLocalePath = useSwitchLocalePath()
+const localePath = useLocalePath()
 
 const route = useRoute()
 const isScrolled = ref(false)
 const isMobileMenuOpen = ref(false)
-const isHome = computed(() => route.path === '/')
+const isHome = computed(() => route.path === localePath('/'))
+
+const availableLocales = computed(() => {
+  return (locales.value as any[]).filter(i => i.code !== locale.value)
+})
 
 const handleScroll = () => {
   if (process.client) {
@@ -129,11 +173,11 @@ onUnmounted(() => {
   }
 })
 
-const links = [
-  { name: 'Послуги', path: '/services' },
-  { name: 'Методологія', path: '/approach' },
-  { name: 'Стек', path: '/stack' },
-]
+const links = computed(() => [
+  { name: t('nav.services'), path: '/services' },
+  { name: t('nav.approach'), path: '/approach' },
+  { name: t('nav.stack'), path: '/stack' },
+])
 </script>
 
 <style scoped>

@@ -1,95 +1,95 @@
 <template>
-  <div class="pt-32 pb-40 px-6">
+  <div class="pt-24 md:pt-32 pb-24 md:pb-40 px-6">
     <div class="container-wide max-w-5xl mx-auto">
-      <NuxtLink
-        to="/"
-        class="flex items-center gap-2 text-gray-400 hover:text-white transition-colors mb-12 font-bold group w-fit"
-      >
-        <ArrowLeft :size="20" class="group-hover:-translate-x-1 transition-transform" />
-        Повернутись до головної
-      </NuxtLink>
+        <NuxtLink
+          :to="localePath('/')"
+          class="flex items-center gap-2 text-gray-400 hover:text-white transition-colors mb-8 md:mb-12 font-bold group w-fit"
+        >
+          <ArrowLeft :size="20" class="group-hover:-translate-x-1 transition-transform" />
+          {{ $t('common.back_main') }}
+        </NuxtLink>
 
-      <div v-if="isSubmitted" class="glass p-20 rounded-[48px] border border-white/5 text-center animate-fade-in">
-        <CheckCircle :size="100" class="text-green-400 mx-auto mb-10" />
-        <h1 class="text-5xl font-black text-white mb-6">Брифінг завершено</h1>
-        <p class="text-gray-400 text-2xl">Наш технічний директор перегляне вашу ідею та підготує персональну пропозицію протягом 24 годин.</p>
+      <div v-if="isSubmitted" class="glass p-10 md:p-20 rounded-[32px] md:rounded-[48px] border border-white/5 text-center animate-fade-in">
+        <CheckCircle :size="80" class="md:size-[100px] text-green-400 mx-auto mb-8 md:mb-10" />
+        <h1 class="text-3xl md:text-5xl font-black text-white mb-4 md:mb-6">{{ $t('pages.start_project.success_title') }}</h1>
+        <p class="text-gray-400 text-lg md:text-2xl">{{ $t('pages.start_project.success_desc') }}</p>
       </div>
 
-      <div v-else class="glass p-8 md:p-20 rounded-[48px] border border-white/5 reveal overflow-hidden relative">
+      <div v-else class="glass p-8 md:p-20 rounded-[32px] md:rounded-[48px] border border-white/5 reveal overflow-hidden relative">
         <!-- Progress Bar -->
         <div class="absolute top-0 left-0 h-1.5 bg-indigo-600 transition-all duration-700" :style="{ width: `${(step / 2) * 100}%` }"></div>
 
         <Transition name="fade" mode="out-in">
           <!-- Step 1: AI Architect Input -->
           <div v-if="step === 1" class="animate-fade-in">
-            <div class="flex items-center gap-4 mb-10">
-              <Sparkles :size="40" class="text-indigo-500" />
-              <h1 class="text-4xl md:text-5xl font-display font-black text-white">Проектування ідеї</h1>
+            <div class="flex items-center gap-4 mb-8 md:mb-10">
+              <Sparkles :size="32" md:size="40" class="text-indigo-500" />
+              <h1 class="text-3xl md:text-5xl font-display font-black text-white">{{ $t('pages.start_project.step1.title') }}</h1>
             </div>
-            <p class="text-gray-400 text-xl mb-12 leading-relaxed">Наш ШІ допоможе вам сформулювати технічні вимоги. Просто опишіть вашу бізнес-ідею своїми словами.</p>
+            <p class="text-gray-400 text-lg md:text-xl mb-8 md:mb-12 leading-relaxed">{{ $t('pages.start_project.step1.desc') }}</p>
             <textarea
               v-model="idea"
-              placeholder="Наприклад: Стрімінгова платформа для геймерів з інтегрованими NFT-нагородами..."
-              class="w-full bg-white/5 border border-white/10 rounded-3xl p-8 text-xl text-white focus:outline-none focus:border-indigo-500 h-64 transition-all mb-10"
+              :placeholder="$t('pages.start_project.step1.placeholder')"
+              class="w-full bg-white/5 border border-white/10 rounded-2xl md:rounded-3xl p-6 md:p-8 text-lg md:text-xl text-white focus:outline-none focus:border-indigo-500 h-56 md:h-64 transition-all mb-8 md:mb-10"
             ></textarea>
             <button
               @click="handleBrainstorm"
               :disabled="isAnalyzing || idea.length < 15"
-              class="w-full py-6 rounded-2xl bg-indigo-600 text-white font-black text-2xl hover:bg-indigo-500 transition-all duration-500 flex items-center justify-center gap-4 disabled:opacity-50 border-none cursor-pointer outline-none"
+              class="w-full py-5 md:py-6 rounded-xl md:rounded-2xl bg-indigo-600 text-white font-black text-xl md:text-2xl hover:bg-indigo-500 transition-all duration-500 flex items-center justify-center gap-4 disabled:opacity-50 border-none cursor-pointer outline-none"
             >
               <Loader2 v-if="isAnalyzing" class="animate-spin" />
               <Sparkles v-else />
-              {{ isAnalyzing ? 'Проводимо аналіз...' : 'Проаналізувати концепт' }}
+              {{ isAnalyzing ? $t('pages.start_project.step1.button_analyzing') : $t('pages.start_project.step1.button_analyze') }}
             </button>
           </div>
 
           <!-- Step 2: Review & Contact -->
           <div v-else-if="step === 2" class="animate-fade-in">
-            <div class="flex items-center gap-4 mb-12">
-              <CheckCircle :size="40" class="text-green-500" />
-              <h1 class="text-4xl font-display font-black text-white">Технічна стратегія готова</h1>
+            <div class="flex items-center gap-4 mb-10 md:mb-12">
+              <CheckCircle :size="32" md:size="40" class="text-green-500" />
+              <h1 class="text-3xl md:text-4xl font-display font-black text-white">{{ $t('pages.start_project.step2.title') }}</h1>
             </div>
 
-            <div v-if="aiResponse" class="grid md:grid-cols-2 gap-10 mb-16">
-              <div class="p-8 rounded-3xl bg-white/5 border border-white/5">
-                <h3 class="text-indigo-400 font-black uppercase text-xs tracking-widest mb-4">Рекомендований стек</h3>
-                <p class="text-white text-lg leading-relaxed">{{ aiResponse.techStack.join(', ') }}</p>
-                
-                <h3 class="text-indigo-400 font-black uppercase text-xs tracking-widest mt-8 mb-4">Масштабування</h3>
-                <p class="text-white text-sm leading-relaxed">{{ aiResponse.scalabilityPlan }}</p>
+            <div v-if="aiResponse" class="grid md:grid-cols-2 gap-8 md:gap-10 mb-12 md:mb-16">
+              <div class="p-6 md:p-8 rounded-2xl md:rounded-3xl bg-white/5 border border-white/5">
+                <h3 class="text-indigo-400 font-black uppercase text-[10px] md:text-xs tracking-widest mb-4">{{ $t('pages.start_project.step2.stack_label') }}</h3>
+                <p class="text-white text-base md:text-lg leading-relaxed">{{ aiResponse.techStack.join(', ') }}</p>
+
+                <h3 class="text-indigo-400 font-black uppercase text-[10px] md:text-xs tracking-widest mt-6 md:mt-8 mb-4">{{ $t('pages.start_project.step2.scale_label') }}</h3>
+                <p class="text-white text-xs md:text-sm leading-relaxed">{{ aiResponse.scalabilityPlan }}</p>
               </div>
-              <div class="p-8 rounded-3xl bg-white/5 border border-white/5">
-                <h3 class="text-indigo-400 font-black uppercase text-xs tracking-widest mb-4">План розробки</h3>
-                <ul class="space-y-3">
-                  <li v-for="r in aiResponse.roadmap" :key="r" class="text-white text-sm flex items-center gap-3">
+              <div class="p-6 md:p-8 rounded-2xl md:rounded-3xl bg-white/5 border border-white/5">
+                <h3 class="text-indigo-400 font-black uppercase text-[10px] md:text-xs tracking-widest mb-4">{{ $t('pages.start_project.step2.roadmap_label') }}</h3>
+                <ul class="space-y-2 md:space-y-3">
+                  <li v-for="r in aiResponse.roadmap" :key="r" class="text-white text-xs md:text-sm flex items-center gap-3">
                     <div class="w-1.5 h-1.5 rounded-full bg-indigo-500"></div> {{ r }}
                   </li>
                 </ul>
 
-                <h3 class="text-indigo-400 font-black uppercase text-xs tracking-widest mt-8 mb-4">Ризики</h3>
-                <p class="text-white text-sm leading-relaxed">{{ aiResponse.bottlenecks }}</p>
+                <h3 class="text-indigo-400 font-black uppercase text-[10px] md:text-xs tracking-widest mt-6 md:mt-8 mb-4">{{ $t('pages.start_project.step2.risks_label') }}</h3>
+                <p class="text-white text-xs md:text-sm leading-relaxed">{{ aiResponse.bottlenecks }}</p>
               </div>
             </div>
 
-            <div class="space-y-8">
-              <div class="grid md:grid-cols-2 gap-8">
+            <div class="space-y-6 md:space-y-8">
+              <div class="grid md:grid-cols-2 gap-6 md:gap-8">
                 <div class="space-y-2">
-                  <label class="text-[10px] font-black text-gray-500 uppercase tracking-widest">Ваше ім'я</label>
-                  <input v-model="details.name" required type="text" placeholder="Elon Musk" class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-5 text-white focus:outline-none focus:border-indigo-500 transition-all duration-300">
+                  <label class="text-[10px] font-black text-gray-500 uppercase tracking-widest">{{ $t('pages.start_project.form.name') }}</label>
+                  <input v-model="details.name" required type="text" :placeholder="$t('pages.book_call.form.placeholders.name')" class="w-full bg-white/5 border border-white/10 rounded-xl md:rounded-2xl px-6 py-4 md:py-5 text-white focus:outline-none focus:border-indigo-500 transition-all duration-300">
                 </div>
                 <div class="space-y-2">
-                  <label class="text-[10px] font-black text-gray-500 uppercase tracking-widest">Email</label>
-                  <input v-model="details.email" required type="email" placeholder="elon@x.com" class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-5 text-white focus:outline-none focus:border-indigo-500 transition-all duration-300">
+                  <label class="text-[10px] font-black text-gray-500 uppercase tracking-widest">{{ $t('pages.start_project.form.email') }}</label>
+                  <input v-model="details.email" required type="email" :placeholder="$t('pages.book_call.form.placeholders.email')" class="w-full bg-white/5 border border-white/10 rounded-xl md:rounded-2xl px-6 py-4 md:py-5 text-white focus:outline-none focus:border-indigo-500 transition-all duration-300">
                 </div>
               </div>
               <button
                 @click="finalSubmit"
                 :disabled="isAnalyzing"
-                class="w-full py-6 rounded-2xl bg-indigo-50/95 text-space-950 border border-transparent hover:border-indigo-500/50 hover:bg-indigo-950 hover:text-white font-black text-2xl uppercase tracking-widest transition-all duration-500 flex items-center justify-center gap-4 border-none cursor-pointer active:scale-95 outline-none"
+                class="w-full py-5 md:py-6 rounded-xl md:rounded-2xl bg-indigo-50/95 text-space-950 border border-transparent hover:border-indigo-500/50 hover:bg-indigo-950 hover:text-white font-black text-xl md:text-2xl uppercase tracking-widest transition-all duration-500 flex items-center justify-center gap-4 border-none cursor-pointer active:scale-95 outline-none"
               >
                 <Loader2 v-if="isAnalyzing" class="animate-spin" />
                 <span v-else class="flex items-center gap-3">
-                  Отримати пропозицію <ChevronRight />
+                  {{ $t('pages.start_project.step2.button_submit') }} <ChevronRight />
                 </span>
               </button>
             </div>
@@ -110,6 +110,8 @@ useHead({
   ]
 })
 
+const localePath = useLocalePath()
+
 const step = ref(1)
 const idea = ref('')
 const details = reactive({ name: '', email: '', budget: '10k-50k' })
@@ -120,13 +122,13 @@ const isSubmitted = ref(false)
 const handleBrainstorm = async () => {
   if (!idea.value || idea.value.length < 15) return
   isAnalyzing.value = true
-  
+
   try {
     const { data } = await useFetch('/api/studio/brainstorm', {
       method: 'POST',
       body: { concept: idea.value }
     })
-    
+
     if (data.value) {
       aiResponse.value = data.value
       step.value = 2

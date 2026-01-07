@@ -17,7 +17,7 @@ export default defineEventHandler(async (event) => {
     }
 
     try {
-        const prisma = useDb()
+        const prisma = await useDb()
         const setting = await prisma.systemSetting.upsert({
             where: { key },
             update: { value: String(value) },

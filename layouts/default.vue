@@ -2,7 +2,7 @@
   <div class="min-h-screen bg-space-950 font-sans selection:bg-indigo-500/30 overflow-x-hidden">
     <!-- Overlay Loader -->
     <Loader :loading="isLoading" />
-    
+
     <div class="relative z-10 flex flex-col min-h-screen">
       <Navbar />
       <main class="flex-grow">
@@ -28,13 +28,11 @@ const isLoading = ref(true)
 const { fetchUser } = useAuth()
 const { refreshReveal } = useReveal()
 
-// Primary call for SSR/Initialization
 fetchUser()
 
 onMounted(async () => {
   setTimeout(() => {
     isLoading.value = false
-    // Trigger animations after loader is gone
     setTimeout(() => {
       refreshReveal()
     }, 100)
