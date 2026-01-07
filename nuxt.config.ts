@@ -1,4 +1,6 @@
 import { defineNuxtConfig } from 'nuxt/config'
+import en from './locales/en.js'
+import uk from './locales/uk.js'
 
 export default defineNuxtConfig({
     // Enable TypeScript support (default in Nuxt 3)

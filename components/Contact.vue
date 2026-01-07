@@ -7,13 +7,13 @@
           <div class="p-12 md:p-16 bg-gradient-to-br from-indigo-950/40 to-space-950 lg:border-r border-white/10">
             <div class="flex items-center gap-4 mb-8">
               <Sparkles class="text-indigo-400" :size="32" />
-              <h3 class="text-3xl font-display font-black text-white">AI Architect</h3>
+              <h3 class="text-3xl font-display font-black text-white">{{ $t('contact.ai_column.title') }}</h3>
             </div>
-            <p class="text-gray-400 mb-10 text-base leading-relaxed">Поділіться вашою ідеєю, і наш ШІ миттєво згенерує технічну дорожню карту вашого майбутнього продукту.</p>
+            <p class="text-gray-400 mb-10 text-base leading-relaxed">{{ $t('contact.ai_column.desc') }}</p>
             
             <textarea
               v-model="idea"
-              placeholder="Наприклад: Marketplace для AI-моделей..."
+              :placeholder="$t('contact.ai_column.placeholder')"
               class="w-full bg-space-950/50 border border-white/10 rounded-3xl p-6 text-sm text-white focus:outline-none focus:border-indigo-500 h-44 transition-all"
             ></textarea>
             
@@ -24,18 +24,18 @@
             >
               <Loader2 v-if="isAnalyzing" class="animate-spin" :size="18" />
               <Sparkles v-else :size="18" />
-              {{ isAnalyzing ? 'Проектуємо...' : 'Згенерувати стратегію' }}
+              {{ isAnalyzing ? $t('contact.ai_column.button_analyze') : $t('contact.ai_column.button_generate') }}
             </button>
             
             <Transition name="fade">
               <div v-if="aiResponse" class="mt-10 p-8 rounded-3xl bg-white/5 border border-white/5 animate-fade-in">
                 <div class="space-y-6">
                   <div>
-                    <p class="text-[10px] uppercase font-black text-indigo-400 mb-2 tracking-widest">Технологічний стек</p>
+                    <p class="text-[10px] uppercase font-black text-indigo-400 mb-2 tracking-widest">{{ $t('contact.ai_column.stack_label') }}</p>
                     <p class="text-sm text-white font-medium">{{ aiResponse.stack }}</p>
                   </div>
                   <div>
-                    <p class="text-[10px] uppercase font-black text-indigo-400 mb-2 tracking-widest">Стратегія масштабування</p>
+                    <p class="text-[10px] uppercase font-black text-indigo-400 mb-2 tracking-widest">{{ $t('contact.ai_column.strategy_label') }}</p>
                     <p class="text-sm text-white font-medium">{{ aiResponse.strategy }}</p>
                   </div>
                 </div>
@@ -48,13 +48,13 @@
             <Transition name="fade" mode="out-in">
               <div v-if="isSubmitted" class="h-full flex flex-col items-center justify-center text-center animate-fade-in">
                 <CheckCircle class="text-green-400 mb-8" :size="80" />
-                <h3 class="text-4xl font-display font-black text-white mb-4">Отримано</h3>
-                <p class="text-gray-400 text-lg">Наш архітектор зв’яжеться з вами протягом робочого дня для глибинного інтерв’ю.</p>
-                <button @click="isSubmitted = false" class="mt-8 text-indigo-400 text-sm font-bold uppercase tracking-widest hover:text-white transition-colors">Надіслати ще раз</button>
+                <h3 class="text-4xl font-display font-black text-white mb-4">{{ $t('contact.form_column.success_title') }}</h3>
+                <p class="text-gray-400 text-lg">{{ $t('contact.form_column.success_desc') }}</p>
+                <button @click="isSubmitted = false" class="mt-8 text-indigo-400 text-sm font-bold uppercase tracking-widest hover:text-white transition-colors">{{ $t('contact.form_column.retry') }}</button>
               </div>
               
               <form v-else @submit.prevent="onSubmit" class="space-y-8">
-                <h2 class="text-4xl font-display font-black text-white mb-4">Розпочати співпрацю</h2>
+                <h2 class="text-4xl font-display font-black text-white mb-4">{{ $t('contact.form_column.title') }}</h2>
                 
                 <div v-if="serverError" class="p-4 rounded-xl bg-red-500/10 border border-red-500/20 flex items-center gap-3 text-red-400 text-sm">
                   <AlertCircle :size="18" />
@@ -67,26 +67,26 @@
 
                   <div class="space-y-2">
                     <label class="text-[10px] font-black text-gray-500 uppercase tracking-widest flex justify-between">
-                      Ваше ім'я
+                      {{ $t('contact.form_column.labels.name') }}
                       <span v-if="errors.name" class="text-red-400 lowercase italic">{{ errors.name }}</span>
                     </label>
-                    <input v-model="name" type="text" placeholder="Elon Musk" :class="[errors.name ? 'border-red-500/50' : 'border-white/10']" class="w-full bg-white/5 border rounded-2xl px-6 py-5 text-white focus:outline-none focus:border-indigo-500 transition-all duration-300">
+                    <input v-model="name" type="text" :placeholder="$t('contact.form_column.placeholders.name')" :class="[errors.name ? 'border-red-500/50' : 'border-white/10']" class="w-full bg-white/5 border rounded-2xl px-6 py-5 text-white focus:outline-none focus:border-indigo-500 transition-all duration-300">
                   </div>
 
                   <div class="space-y-2">
                     <label class="text-[10px] font-black text-gray-500 uppercase tracking-widest flex justify-between">
-                      Email
+                      {{ $t('contact.form_column.labels.email') }}
                       <span v-if="errors.email" class="text-red-400 lowercase italic">{{ errors.email }}</span>
                     </label>
-                    <input v-model="email" type="email" placeholder="elon@x.com" :class="[errors.email ? 'border-red-500/50' : 'border-white/10']" class="w-full bg-white/5 border rounded-2xl px-6 py-5 text-white focus:outline-none focus:border-indigo-500 transition-all duration-300">
+                    <input v-model="email" type="email" :placeholder="$t('contact.form_column.placeholders.email')" :class="[errors.email ? 'border-red-500/50' : 'border-white/10']" class="w-full bg-white/5 border rounded-2xl px-6 py-5 text-white focus:outline-none focus:border-indigo-500 transition-all duration-300">
                   </div>
 
                   <div class="space-y-2">
                     <label class="text-[10px] font-black text-gray-500 uppercase tracking-widest flex justify-between">
-                      Про проект
+                      {{ $t('contact.form_column.labels.project') }}
                       <span v-if="errors.message" class="text-red-400 lowercase italic">{{ errors.message }}</span>
                     </label>
-                    <textarea v-model="message" rows="4" placeholder="Опишіть ваші бізнес-цілі..." :class="[errors.message ? 'border-red-500/50' : 'border-white/10']" class="w-full bg-white/5 border rounded-2xl px-6 py-5 text-white focus:outline-none focus:border-indigo-500 transition-all duration-300 resize-none"></textarea>
+                    <textarea v-model="message" rows="4" :placeholder="$t('contact.form_column.placeholders.project')" :class="[errors.message ? 'border-red-500/50' : 'border-white/10']" class="w-full bg-white/5 border rounded-2xl px-6 py-5 text-white focus:outline-none focus:border-indigo-500 transition-all duration-300 resize-none"></textarea>
                   </div>
                 </div>
                 
@@ -97,10 +97,10 @@
                 >
                   <Loader2 v-if="isLoading" class="animate-spin" />
                   <span v-else class="flex items-center gap-3">
-                    Надіслати запит <Send :size="22" />
+                    {{ $t('contact.form_column.submit') }} <Send :size="22" />
                   </span>
                 </button>
-                <p class="text-center text-[10px] text-gray-600 font-bold uppercase tracking-widest">100% Конфіденційність. NDA за запитом.</p>
+                <p class="text-center text-[10px] text-gray-600 font-bold uppercase tracking-widest">{{ $t('contact.form_column.disclaimer') }}</p>
               </form>
             </Transition>
           </div>

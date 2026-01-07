@@ -51,7 +51,7 @@
             <div class="absolute inset-0 rounded-full border border-indigo-500/10 animate-spin-slow"></div>
             <div class="absolute inset-16 rounded-full border border-violet-500/10 animate-spin-reverse" style="animation-duration: 25s"></div>
             <div class="absolute inset-0 m-auto w-80 h-80 bg-indigo-600/20 rounded-full blur-[100px] animate-pulse"></div>
-            
+
             <div
               v-for="card in floatingCards"
               :key="card.label"
@@ -68,7 +68,7 @@
                 v-for="i in 3"
                 :key="i"
                 class="absolute w-full h-full rounded-[32px] glass border border-white/20 shadow-2xl transition-transform duration-700 animate-float"
-                :style="{ 
+                :style="{
                   transform: `translate(${(i-1) * 15}px, ${(i-1) * -15}px) skewX(-10deg)`,
                   opacity: 0.3 + ((i-1) * 0.2),
                   zIndex: 10 - i,
@@ -100,9 +100,9 @@
 </template>
 
 <script setup lang="ts">
-import { 
-  Rocket, Shield, Globe, ArrowRight, Code, Zap, Cpu, 
-  Terminal, Layers, Box, Database, Lock, Share2 
+import {
+  Rocket, Shield, Globe, ArrowRight, Code, Zap, Cpu,
+  Terminal, Layers, Box, Database, Lock, Share2
 } from 'lucide-vue-next'
 
 const { t } = useI18n()
@@ -116,11 +116,11 @@ const badges = computed(() => [
 ])
 
 const floatingCards = computed(() => [
-  { label: t('hero.cards.laravel'), icon: Code, top: '-10%', right: '15%', delay: '0s' },
+  { label: t('hero.cards.laravel'), icon: Code, top: '0%', right: '15%', delay: '0s' },
   { label: t('hero.cards.vue'), icon: Cpu, bottom: '5%', right: '-8%', delay: '2s' },
   { label: t('hero.cards.rest'), icon: Zap, top: '35%', right: '-15%', delay: '4s' },
   { label: t('hero.cards.docker'), icon: Share2, top: '10%', left: '-5%', delay: '1.5s', color: 'text-violet-400' },
-  { label: t('hero.cards.redis'), icon: Layers, bottom: '25%', left: '-12%', delay: '3.5s', color: 'text-blue-400' },
+  { label: t('hero.cards.redis'), icon: Layers, bottom: '20%', left: '-12%', delay: '3.5s', color: 'text-blue-400' },
   { label: t('hero.cards.event'), icon: Box, bottom: '-8%', left: '10%', delay: '5s', color: 'text-emerald-400' },
   { label: t('hero.cards.oauth'), icon: Lock, top: '60%', left: '-18%', delay: '2.5s', color: 'text-amber-400' },
   { label: t('hero.cards.postgres'), icon: Database, top: '-5%', left: '20%', delay: '6s', color: 'text-rose-400' },
