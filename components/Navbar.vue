@@ -39,7 +39,7 @@
         <!-- External Product Link -->
         <div class="h-6 w-[1px] bg-white/10 mx-2"></div>
         <a
-          :href="useRuntimeConfig().public.appUrl"
+          :href="useRuntimeConfig().public.liveStudioUrl"
           target="_blank"
           class="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-gray-500 hover:text-indigo-400 transition-colors group"
         >
@@ -65,7 +65,7 @@
 
         <NuxtLink
           :to="localePath('/book-a-call')"
-          class="flex items-center gap-2 px-6 py-3 rounded-xl bg-indigo-50/95 text-space-950 border border-transparent hover:border-indigo-500/50 hover:bg-indigo-950 hover:text-white font-black text-[10px] uppercase tracking-widest shadow-[0_10px_30px_rgba(79,70,229,0.1)] transition-all duration-500 hover:-translate-y-1 active:scale-95 flex items-center justify-center cursor-pointer outline-none no-underline group/btn"
+          class="gap-2 px-6 py-3 rounded-xl bg-indigo-50/95 text-space-950 border border-transparent hover:border-indigo-500/50 hover:bg-indigo-950 hover:text-white font-black text-[10px] uppercase tracking-widest shadow-[0_10px_30px_rgba(79,70,229,0.1)] transition-all duration-500 hover:-translate-y-1 active:scale-95 flex items-center justify-center cursor-pointer outline-none no-underline group/btn"
         >
           {{ $t('nav.lets_talk') }}
           <ArrowRight :size="14" class="group-hover/btn:translate-x-1 transition-transform" />
@@ -85,13 +85,23 @@
     <Transition name="fade">
       <div
         v-if="isMobileMenuOpen"
-        class="md:hidden fixed inset-0 top-[88px] h-[calc(100vh-88px)] bg-space-950/98 backdrop-blur-2xl z-50 p-10 flex flex-col items-center justify-center gap-12"
+        class="md:hidden fixed inset-0 top-0 h-screen bg-space-950 z-[55] p-10 flex flex-col items-center justify-center gap-8"
       >
+        <!-- Close button inside overlay for better UX if needed, or rely on the one in navbar -->
+        <div class="absolute top-6 right-6">
+           <button
+            class="text-white p-2 bg-transparent border-none outline-none cursor-pointer"
+            @click="isMobileMenuOpen = false"
+          >
+            <X :size="32" />
+          </button>
+        </div>
+
         <NuxtLink
           v-for="link in links"
           :key="link.path"
           :to="localePath(link.path)"
-          class="text-4xl font-display font-black text-white"
+          class="text-3xl font-display font-black text-white"
           @click="isMobileMenuOpen = false"
         >
           {{ link.name }}
@@ -110,7 +120,7 @@
         </div>
 
         <a
-          href="https://live.filkx.com"
+          :href="useRuntimeConfig().public.liveStudioUrl"
           target="_blank"
           class="text-3xl font-display font-black text-indigo-400 flex items-center gap-4"
         >

@@ -1,20 +1,20 @@
 <template>
-  <section id="contact" class="py-40 px-6">
+  <section id="contact" class="py-24 lg:py-40 px-6">
     <div class="container mx-auto max-w-5xl">
-      <div class="glass rounded-[48px] border border-white/10 overflow-hidden shadow-2xl reveal relative group">
+      <div class="glass rounded-[32px] md:rounded-[48px] border border-white/10 overflow-hidden shadow-2xl reveal relative group">
         <div class="grid lg:grid-cols-2">
           <!-- AI Brainstorming Column -->
-          <div class="p-12 md:p-16 bg-gradient-to-br from-indigo-950/40 to-space-950 lg:border-r border-white/10">
-            <div class="flex items-center gap-4 mb-8">
+          <div class="p-8 md:p-16 bg-gradient-to-br from-indigo-950/40 to-space-950 lg:border-r border-white/10">
+            <div class="flex items-center gap-4 mb-6 md:mb-8">
               <Sparkles class="text-indigo-400" :size="32" />
-              <h3 class="text-3xl font-display font-black text-white">{{ $t('contact.ai_column.title') }}</h3>
+              <h3 class="text-2xl md:text-3xl font-display font-black text-white">{{ $t('contact.ai_column.title') }}</h3>
             </div>
-            <p class="text-gray-400 mb-10 text-base leading-relaxed">{{ $t('contact.ai_column.desc') }}</p>
+            <p class="text-gray-400 mb-8 md:mb-10 text-sm md:text-base leading-relaxed">{{ $t('contact.ai_column.desc') }}</p>
 
             <textarea
               v-model="idea"
               :placeholder="$t('contact.ai_column.placeholder')"
-              class="w-full bg-space-950/50 border border-white/10 rounded-3xl p-6 text-sm text-white focus:outline-none focus:border-indigo-500 h-44 transition-all"
+              class="w-full bg-space-950/50 border border-white/10 rounded-2xl md:rounded-3xl p-5 md:p-6 text-sm text-white focus:outline-none focus:border-indigo-500 h-40 md:h-44 transition-all"
             ></textarea>
 
             <button
@@ -44,17 +44,17 @@
           </div>
 
           <!-- Traditional Form Column -->
-          <div class="p-12 md:p-16">
+          <div class="p-8 md:p-16">
             <Transition name="fade" mode="out-in">
               <div v-if="isSubmitted" class="h-full flex flex-col items-center justify-center text-center animate-fade-in">
-                <CheckCircle class="text-green-400 mb-8" :size="80" />
-                <h3 class="text-4xl font-display font-black text-white mb-4">{{ $t('contact.form_column.success_title') }}</h3>
-                <p class="text-gray-400 text-lg">{{ $t('contact.form_column.success_desc') }}</p>
+                <CheckCircle class="text-green-400 mb-6 md:mb-8" :size="64" />
+                <h3 class="text-3xl md:text-4xl font-display font-black text-white mb-4">{{ $t('contact.form_column.success_title') }}</h3>
+                <p class="text-gray-400 text-base md:text-lg">{{ $t('contact.form_column.success_desc') }}</p>
                 <button @click="isSubmitted = false" class="mt-8 text-indigo-400 text-sm font-bold uppercase tracking-widest hover:text-white transition-colors">{{ $t('contact.form_column.retry') }}</button>
               </div>
 
-              <form v-else @submit.prevent="onSubmit" class="space-y-8">
-                <h2 class="text-4xl font-display font-black text-white mb-4">{{ $t('contact.form_column.title') }}</h2>
+              <form v-else @submit.prevent="onSubmit" class="space-y-6 md:space-y-8">
+                <h2 class="text-3xl md:text-4xl font-display font-black text-white mb-4">{{ $t('contact.form_column.title') }}</h2>
 
                 <div v-if="serverError" class="p-4 rounded-xl bg-red-500/10 border border-red-500/20 flex items-center gap-3 text-red-400 text-sm">
                   <AlertCircle :size="18" />
