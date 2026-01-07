@@ -3,7 +3,7 @@
     :class="[
       'fixed top-0 left-0 right-0 z-[60] transition-all duration-500',
       isScrolled || isMobileMenuOpen || !isHome
-        ? 'py-4 bg-space-950/90 backdrop-blur-xl border-b border-white/[0.05] shadow-2xl'
+        ? 'py-4 bg-space-950/90 backdrop-blur-xl shadow-2xl'
         : 'py-10 bg-transparent'
     ]"
   >
@@ -65,9 +65,10 @@
 
         <NuxtLink
           :to="localePath('/book-a-call')"
-          class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-2.5 rounded-full font-bold text-xs uppercase tracking-widest transition-all duration-300 shadow-lg shadow-indigo-500/20 active:scale-95 no-underline"
+          class="flex items-center gap-2 px-6 py-3 rounded-xl bg-indigo-50/95 text-space-950 border border-transparent hover:border-indigo-500/50 hover:bg-indigo-950 hover:text-white font-black text-[10px] uppercase tracking-widest shadow-[0_10px_30px_rgba(79,70,229,0.1)] transition-all duration-500 hover:-translate-y-1 active:scale-95 flex items-center justify-center cursor-pointer outline-none no-underline group/btn"
         >
           {{ $t('nav.lets_talk') }}
+          <ArrowRight :size="14" class="group-hover/btn:translate-x-1 transition-transform" />
         </NuxtLink>
       </div>
 
@@ -118,10 +119,11 @@
         </a>
         <NuxtLink
           :to="localePath('/book-a-call')"
-          class="w-full py-6 rounded-3xl bg-indigo-50 text-space-950 font-black text-2xl shadow-2xl active:scale-95 text-center"
+          class="w-full py-5 rounded-2xl bg-indigo-50/95 text-space-950 border border-transparent hover:border-indigo-500/50 hover:bg-indigo-950 hover:text-white font-black text-sm uppercase tracking-widest shadow-[0_10px_30px_rgba(79,70,229,0.1)] transition-all duration-500 active:scale-95 text-center flex items-center justify-center gap-4 group/mbtn outline-none"
           @click="isMobileMenuOpen = false"
         >
           {{ $t('nav.contact') }}
+          <ArrowRight :size="20" class="group-hover/mbtn:translate-x-2 transition-transform" />
         </NuxtLink>
       </div>
     </Transition>
