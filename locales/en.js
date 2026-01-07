@@ -250,7 +250,7 @@ export default {
         "badge": "Web platforms and SaaS that support business growth",
         "title_prefix": "We build",
         "title_suffix": "web platforms and SaaS",
-        "description": "We design and deliver production‑ready websites and platforms with clear scopes, predictable timelines, and support after launch. API‑first by default, scalable when you need it.",
+        "description": "We design and launch websites and SaaS platforms with clear scopes, predictable timelines, and support after launch. API‑first by default.",
         "cta_start": "Start a project",
         "cta_services": "What we do",
         "cards": {
@@ -296,7 +296,7 @@ export default {
     "dashboard": {
         "spotlight": "Own product",
         "title": "Live Studio",
-        "description": "A live streaming platform by Filkx: sub‑second latency, billing, analytics, and admin tools. Built and operated by us in production.",
+        "description": "A live streaming platform by Filkx: sub‑second latency, billing, analytics, and admin tools. We run it in production and bring that experience to client projects.",
         "explore": "Open live.filkx.com",
         "features": {
             "stream": {
@@ -313,6 +313,15 @@ export default {
         "badge": "Production Stack",
         "title": "Technology we trust in production",
         "description": "We use proven tools only. This keeps delivery predictable without trading off quality or performance.",
+        "items": {
+            "php": { "name": "PHP 8.4", "desc": "backend core" },
+            "frameworks": { "name": "Laravel / Symfony", "desc": "battle‑tested frameworks" },
+            "frontend": { "name": "Vue 3 SPA / TypeScript", "desc": "modern frontend" },
+            "realtime": { "name": "Go / Node.js", "desc": "real‑time and workers" },
+            "db": { "name": "PostgreSQL", "desc": "reliable storage" },
+            "cache": { "name": "Redis", "desc": "cache and queues" },
+            "infra": { "name": "Docker / K8s", "desc": "infrastructure and deploy" }
+        },
         "cats": {
             "backend": "Backend Core",
             "frameworks": "Frameworks",
@@ -400,10 +409,10 @@ export default {
     "why": {
         "title": "Why Filkx",
         "points": [
-            { "title": "Clear ownership and delivery", "desc": "You get a working product, documentation, and access — not a pile of code." },
-            { "title": "Predictable process", "desc": "Fixed scope per sprint, weekly demos, transparent budget." },
-            { "title": "Production mindset", "desc": "We operate our own product (live.filkx.com) and bring this experience to your project." },
-            { "title": "Support included", "desc": "Post‑launch stability help for six months." }
+            { "title": "Ownership of results", "desc": "A ready product, documentation, and access." },
+            { "title": "Predictable process", "desc": "Scope, timelines, and budget are always transparent." },
+            { "title": "Production experience", "desc": "We run our own and client projects." },
+            { "title": "Support included", "desc": "6 months after launch." }
         ],
         "cta": "Discuss your task"
     },

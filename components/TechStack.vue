@@ -19,7 +19,7 @@
             :style="{ transitionDelay: `${i * 50}ms` }"
           >
             <span class="text-white font-black mb-2 group-hover:text-indigo-400 transition-colors text-lg text-center">{{ t.name }}</span>
-            <span class="text-[9px] text-gray-500 uppercase font-black tracking-widest">{{ t.cat }}</span>
+            <span class="text-[11px] text-gray-500 font-medium text-center leading-snug">{{ t.desc }}</span>
           </div>
         </div>
       </div>
@@ -28,16 +28,16 @@
 </template>
 
 <script setup lang="ts">
-const { t } = useI18n()
+const { tm } = useI18n()
 
-const tech = computed(() => [
-  { name: 'PHP 8.3', cat: t('stack.cats.backend') },
-  { name: 'Laravel / Symfony', cat: t('stack.cats.frameworks') },
-  { name: 'Vue 3 SPA', cat: t('stack.cats.frontend') },
-  { name: 'TypeScript', cat: t('stack.cats.types') },
-  { name: 'Go / Node.js', cat: t('stack.cats.realtime') },
-  { name: 'PostgreSQL', cat: t('stack.cats.db') },
-  { name: 'Redis', cat: t('stack.cats.cache') },
-  { name: 'Docker / K8s', cat: t('stack.cats.infra') }
-])
+type TechItem = { name: string; desc: string }
+
+const tech = computed<TechItem[]>(() => {
+  // Preserve logical order
+  const items = tm('stack.items') as any
+  const order = ['php', 'frameworks', 'frontend', 'realtime', 'db', 'cache', 'infra']
+  return order
+    .map((k) => items?.[k])
+    .filter(Boolean)
+})
 </script>
