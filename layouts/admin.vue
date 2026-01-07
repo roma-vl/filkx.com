@@ -15,19 +15,19 @@
         <NuxtLink
           v-for="item in menuItems"
           :key="item.path"
-          :to="item.path"
+          :to="localePath(item.path)"
           class="flex items-center gap-4 px-6 py-4 rounded-2xl transition-all group relative"
           :class="[
-            $route.path === item.path
+            $route.path === localePath(item.path)
               ? 'bg-indigo-600/10 text-indigo-400 border border-indigo-500/20'
               : 'text-gray-500 hover:text-white hover:bg-white/5 border border-transparent'
           ]"
         >
-          <component :is="item.icon" :size="20" :class="{ 'text-indigo-400': $route.path === item.path }" />
+          <component :is="item.icon" :size="20" :class="{ 'text-indigo-400': $route.path === localePath(item.path) }" />
           <span class="font-bold text-sm tracking-wide uppercase">{{ $t(`admin.menu.${item.key}`) }}</span>
 
           <!-- Active Indicator -->
-          <div v-if="$route.path === item.path" class="absolute right-6 w-1.5 h-1.5 rounded-full bg-indigo-400"></div>
+          <div v-if="$route.path === localePath(item.path)" class="absolute right-6 w-1.5 h-1.5 rounded-full bg-indigo-400"></div>
         </NuxtLink>
       </nav>
 
@@ -81,6 +81,7 @@ import { useReveal } from '~/composables/useReveal'
 
 const { user, logout, fetchUser } = useAuth()
 const { refreshReveal } = useReveal()
+const localePath = useLocalePath()
 
 // Primary call for SSR/Initialization
 fetchUser()
