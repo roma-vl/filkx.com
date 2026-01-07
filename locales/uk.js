@@ -1,5 +1,181 @@
 export default {
     "welcome": "Ласкаво просимо до Filkx",
+    "common": {
+        "back": "Назад",
+        "back_home": "Повернутися на головну",
+        "back_main": "Повернутись до головної",
+        "last_updated": "Останнє оновлення"
+    },
+    "admin": {
+        "dashboard": {
+            "title": "Огляд дашборда",
+            "welcome": "З поверненням",
+            "subtitle": "Ось що відбувається.",
+            "stats": {
+                "submissions": "Всього заявок",
+                "live": "Live відстеження",
+                "users": "Активні користувачі",
+                "ai": "AI задачі",
+                "planned": "Заплановано"
+            },
+            "recent": "Нові заявки",
+            "view_all": "Всі заявки",
+            "no_pending": "Немає нових заявок"
+        },
+        "settings": {
+            "title": "Налаштування системи",
+            "subtitle": "Глобальні конфігурації платформи.",
+            "registration": {
+                "title": "Публічна реєстрація",
+                "desc": "Контроль реєстрації нових користувачів.",
+                "warning": "Коли вимкнено, всі спроби реєстрації через /register або API будуть заблоковані."
+            },
+            "notifications": {
+                "title": "Сповіщення",
+                "desc": "Керування каналами сповіщень.",
+                "email": "Email сповіщення",
+                "email_desc": "Надсилати на Admin Email",
+                "telegram": "Telegram сповіщення",
+                "telegram_desc": "Надсилати у Telegram Bot"
+            }
+        }
+    },
+    "auth": {
+        "login": {
+            "title": "З поверненням",
+            "subtitle": "Система доступу адміністратора",
+            "email": "Email адреса",
+            "password": "Пароль",
+            "submit": "Увійти",
+            "loading": "Автентифікація...",
+            "no_account": "Немає облікового запису?",
+            "request_access": "Запитати доступ",
+            "error_generic": "Не вдалося увійти"
+        },
+        "register": {
+            "title": "Створити адміна",
+            "subtitle": "Безпечна система реєстрації",
+            "email": "Робочий Email",
+            "password": "Надійний пароль",
+            "submit": "Зареєструватися",
+            "loading": "Створення акаунту...",
+            "has_account": "Вже маєте доступ?",
+            "sign_in": "Увійти",
+            "error_generic": "Не вдалося зареєструватися"
+        }
+    },
+    "seo": {
+        "index": {
+            "title": "Filkx Studio | Scaling SaaS Visions",
+            "desc": "Студія розробки високоякісних SaaS екосистем."
+        },
+        "approach": { "title": "Методологія | Filkx Studio" },
+        "services": { "title": "Послуги | Filkx Studio" },
+        "stack": { "title": "Технології | Filkx Studio" },
+        "book_call": { "title": "Забронювати дзвінок | Filkx Studio" },
+        "start_project": { "title": "Розпочати проект | Filkx Studio" },
+        "privacy": { "title": "Privacy Policy | Filkx Studio" },
+        "terms": { "title": "Terms of Service | Filkx Studio" }
+    },
+    "pages": {
+        "approach": {
+            "title": "Наш Інженерний Процес",
+            "subtitle": "Ми мінімізуємо технічний борг через суворе дотримання архітектурних стандартів на кожному етапі життєвого циклу розробки.",
+            "roadmap": {
+                "discovery": { "title": "Technical Discovery", "desc": "Проводимо глибокий аудит вимог, визначаємо потенційні вузькі місця архітектури та обираємо оптимальний стек для масштабування." },
+                "design": { "title": "Systems Design", "desc": "Проектуємо схему бази даних, API-контракти та інфраструктурну карту. Готуємо Blueprint системи перед написанням коду." },
+                "build": { "title": "Architecture-Driven Build", "desc": "Розробка ведеться короткими спринтами з фокусом на Clean Code та покриттям критичних модулів тестами." },
+                "deploy": { "title": "Continuous Deployment", "desc": "Автоматизований деплой у хмарні середовища з моніторингом показників здоров’я системи та безпеки даних." }
+            }
+        },
+        "services": {
+            "title": "System-First Engineering",
+            "subtitle": "Ми створюємо програмне забезпечення як актив. Наш підхід базується на принципах Clean Architecture та SOLID, що гарантує життєздатність продукту в довгостроковій перспективі.",
+            "items": {
+                "backend": { "title": "Backend Engineering", "details": "Ми будуємо фундаменти на базі PHP 8.3+, використовуючи Laravel або Symfony для створення стабільних, типізованих та тестованих систем.", "features": ["Stateless API architecture", "Redis-based background jobs", "Event-driven business logic", "Complex database optimization"] },
+                "frontend": { "title": "Frontend & UI Logic", "details": "Розробляємо Single Page Applications (SPA) з чітким розділенням фронтенд-домену та API, забезпечуючи миттєву взаємодію користувача з даними.", "features": ["API-driven dynamic UI", "Optimized client-side performance", "Modular component architecture", "Real-time data synchronization"] },
+                "infra": { "title": "Infrastructure & Scale", "details": "Наші системи розгортаються в ізольованих Docker-середовищах, готових до горизонтального масштабування та автоматизованого моніторингу.", "features": ["Zero-downtime deployment", "Infrastructure as Code (IaC)", "Horizontal auto-scaling", "Health check monitoring systems"] }
+            },
+            "ecosystem": "Technology Ecosystem"
+        },
+        "stack": {
+            "title": "Systems Core",
+            "subtitle": "Ми обираємо технології, що мають потужну екосистему та гарантують стабільність на роки.",
+            "pillars": {
+                "backend": { "title": "Stateless Backends", "text": "Ми будуємо сервери на PHP 8.3/Go, які не зберігають стан сесії, що дозволяє миттєво масштабувати кількість вузлів при зростанні навантаження." },
+                "frontend": { "title": "API-Driven UI", "text": "Фронтенд на Vue 3 працює як незалежний клієнт. Це забезпечує чисте розділення обов’язків та можливість легкого переходу на мобільні додатки в майбутньому." },
+                "infra": { "title": "Infrastructure as Code", "text": "Конфігурація серверів, баз даних та мереж зберігається у вигляді коду (Docker/Terraform). Це гарантує ідентичність середовищ розробки та продакшну." }
+            }
+        },
+        "start_project": {
+            "success_title": "Брифінг завершено",
+            "success_desc": "Наш технічний директор перегляне вашу ідею та підготує персональну пропозицію протягом 24 годин.",
+            "step1": {
+                "title": "Проектування ідеї",
+                "desc": "Наш ШІ допоможе вам сформулювати технічні вимоги. Просто опишіть вашу бізнес-ідею своїми словами.",
+                "placeholder": "Наприклад: Стрімінгова платформа для геймерів з інтегрованими NFT-нагородами...",
+                "button_analyzing": "Проводимо аналіз...",
+                "button_analyze": "Проаналізувати концепт"
+            },
+            "step2": {
+                "title": "Технічна стратегія готова",
+                "stack_label": "Рекомендований стек",
+                "scale_label": "Масштабування",
+                "roadmap_label": "План розробки",
+                "risks_label": "Ризики",
+                "button_submit": "Отримати пропозицію"
+            },
+            "form": {
+                "name": "Ваше ім'я",
+                "email": "Email"
+            }
+        },
+        "book_call": {
+            "title": "Забронювати дзвінок",
+            "desc": "Залиште ваші контакти, і ми обговоримо ваш проект детально.",
+            "success_title": "Готово!",
+            "success_desc": "Ми отримали ваш запит і зателефонуємо вам у вказаний час.",
+            "form": {
+                "name": "Ваше ім'я",
+                "email": "Email",
+                "phone": "Телефон",
+                "time": "Зручний час для дзвінка",
+                "desc": "Коментар / Опис проекту",
+                "placeholders": {
+                    "name": "Elon Musk",
+                    "email": "elon{'@'}x.com",
+                    "phone": "+380...",
+                    "time": "Сьогодні о 16:00",
+                    "desc": "Коротко про вашу задачу..."
+                },
+                "submit": "Забронювати"
+            }
+        },
+        "privacy": {
+            "title": "Privacy Policy",
+            "sections": {
+                "data": { "title": "Збір даних", "text": "Ми збираємо лише ту інформацію, яка необхідна для надання високоякісних послуг з розробки: контактні дані та технічні вимоги проекту." },
+                "usage": { "title": "Використання", "text": "Ваші дані використовуються виключно для комунікації та підготовки технічних пропозицій. Ми ніколи не передаємо дані третім особам." },
+                "security": { "title": "Безпека", "text": "Усі дані зберігаються в зашифрованому вигляді на захищених хмарних серверах з обмеженим доступом персоналу." },
+                "rights": { "title": "Ваші права", "text": "Ви маєте право в будь-який момент вимагати видалення вашої особистої інформації з нашої бази даних." }
+            }
+        },
+        "terms": {
+            "title": "Terms of Service",
+            "sections": {
+                "acceptance": { "title": "Прийняття умов", "text": "Користуючись нашими послугами, ви погоджуєтесь з цими умовами та нашою політикою конфіденційності." },
+                "services": { "title": "Послуги", "text": "Filkx Studio надає професійні послуги з розробки програмного забезпечення на основі індивідуальних договорів (NDA/MSA)." },
+                "ip": { "title": "Інтелектуальна власність", "text": "Після повної оплати послуг усі майнові права на розроблений код переходять до замовника." },
+                "liability": { "title": "Обмеження відповідальності", "text": "Ми гарантуємо технічну стабільність розроблених систем згідно з SLA, але не несемо відповідальності за бізнес-результати замовника." }
+            }
+        },
+        "health": {
+            "title": "Nuxt SSR is working",
+            "node": "Node.js version",
+            "db": "Database status",
+            "checking": "checking..."
+        }
+    },
     "nav": {
         "services": "Послуги",
         "approach": "Методологія",

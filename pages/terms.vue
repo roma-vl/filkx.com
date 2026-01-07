@@ -6,13 +6,13 @@
         class="flex items-center gap-2 text-gray-400 hover:text-white transition-colors mb-12 font-bold group w-fit"
       >
         <ArrowLeft :size="20" class="group-hover:-translate-x-1 transition-transform" />
-        Назад
+        {{ $t('common.back') }}
       </NuxtLink>
 
       <div class="glass p-12 md:p-20 rounded-[48px] border border-white/5 reveal">
         <div class="flex items-center gap-6 mb-12">
           <FileText :size="48" class="text-indigo-500" />
-          <h1 class="text-4xl md:text-6xl font-display font-black text-white">Terms of Service</h1>
+          <h1 class="text-4xl md:text-6xl font-display font-black text-white">{{ $t('pages.terms.title') }}</h1>
         </div>
         
         <div class="space-y-12">
@@ -36,10 +36,12 @@ useHead({
   ]
 })
 
-const sections = [
-  { title: 'Прийняття умов', text: 'Користуючись нашими послугами, ви погоджуєтесь з цими умовами та нашою політикою конфіденційності.' },
-  { title: 'Послуги', text: 'Filkx Studio надає професійні послуги з розробки програмного забезпечення на основі індивідуальних договорів (NDA/MSA).' },
-  { title: 'Інтелектуальна власність', text: 'Після повної оплати послуг усі майнові права на розроблений код переходять до замовника.' },
-  { title: 'Обмеження відповідальності', text: 'Ми гарантуємо технічну стабільність розроблених систем згідно з SLA, але не несемо відповідальності за бізнес-результати замовника.' }
-]
+const { t } = useI18n()
+
+const sections = computed(() => [
+  { title: t('pages.terms.sections.acceptance.title'), text: t('pages.terms.sections.acceptance.text') },
+  { title: t('pages.terms.sections.services.title'), text: t('pages.terms.sections.services.text') },
+  { title: t('pages.terms.sections.ip.title'), text: t('pages.terms.sections.ip.text') },
+  { title: t('pages.terms.sections.liability.title'), text: t('pages.terms.sections.liability.text') }
+])
 </script>

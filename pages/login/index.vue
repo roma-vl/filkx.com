@@ -10,14 +10,14 @@
             <IconsLogo :size="32" />
           </div>
         </NuxtLink>
-        <h1 class="text-4xl font-display font-black text-white mb-2">Welcome Back</h1>
-        <p class="text-gray-500 font-medium tracking-wide uppercase text-[10px]">Admin Access System</p>
+        <h1 class="text-4xl font-display font-black text-white mb-2">{{ $t('auth.login.title') }}</h1>
+        <p class="text-gray-500 font-medium tracking-wide uppercase text-[10px]">{{ $t('auth.login.subtitle') }}</p>
       </div>
 
       <div class="glass p-8 md:p-10 rounded-[40px] border border-white/5 shadow-2xl">
         <form @submit.prevent="handleLogin" class="space-y-6">
           <div class="space-y-2">
-            <label class="text-[10px] font-black text-gray-400 uppercase tracking-widest ml-1">Email Address</label>
+            <label class="text-[10px] font-black text-gray-400 uppercase tracking-widest ml-1">{{ $t('auth.login.email') }}</label>
             <input
               v-model="form.email"
               type="email"
@@ -27,7 +27,7 @@
             />
           </div>
           <div class="space-y-2">
-            <label class="text-[10px] font-black text-gray-400 uppercase tracking-widest ml-1">Password</label>
+            <label class="text-[10px] font-black text-gray-400 uppercase tracking-widest ml-1">{{ $t('auth.login.password') }}</label>
             <input
               v-model="form.password"
               type="password"
@@ -48,14 +48,14 @@
           >
             <Loader2 v-if="isLoading" class="animate-spin" :size="18" />
             <LogIn v-else :size="18" />
-            {{ isLoading ? 'Authenticating...' : 'Sign In' }}
+            {{ isLoading ? $t('auth.login.loading') : $t('auth.login.submit') }}
           </button>
         </form>
 
         <div class="mt-8 pt-8 border-t border-white/5 text-center">
           <p class="text-gray-500 text-xs font-medium">
-            Don't have an account? 
-            <NuxtLink to="/register" class="text-indigo-400 hover:text-indigo-300 font-black transition-colors ml-1">Request Access</NuxtLink>
+            {{ $t('auth.login.no_account') }} 
+            <NuxtLink to="/register" class="text-indigo-400 hover:text-indigo-300 font-black transition-colors ml-1">{{ $t('auth.login.request_access') }}</NuxtLink>
           </p>
         </div>
       </div>
@@ -72,6 +72,7 @@ definePageMeta({
 })
 
 const { login } = useAuth()
+const { t } = useI18n()
 const form = reactive({
   email: '',
   password: ''
@@ -86,7 +87,7 @@ const handleLogin = async () => {
     await login(form)
     navigateTo('/admin')
   } catch (e: any) {
-    error.value = e.data?.statusMessage || 'Failed to sign in'
+    error.value = e.data?.statusMessage || t('auth.login.error_generic')
   } finally {
     isLoading.value = false
   }

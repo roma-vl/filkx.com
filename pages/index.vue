@@ -10,10 +10,12 @@
 </template>
 
 <script setup lang="ts">
+const { t } = useI18n()
+
 useHead({
-  title: 'Filkx Studio | Scaling SaaS Visions',
+  title: t('seo.index.title'),
   meta: [
-    { name: 'description', content: 'High-end software engineering studio for scalable SaaS ecosystems.' }
+    { name: 'description', content: t('seo.index.desc') }
   ]
 })
 </script>

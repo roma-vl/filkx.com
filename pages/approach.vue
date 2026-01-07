@@ -6,13 +6,13 @@
         class="flex items-center gap-2 text-gray-400 hover:text-white transition-colors mb-12 font-bold group w-fit"
       >
         <ArrowLeft :size="20" class="group-hover:-translate-x-1 transition-transform" />
-        Назад
+        {{ $t('common.back') }}
       </NuxtLink>
 
       <div class="text-center mb-32 reveal">
-        <h1 class="text-5xl md:text-8xl font-display font-black text-white mb-8 tracking-tighter">Наш Інженерний Процес</h1>
+        <h1 class="text-5xl md:text-8xl font-display font-black text-white mb-8 tracking-tighter">{{ $t('pages.approach.title') }}</h1>
         <p class="text-gray-400 text-xl md:text-2xl max-w-4xl mx-auto leading-relaxed">
-          Ми мінімізуємо технічний борг через суворе дотримання архітектурних стандартів на кожному етапі життєвого циклу розробки.
+          {{ $t('pages.approach.subtitle') }}
         </p>
       </div>
 
@@ -44,26 +44,28 @@ useHead({
   ]
 })
 
-const roadmap = [
+const { t } = useI18n()
+
+const roadmap = computed(() => [
   { 
-    title: 'Technical Discovery', 
-    desc: 'Проводимо глибокий аудит вимог, визначаємо потенційні вузькі місця архітектури та обираємо оптимальний стек для масштабування.', 
+    title: t('pages.approach.roadmap.discovery.title'), 
+    desc: t('pages.approach.roadmap.discovery.desc'), 
     icon: Target 
   },
   { 
-    title: 'Systems Design', 
-    desc: 'Проектуємо схему бази даних, API-контракти та інфраструктурну карту. Готуємо Blueprint системи перед написанням коду.', 
+    title: t('pages.approach.roadmap.design.title'), 
+    desc: t('pages.approach.roadmap.design.desc'), 
     icon: Cpu 
   },
   { 
-    title: 'Architecture-Driven Build', 
-    desc: 'Розробка ведеться короткими спринтами з фокусом на Clean Code та покриттям критичних модулів тестами.', 
+    title: t('pages.approach.roadmap.build.title'), 
+    desc: t('pages.approach.roadmap.build.desc'), 
     icon: Rocket 
   },
   { 
-    title: 'Continuous Deployment', 
-    desc: 'Автоматизований деплой у хмарні середовища з моніторингом показників здоров’я системи та безпеки даних.', 
+    title: t('pages.approach.roadmap.deploy.title'), 
+    desc: t('pages.approach.roadmap.deploy.desc'), 
     icon: ShieldCheck 
   }
-]
+])
 </script>

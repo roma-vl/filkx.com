@@ -6,13 +6,13 @@
         class="flex items-center gap-2 text-gray-400 hover:text-white transition-colors mb-12 font-bold group w-fit"
       >
         <ArrowLeft :size="20" class="group-hover:-translate-x-1 transition-transform" />
-        Назад
+        {{ $t('common.back') }}
       </NuxtLink>
 
       <div class="glass p-12 md:p-20 rounded-[48px] border border-white/5 reveal">
         <div class="flex items-center gap-6 mb-12">
           <Shield :size="48" class="text-indigo-500" />
-          <h1 class="text-4xl md:text-6xl font-display font-black text-white">Privacy Policy</h1>
+          <h1 class="text-4xl md:text-6xl font-display font-black text-white">{{ $t('pages.privacy.title') }}</h1>
         </div>
         
         <div class="space-y-12">
@@ -23,7 +23,7 @@
         </div>
         
         <div class="mt-20 pt-10 border-t border-white/5 text-gray-500 text-sm">
-          Останнє оновлення: {{ new Date().toLocaleDateString('uk-UA') }}
+          {{ $t('common.last_updated') }}: {{ new Date().toLocaleDateString('uk-UA') }}
         </div>
       </div>
     </div>
@@ -40,10 +40,12 @@ useHead({
   ]
 })
 
-const sections = [
-  { title: 'Збір даних', text: 'Ми збираємо лише ту інформацію, яка необхідна для надання високоякісних послуг з розробки: контактні дані та технічні вимоги проекту.' },
-  { title: 'Використання', text: 'Ваші дані використовуються виключно для комунікації та підготовки технічних пропозицій. Ми ніколи не передаємо дані третім особам.' },
-  { title: 'Безпека', text: 'Усі дані зберігаються в зашифрованому вигляді на захищених хмарних серверах з обмеженим доступом персоналу.' },
-  { title: 'Ваші права', text: 'Ви маєте право в будь-який момент вимагати видалення вашої особистої інформації з нашої бази даних.' }
-]
+const { t } = useI18n()
+
+const sections = computed(() => [
+  { title: t('pages.privacy.sections.data.title'), text: t('pages.privacy.sections.data.text') },
+  { title: t('pages.privacy.sections.usage.title'), text: t('pages.privacy.sections.usage.text') },
+  { title: t('pages.privacy.sections.security.title'), text: t('pages.privacy.sections.security.text') },
+  { title: t('pages.privacy.sections.rights.title'), text: t('pages.privacy.sections.rights.text') }
+])
 </script>

@@ -1,8 +1,8 @@
 <template>
   <div class="reveal">
     <div class="mb-12">
-      <h1 class="text-4xl font-display font-black text-white mb-2">Dashboard Overview</h1>
-      <p class="text-gray-500 font-medium">Welcome back, <span class="text-white">{{ user?.email }}</span>. Here's what's happening.</p>
+      <h1 class="text-4xl font-display font-black text-white mb-2">{{ $t('admin.dashboard.title') }}</h1>
+      <p class="text-gray-500 font-medium">{{ $t('admin.dashboard.welcome') }}, <span class="text-white">{{ user?.email }}</span>. {{ $t('admin.dashboard.subtitle') }}</p>
     </div>
 
     <!-- Stats Grid -->
@@ -11,11 +11,11 @@
         <div class="absolute top-0 right-0 p-8 opacity-10 group-hover:scale-110 transition-transform">
           <Inbox :size="64" />
         </div>
-        <p class="text-[10px] font-black text-gray-500 uppercase tracking-widest mb-2">Total Submissions</p>
+        <p class="text-[10px] font-black text-gray-500 uppercase tracking-widest mb-2">{{ $t('admin.dashboard.stats.submissions') }}</p>
         <h2 class="text-5xl font-black text-white">{{ submissions?.length || 0 }}</h2>
         <div class="mt-4 flex items-center gap-2 text-indigo-400 text-xs font-bold">
           <div class="w-2 h-2 rounded-full bg-indigo-500 animate-pulse"></div>
-          Live Tracking
+          {{ $t('admin.dashboard.stats.live') }}
         </div>
       </div>
       
@@ -23,7 +23,7 @@
         <div class="absolute top-0 right-0 p-8 opacity-10">
           <Users :size="64" />
         </div>
-        <p class="text-[10px] font-black text-gray-500 uppercase tracking-widest mb-2">Active Users</p>
+        <p class="text-[10px] font-black text-gray-500 uppercase tracking-widest mb-2">{{ $t('admin.dashboard.stats.users') }}</p>
         <h2 class="text-5xl font-black text-white">1</h2>
         <div class="mt-4 text-gray-500 text-xs font-bold">System Admin</div>
       </div>
@@ -32,17 +32,17 @@
         <div class="absolute top-0 right-0 p-8 opacity-10">
           <Sparkles :size="64" />
         </div>
-        <p class="text-[10px] font-black text-gray-500 uppercase tracking-widest mb-2">AI Tasks</p>
+        <p class="text-[10px] font-black text-gray-500 uppercase tracking-widest mb-2">{{ $t('admin.dashboard.stats.ai') }}</p>
         <h2 class="text-5xl font-black text-white">0</h2>
-        <div class="mt-4 text-gray-500 text-xs font-bold">Planned Feature</div>
+        <div class="mt-4 text-gray-500 text-xs font-bold">{{ $t('admin.dashboard.stats.planned') }}</div>
       </div>
     </div>
 
     <!-- Latest Submissions Preview -->
     <div class="flex items-center justify-between mb-8">
-      <h2 class="text-2xl font-black text-white">Recent Submissions</h2>
+      <h2 class="text-2xl font-black text-white">{{ $t('admin.dashboard.recent') }}</h2>
       <NuxtLink to="/admin/submissions" class="text-indigo-400 hover:text-white text-xs font-black uppercase tracking-widest transition-colors flex items-center gap-2">
-        View All <ChevronRight :size="14" />
+        {{ $t('admin.dashboard.view_all') }} <ChevronRight :size="14" />
       </NuxtLink>
     </div>
 
@@ -75,7 +75,7 @@
         </div>
         
         <div v-if="!submissions?.length" class="text-center py-20 glass rounded-3xl border border-white/5">
-          <p class="text-gray-500 font-bold uppercase tracking-[0.2em] text-xs">No pending requests</p>
+          <p class="text-gray-500 font-bold uppercase tracking-[0.2em] text-xs">{{ $t('admin.dashboard.no_pending') }}</p>
         </div>
       </template>
     </div>

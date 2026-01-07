@@ -6,13 +6,13 @@
         class="flex items-center gap-2 text-gray-400 hover:text-white transition-colors mb-12 font-bold group w-fit"
       >
         <ArrowLeft :size="20" class="group-hover:-translate-x-1 transition-transform" />
-        Назад
+        {{ $t('common.back') }}
       </NuxtLink>
 
       <div class="mb-32 reveal">
-        <h1 class="text-6xl md:text-9xl font-display font-black text-white mb-8 tracking-tighter">Systems Core</h1>
+        <h1 class="text-6xl md:text-9xl font-display font-black text-white mb-8 tracking-tighter">{{ $t('pages.stack.title') }}</h1>
         <p class="text-gray-400 text-xl md:text-3xl max-w-4xl leading-relaxed">
-          Ми обираємо технології, що мають потужну екосистему та гарантують стабільність на роки.
+          {{ $t('pages.stack.subtitle') }}
         </p>
       </div>
 
@@ -37,21 +37,23 @@ useHead({
   ]
 })
 
-const pillars = [
+const { t } = useI18n()
+
+const pillars = computed(() => [
   { 
-    title: 'Stateless Backends', 
+    title: t('pages.stack.pillars.backend.title'), 
     icon: Code2, 
-    text: 'Ми будуємо сервери на PHP 8.3/Go, які не зберігають стан сесії, що дозволяє миттєво масштабувати кількість вузлів при зростанні навантаження.' 
+    text: t('pages.stack.pillars.backend.text') 
   },
   { 
-    title: 'API-Driven UI', 
+    title: t('pages.stack.pillars.frontend.title'), 
     icon: Zap, 
-    text: 'Фронтенд на Vue 3 працює як незалежний клієнт. Це забезпечує чисте розділення обов’язків та можливість легкого переходу на мобільні додатки в майбутньому.' 
+    text: t('pages.stack.pillars.frontend.text') 
   },
   { 
-    title: 'Infrastructure as Code', 
+    title: t('pages.stack.pillars.infra.title'), 
     icon: Cpu, 
-    text: 'Конфігурація серверів, баз даних та мереж зберігається у вигляді коду (Docker/Terraform). Це гарантує ідентичність середовищ розробки та продакшну.' 
+    text: t('pages.stack.pillars.infra.text') 
   }
-]
+])
 </script>

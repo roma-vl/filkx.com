@@ -9,7 +9,7 @@
         <!-- Back Button -->
         <NuxtLink to="/" class="inline-flex items-center gap-2 px-6 py-2 rounded-full border border-white/10 glass text-gray-400 hover:text-white transition-all duration-300 text-[10px] uppercase font-black tracking-widest no-underline group mb-8">
           <ArrowLeft :size="14" class="group-hover:-translate-x-1 transition-transform" />
-          Повернутися
+          {{ $t('common.back') }}
         </NuxtLink>
 
         <Transition name="fade" mode="out-in">
@@ -17,14 +17,14 @@
             <div class="inline-flex items-center justify-center w-24 h-24 rounded-full bg-green-500/20 mb-8">
               <CheckCircle class="text-green-400" :size="48" />
             </div>
-            <h1 class="text-4xl font-display font-black text-white mb-4">Готово!</h1>
-            <p class="text-gray-400 text-lg mb-10">Ми отримали ваш запит і зателефонуємо вам у вказаний час.</p>
-            <NuxtLink to="/" class="text-indigo-400 font-bold uppercase tracking-widest hover:text-white transition-colors">Повернутися на головну</NuxtLink>
+            <h1 class="text-4xl font-display font-black text-white mb-4">{{ $t('pages.book_call.success_title') }}</h1>
+            <p class="text-gray-400 text-lg mb-10">{{ $t('pages.book_call.success_desc') }}</p>
+            <NuxtLink to="/" class="text-indigo-400 font-bold uppercase tracking-widest hover:text-white transition-colors">{{ $t('common.back_home') }}</NuxtLink>
           </div>
 
           <div v-else>
-            <h1 class="text-4xl font-display font-black text-white mb-2">Забронювати дзвінок</h1>
-            <p class="text-gray-400 mb-10">Залиште ваші контакти, і ми обговоримо ваш проект детально.</p>
+            <h1 class="text-4xl font-display font-black text-white mb-2">{{ $t('pages.book_call.title') }}</h1>
+            <p class="text-gray-400 mb-10">{{ $t('pages.book_call.desc') }}</p>
 
             <form @submit.prevent="onSubmit" class="space-y-6">
               <div v-if="serverError" class="p-4 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 text-sm flex items-center gap-3">
@@ -34,43 +34,43 @@
 
               <div class="space-y-2">
                 <label class="text-[10px] font-black text-gray-500 uppercase tracking-widest flex justify-between">
-                  Ваше ім'я
+                  {{ $t('pages.book_call.form.name') }}
                   <span v-if="errors.name" class="text-red-400 lowercase italic">{{ errors.name }}</span>
                 </label>
-                <input v-model="name" type="text" placeholder="Elon Musk" class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-5 text-white focus:outline-none focus:border-indigo-500 transition-all duration-300">
+                <input v-model="name" type="text" :placeholder="$t('pages.book_call.form.placeholders.name')" class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-5 text-white focus:outline-none focus:border-indigo-500 transition-all duration-300">
               </div>
 
               <div class="grid md:grid-cols-2 gap-6">
                 <div class="space-y-2">
                   <label class="text-[10px] font-black text-gray-500 uppercase tracking-widest flex justify-between">
-                    Email
+                    {{ $t('pages.book_call.form.email') }}
                     <span v-if="errors.email" class="text-red-400 lowercase italic">{{ errors.email }}</span>
                   </label>
-                  <input v-model="email" type="email" placeholder="elon@x.com" class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-5 text-white focus:outline-none focus:border-indigo-500 transition-all duration-300">
+                  <input v-model="email" type="email" :placeholder="$t('pages.book_call.form.placeholders.email')" class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-5 text-white focus:outline-none focus:border-indigo-500 transition-all duration-300">
                 </div>
                 <div class="space-y-2">
                   <label class="text-[10px] font-black text-gray-500 uppercase tracking-widest flex justify-between">
-                    Телефон
+                    {{ $t('pages.book_call.form.phone') }}
                     <span v-if="errors.phone" class="text-red-400 lowercase italic">{{ errors.phone }}</span>
                   </label>
-                  <input v-model="phone" type="text" placeholder="+380..." class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-5 text-white focus:outline-none focus:border-indigo-500 transition-all duration-300">
+                  <input v-model="phone" type="text" :placeholder="$t('pages.book_call.form.placeholders.phone')" class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-5 text-white focus:outline-none focus:border-indigo-500 transition-all duration-300">
                 </div>
               </div>
 
               <div class="space-y-2">
                 <label class="text-[10px] font-black text-gray-500 uppercase tracking-widest flex justify-between">
-                  Зручний час для дзвінка
+                  {{ $t('pages.book_call.form.time') }}
                   <span v-if="errors.preferredTime" class="text-red-400 lowercase italic">{{ errors.preferredTime }}</span>
                 </label>
-                <input v-model="preferredTime" type="text" placeholder="Сьогодні о 16:00" class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-5 text-white focus:outline-none focus:border-indigo-500 transition-all duration-300">
+                <input v-model="preferredTime" type="text" :placeholder="$t('pages.book_call.form.placeholders.time')" class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-5 text-white focus:outline-none focus:border-indigo-500 transition-all duration-300">
               </div>
 
               <div class="space-y-2">
                 <label class="text-[10px] font-black text-gray-500 uppercase tracking-widest flex justify-between">
-                  Коментар / Опис проекту
+                  {{ $t('pages.book_call.form.desc') }}
                   <span v-if="errors.description" class="text-red-400 lowercase italic">{{ errors.description }}</span>
                 </label>
-                <textarea v-model="description" rows="4" placeholder="Коротко про вашу задачу..." class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-5 text-white focus:outline-none focus:border-indigo-500 transition-all duration-300 resize-none"></textarea>
+                <textarea v-model="description" rows="4" :placeholder="$t('pages.book_call.form.placeholders.desc')" class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-5 text-white focus:outline-none focus:border-indigo-500 transition-all duration-300 resize-none"></textarea>
               </div>
 
               <!-- Honeypot -->
@@ -83,7 +83,7 @@
               >
                 <Loader2 v-if="isLoading" class="animate-spin" />
                 <span v-else class="flex items-center gap-3">
-                  Забронювати <PhoneOutgoing :size="22" />
+                  {{ $t('pages.book_call.form.submit') }} <PhoneOutgoing :size="22" />
                 </span>
               </button>
             </form>

@@ -1,7 +1,7 @@
 <template>
   <div class="reveal max-w-2xl">
-    <h1 class="text-4xl font-display font-black text-white mb-6">System Settings</h1>
-    <p class="text-gray-400 text-lg mb-12">Global configurations for the Filkx Studio platform.</p>
+    <h1 class="text-4xl font-display font-black text-white mb-6">{{ $t('admin.settings.title') }}</h1>
+    <p class="text-gray-400 text-lg mb-12">{{ $t('admin.settings.subtitle') }}</p>
     
     <div class="space-y-8">
       <!-- Registration Control Card -->
@@ -12,8 +12,8 @@
               <ShieldAlert :size="24" />
             </div>
             <div>
-              <h3 class="text-xl font-black text-white">Public Registration</h3>
-              <p class="text-gray-500 text-xs">Control if new users can join the platform.</p>
+              <h3 class="text-xl font-black text-white">{{ $t('admin.settings.registration.title') }}</h3>
+              <p class="text-gray-500 text-xs">{{ $t('admin.settings.registration.desc') }}</p>
             </div>
           </div>
           
@@ -31,7 +31,7 @@
         
         <div class="p-4 rounded-xl bg-indigo-500/5 border border-indigo-500/10">
           <p class="text-[10px] font-bold text-indigo-300 uppercase tracking-widest leading-relaxed">
-            When disabled, all registration attempts via /register or the API will be blocked with a 403 Forbidden error.
+            {{ $t('admin.settings.registration.warning') }}
           </p>
         </div>
       </div>
@@ -43,8 +43,8 @@
               <Bell :size="24" />
             </div>
           <div>
-            <h3 class="text-xl font-black text-white">Notifications</h3>
-            <p class="text-gray-500 text-xs">Manage alert channels for new submissions.</p>
+            <h3 class="text-xl font-black text-white">{{ $t('admin.settings.notifications.title') }}</h3>
+            <p class="text-gray-500 text-xs">{{ $t('admin.settings.notifications.desc') }}</p>
           </div>
         </div>
 
@@ -54,8 +54,8 @@
             <div class="flex items-center gap-4">
               <Mail :size="20" class="text-gray-400" />
               <div>
-                <h4 class="text-sm font-bold text-white">Email Notifications</h4>
-                <p class="text-[10px] text-gray-500">Send alerts to Admin Email</p>
+                <h4 class="text-sm font-bold text-white">{{ $t('admin.settings.notifications.email') }}</h4>
+                <p class="text-[10px] text-gray-500">{{ $t('admin.settings.notifications.email_desc') }}</p>
               </div>
             </div>
              <button 
@@ -75,8 +75,8 @@
              <div class="flex items-center gap-4">
               <Send :size="20" class="text-gray-400" />
               <div>
-                <h4 class="text-sm font-bold text-white">Telegram Notifications</h4>
-                <p class="text-[10px] text-gray-500">Send alerts to Telegram Bot</p>
+                <h4 class="text-sm font-bold text-white">{{ $t('admin.settings.notifications.telegram') }}</h4>
+                <p class="text-[10px] text-gray-500">{{ $t('admin.settings.notifications.telegram_desc') }}</p>
               </div>
             </div>
              <button 
