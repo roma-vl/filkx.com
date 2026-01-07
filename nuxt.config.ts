@@ -30,6 +30,21 @@ export default defineNuxtConfig({
         jwtSecret: process.env.JWT_SECRET || 'fallback-secret-for-dev',
         adminEmail: process.env.ADMIN_EMAIL,
         adminPassword: process.env.ADMIN_PASSWORD,
+
+        // Notification Config
+        mail: {
+            host: process.env.MAIL_HOST,
+            port: process.env.MAIL_PORT,
+            user: process.env.MAIL_USERNAME,
+            pass: process.env.MAIL_PASSWORD,
+            from: process.env.MAIL_FROM_ADDRESS || 'noreply@filkx.com',
+            fromName: process.env.MAIL_FROM_NAME || 'Filkx System'
+        },
+        telegram: {
+            botToken: process.env.TELEGRAM_BOT_TOKEN,
+            chatId: process.env.TELEGRAM_CHAT_ID
+        },
+
         public: {
             appUrl: process.env.NUXT_PUBLIC_APP_URL || 'http://localhost:3000',
             nodeVersion: process.version

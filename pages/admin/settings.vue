@@ -36,16 +36,59 @@
         </div>
       </div>
 
-      <!-- Placeholder Settings -->
-      <div class="glass p-8 rounded-3xl border border-white/5 opacity-40 grayscale reveal">
-        <div class="flex items-center gap-4 mb-4">
-          <Bell class="text-gray-500" :size="20" />
-          <h4 class="text-sm font-black text-white uppercase tracking-widest">Notification Channels</h4>
+      <!-- Notifications Settings -->
+      <div class="glass p-8 rounded-3xl border border-white/5 reveal">
+        <div class="flex items-center gap-4 mb-8">
+           <div class="w-12 h-12 rounded-2xl bg-violet-600/10 border border-violet-500/20 flex items-center justify-center text-violet-400">
+              <Bell :size="24" />
+            </div>
+          <div>
+            <h3 class="text-xl font-black text-white">Notifications</h3>
+            <p class="text-gray-500 text-xs">Manage alert channels for new submissions.</p>
+          </div>
         </div>
-        <div class="space-y-3">
-          <div v-for="ch in channels" :key="ch.name" class="flex justify-between text-xs">
-            <span class="text-gray-400">{{ ch.name }}</span>
-            <span class="text-gray-600 font-bold uppercase">{{ ch.status }}</span>
+
+        <div class="space-y-6">
+          <!-- Email Toggle -->
+          <div class="flex items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/5">
+            <div class="flex items-center gap-4">
+              <Mail :size="20" class="text-gray-400" />
+              <div>
+                <h4 class="text-sm font-bold text-white">Email Notifications</h4>
+                <p class="text-[10px] text-gray-500">Send alerts to Admin Email</p>
+              </div>
+            </div>
+             <button 
+              @click="toggleSetting('email_notifications_enabled')"
+              class="relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none"
+              :class="[settings?.email_notifications_enabled === 'true' ? 'bg-violet-600' : 'bg-gray-700']"
+            >
+              <span 
+                class="pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out"
+                :class="[settings?.email_notifications_enabled === 'true' ? 'translate-x-5' : 'translate-x-0']"
+              ></span>
+            </button>
+          </div>
+
+          <!-- Telegram Toggle -->
+          <div class="flex items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/5">
+             <div class="flex items-center gap-4">
+              <Send :size="20" class="text-gray-400" />
+              <div>
+                <h4 class="text-sm font-bold text-white">Telegram Notifications</h4>
+                <p class="text-[10px] text-gray-500">Send alerts to Telegram Bot</p>
+              </div>
+            </div>
+             <button 
+              @click="toggleSetting('telegram_notifications_enabled')"
+              class="relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none"
+              :class="[settings?.telegram_notifications_enabled === 'true' ? 'bg-blue-500' : 'bg-gray-700']"
+            >
+              <span 
+                class="pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out"
+                :class="[settings?.telegram_notifications_enabled === 'true' ? 'translate-x-5' : 'translate-x-0']"
+              ></span>
+            </button>
           </div>
         </div>
       </div>
@@ -54,7 +97,7 @@
 </template>
 
 <script setup lang="ts">
-import { Settings, ShieldAlert, Bell } from 'lucide-vue-next'
+import { Settings, ShieldAlert, Bell, Mail, Send } from 'lucide-vue-next'
 import { useReveal } from '~/composables/useReveal'
 
 definePageMeta({ 
@@ -66,25 +109,34 @@ const { data: settings, refresh } = useFetch<any>('/api/admin/settings')
 const { refreshReveal } = useReveal()
 
 const toggleRegistration = async () => {
-  const newValue = settings.value?.registration_enabled === 'true' ? 'false' : 'true'
+  await toggleSetting('registration_enabled')
+}
+
+const toggleSetting = async (key: string) => {
+  const currentVal = settings.value?.[key] === 'true'
+  const newValue = currentVal ? 'false' : 'true'
+  
+  // Optimistic update
+  if (settings.value) {
+    settings.value[key] = newValue
+  }
+
   try {
     await $fetch('/api/admin/settings', {
       method: 'PATCH',
-      body: { key: 'registration_enabled', value: newValue }
+      body: { key, value: newValue }
     })
     await refresh()
   } catch (e) {
     console.error("Failed to update setting:", e)
+    // Revert on failure
+    if (settings.value) {
+      settings.value[key] = String(currentVal)
+    }
   }
 }
 
 onMounted(() => {
   refreshReveal()
 })
-
-const channels = [
-  { name: 'Admin Email', status: 'Active' },
-  { name: 'Telegram Bot', status: 'Disabled' },
-  { name: 'Slack Hook', status: 'Disabled' }
-]
 </script>

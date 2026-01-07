@@ -17,6 +17,7 @@
         "bcryptjs": "^3.0.3",
         "jsonwebtoken": "^9.0.3",
         "lucide-vue-next": "^0.562.0",
+        "nodemailer": "^7.0.12",
         "nuxt": "^3.12.0",
         "pg": "^8.12.0",
         "pino": "^10.1.0",
@@ -28,6 +29,7 @@
         "@types/bcryptjs": "^2.4.6",
         "@types/jsonwebtoken": "^9.0.10",
         "@types/node": "^22.0.0",
+        "@types/nodemailer": "^7.0.4",
         "@types/pg": "^8.11.6",
         "tsx": "^4.21.0",
         "typescript": "^5.4.5"
