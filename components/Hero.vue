@@ -10,28 +10,28 @@
         <div class="text-left max-w-3xl">
           <div class="inline-flex items-center gap-3 px-6 py-2.5 rounded-full glass border border-indigo-500/30 text-indigo-300 text-[11px] font-black uppercase tracking-[0.2em] mb-12 reveal">
             <span class="flex h-2 w-2 rounded-full bg-indigo-500 animate-pulse"></span>
-            Architecting Scalable SaaS Ecosystems
+            {{ $t('hero.badge') }}
           </div>
           <h1 class="text-5xl md:text-7xl xl:text-8xl font-display font-black tracking-tighter leading-[1.05] mb-12 reveal">
-            <span class="block text-white">Проектуємо</span>
-            <span class="block bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-violet-400 to-blue-500 glow-text pb-4">Складні Системи</span>
+            <span class="block text-white">{{ $t('hero.title_prefix') }}</span>
+            <span class="block bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-violet-400 to-blue-500 glow-text pb-4">{{ $t('hero.title_suffix') }}</span>
           </h1>
           <p class="text-lg md:text-xl text-gray-400 mb-16 leading-relaxed font-medium reveal" style="transition-delay: 0.1s">
-            Спеціалізована студія розробки високонавантажених веб-застосунків та SaaS платформ. Ми створюємо API-first архітектури, готові до масштабування з першого дня.
+            {{ $t('hero.description') }}
           </p>
           <div class="flex flex-col sm:flex-row items-center gap-6 mb-24 reveal" style="transition-delay: 0.2s">
             <NuxtLink
-              to="/book-a-call"
+              :to="localePath('/book-a-call')"
               class="w-full sm:w-auto px-12 py-6 rounded-2xl bg-indigo-50/95 text-space-950 border border-transparent hover:border-indigo-500/50 hover:bg-indigo-950 hover:text-white font-black text-[11px] uppercase tracking-widest shadow-[0_20px_60px_rgba(79,70,229,0.1)] transition-all duration-500 hover:-translate-y-2 active:scale-95 flex items-center justify-center gap-3 cursor-pointer outline-none"
             >
-              Розпочати проект
+              {{ $t('hero.cta_start') }}
               <ArrowRight :size="20" />
             </NuxtLink>
             <NuxtLink
-              to="/services"
+              :to="localePath('/services')"
               class="w-full sm:w-auto px-12 py-6 rounded-2xl border border-white/10 glass text-white font-black text-[11px] uppercase tracking-widest hover:bg-white/10 transition-all duration-500 cursor-pointer active:scale-95 outline-none text-center"
             >
-              Наші послуги
+              {{ $t('hero.cta_services') }}
             </NuxtLink>
           </div>
           <div class="grid grid-cols-3 gap-8 max-w-xl reveal" style="transition-delay: 0.4s">
@@ -105,20 +105,24 @@ import {
   Terminal, Layers, Box, Database, Lock, Share2 
 } from 'lucide-vue-next'
 
-const badges = [
-  { label: 'High Throughput', icon: Rocket, color: 'text-indigo-400' },
-  { label: 'Stateless Security', icon: Shield, color: 'text-violet-400' },
-  { label: 'Cloud Native', icon: Globe, color: 'text-blue-400' }
-]
+const { t } = useI18n()
+const localePath = useLocalePath()
 
-const floatingCards = [
-  { label: 'Laravel / Symfony', icon: Code, top: '-10%', right: '15%', delay: '0s' },
-  { label: 'Vue 3 SPA', icon: Cpu, bottom: '5%', right: '-8%', delay: '2s' },
-  { label: 'REST / GraphQL', icon: Zap, top: '35%', right: '-15%', delay: '4s' },
-  { label: 'Docker / Nginx', icon: Share2, top: '10%', left: '-5%', delay: '1.5s', color: 'text-violet-400' },
-  { label: 'Redis Queues', icon: Layers, bottom: '25%', left: '-12%', delay: '3.5s', color: 'text-blue-400' },
-  { label: 'Event Driven', icon: Box, bottom: '-8%', left: '10%', delay: '5s', color: 'text-emerald-400' },
-  { label: 'OAuth2 / JWT', icon: Lock, top: '60%', left: '-18%', delay: '2.5s', color: 'text-amber-400' },
-  { label: 'PostgreSQL', icon: Database, top: '-5%', left: '20%', delay: '6s', color: 'text-rose-400' },
-]
+// Use computed to make badges reactive to language change
+const badges = computed(() => [
+  { label: t('hero.badges.throughput'), icon: Rocket, color: 'text-indigo-400' },
+  { label: t('hero.badges.security'), icon: Shield, color: 'text-violet-400' },
+  { label: t('hero.badges.cloud'), icon: Globe, color: 'text-blue-400' }
+])
+
+const floatingCards = computed(() => [
+  { label: t('hero.cards.laravel'), icon: Code, top: '-10%', right: '15%', delay: '0s' },
+  { label: t('hero.cards.vue'), icon: Cpu, bottom: '5%', right: '-8%', delay: '2s' },
+  { label: t('hero.cards.rest'), icon: Zap, top: '35%', right: '-15%', delay: '4s' },
+  { label: t('hero.cards.docker'), icon: Share2, top: '10%', left: '-5%', delay: '1.5s', color: 'text-violet-400' },
+  { label: t('hero.cards.redis'), icon: Layers, bottom: '25%', left: '-12%', delay: '3.5s', color: 'text-blue-400' },
+  { label: t('hero.cards.event'), icon: Box, bottom: '-8%', left: '10%', delay: '5s', color: 'text-emerald-400' },
+  { label: t('hero.cards.oauth'), icon: Lock, top: '60%', left: '-18%', delay: '2.5s', color: 'text-amber-400' },
+  { label: t('hero.cards.postgres'), icon: Database, top: '-5%', left: '20%', delay: '6s', color: 'text-rose-400' },
+])
 </script>

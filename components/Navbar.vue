@@ -25,14 +25,14 @@
         <NuxtLink
           v-for="link in links"
           :key="link.path"
-          :to="link.path"
+          :to="localePath(link.path)"
           class="text-[10px] font-black uppercase tracking-[0.2em] transition-colors relative group py-2"
-          :class="route.path === link.path ? 'text-indigo-400' : 'text-gray-400 hover:text-white'"
+          :class="route.path === localePath(link.path) ? 'text-indigo-400' : 'text-gray-400 hover:text-white'"
         >
           {{ link.name }}
           <span
             class="absolute bottom-0 left-1/2 -translate-x-1/2 h-1 bg-indigo-500 rounded-full transition-all"
-            :class="route.path === link.path ? 'w-full' : 'w-0 group-hover:w-full'"
+            :class="route.path === localePath(link.path) ? 'w-full' : 'w-0 group-hover:w-full'"
           ></span>
         </NuxtLink>
 
@@ -47,15 +47,27 @@
             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
             <span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-indigo-500"></span>
           </span>
-          Live Studio
+          {{ $t('nav.live_studio') }}
           <ExternalLink :size="10" class="opacity-40 group-hover:opacity-100 transition-opacity" />
         </a>
 
+        <!-- Language Switcher -->
+        <div class="flex items-center gap-1 text-[10px] font-black uppercase tracking-[0.2em] text-gray-400">
+           <NuxtLink 
+             v-for="locale in availableLocales" 
+             :key="locale.code"
+             :to="switchLocalePath(locale.code)"
+             class="hover:text-white transition-colors cursor-pointer"
+           >
+              {{ locale.code }}
+           </NuxtLink>
+        </div>
+
         <NuxtLink
-          to="/book-a-call"
+          :to="localePath('/book-a-call')"
           class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-2.5 rounded-full font-bold text-xs uppercase tracking-widest transition-all duration-300 shadow-lg shadow-indigo-500/20 active:scale-95 no-underline"
         >
-          Let's Talk
+          {{ $t('nav.lets_talk') }}
         </NuxtLink>
       </div>
 
@@ -77,26 +89,39 @@
         <NuxtLink
           v-for="link in links"
           :key="link.path"
-          :to="link.path"
+          :to="localePath(link.path)"
           class="text-4xl font-display font-black text-white"
           @click="isMobileMenuOpen = false"
         >
           {{ link.name }}
         </NuxtLink>
+         <!-- Mobile Language Switcher -->
+        <div class="flex gap-8 text-2xl font-black uppercase tracking-widest text-gray-400">
+             <NuxtLink 
+               v-for="l in locales" 
+               :key="l.code"
+               :to="switchLocalePath(l.code)"
+               :class="locale === l.code ? 'text-indigo-400' : 'hover:text-white'"
+               @click="isMobileMenuOpen = false"
+             >
+                {{ l.name }}
+             </NuxtLink>
+        </div>
+
         <a
           href="https://live.filkx.com"
           target="_blank"
           class="text-3xl font-display font-black text-indigo-400 flex items-center gap-4"
         >
-          Live Studio
+          {{ $t('nav.live_studio') }}
           <ExternalLink :size="24" />
         </a>
         <NuxtLink
-          to="/start-project"
+          :to="localePath('/book-a-call')"
           class="w-full py-6 rounded-3xl bg-indigo-50 text-space-950 font-black text-2xl shadow-2xl active:scale-95 text-center"
           @click="isMobileMenuOpen = false"
         >
-          Contact Us
+          {{ $t('nav.contact') }}
         </NuxtLink>
       </div>
     </Transition>
@@ -104,12 +129,20 @@
 </template>
 
 <script setup lang="ts">
-import { Menu, X, ArrowRight, ExternalLink } from 'lucide-vue-next'
+import { Menu, X, ArrowRight, ExternalLink, Globe } from 'lucide-vue-next'
+
+const { t, locale, locales } = useI18n()
+const switchLocalePath = useSwitchLocalePath()
+const localePath = useLocalePath()
 
 const route = useRoute()
 const isScrolled = ref(false)
 const isMobileMenuOpen = ref(false)
-const isHome = computed(() => route.path === '/')
+const isHome = computed(() => route.path === localePath('/'))
+
+const availableLocales = computed(() => {
+  return (locales.value as any[]).filter(i => i.code !== locale.value)
+})
 
 const handleScroll = () => {
   if (process.client) {
@@ -128,11 +161,11 @@ onUnmounted(() => {
   }
 })
 
-const links = [
-  { name: 'Послуги', path: '/services' },
-  { name: 'Методологія', path: '/approach' },
-  { name: 'Стек', path: '/stack' },
-]
+const links = computed(() => [
+  { name: t('nav.services'), path: '/services' },
+  { name: t('nav.approach'), path: '/approach' },
+  { name: t('nav.stack'), path: '/stack' },
+])
 </script>
 
 <style scoped>

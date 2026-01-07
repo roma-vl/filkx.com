@@ -6,8 +6,23 @@ export default defineNuxtConfig({
         strict: true
     },
     modules: [
-        '@nuxtjs/tailwindcss'
+        '@nuxtjs/tailwindcss',
+        '@nuxtjs/i18n'
     ],
+    i18n: {
+        locales: [
+            { code: 'en', iso: 'en-US', name: 'English' },
+            { code: 'uk', iso: 'uk-UA', name: 'Українська' }
+        ],
+        defaultLocale: 'en',
+        strategy: 'prefix',
+        detectBrowserLanguage: {
+            useCookie: true,
+            cookieKey: 'i18n_redirected',
+            redirectOn: 'root',
+        },
+        vueI18n: './i18n.config.ts'
+    },
     css: ['~/assets/css/main.css'],
     app: {
         head: {
