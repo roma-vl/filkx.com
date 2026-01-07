@@ -247,12 +247,12 @@ export default {
         "contact": "Contact Us"
     },
     "hero": {
-        "badge": "Architecting Scalable SaaS Ecosystems",
-        "title_prefix": "Engineering",
-        "title_suffix": "Complex Systems",
-        "description": "A specialized software engineering studio for high-load web applications and SaaS platforms. We build API-first architectures ready to scale from day one.",
-        "cta_start": "Start Project",
-        "cta_services": "Our Services",
+        "badge": "Web platforms and SaaS that support business growth",
+        "title_prefix": "We build",
+        "title_suffix": "web platforms and SaaS",
+        "description": "We design and deliver production‑ready websites and platforms with clear scopes, predictable timelines, and support after launch. API‑first by default, scalable when you need it.",
+        "cta_start": "Start a project",
+        "cta_services": "What we do",
         "cards": {
             "laravel": "Laravel / Symfony",
             "vue": "Vue 3 SPA",
@@ -270,49 +270,49 @@ export default {
         }
     },
     "approach": {
-        "title": "Our Approach",
-        "guarantee_title": "Stability Guarantee",
-        "guarantee_desc": "We provide 6 months of free technical support for all our projects.",
-        "book_call": "Book a Call",
+        "title": "How we work",
+        "guarantee_title": "6‑month stability support",
+        "guarantee_desc": "After launch we keep your system stable and help your team operate it.",
+        "book_call": "Discuss your task",
         "steps": {
             "discovery": {
-                "title": "Discovery",
-                "desc": "Deep business model analysis and architectural planning."
+                "title": "Scope & priorities",
+                "desc": "Understand goals, users, constraints. Define scope, budget, and success criteria."
             },
             "sprint": {
-                "title": "Sprint Build",
-                "desc": "Adaptive development with regular updates and feedback loops."
+                "title": "Design & build",
+                "desc": "UX flows, architecture, and incremental delivery every 1–2 weeks."
             },
             "zero_defects": {
-                "title": "Zero Defects",
-                "desc": "Automated testing and security audits for every iteration."
+                "title": "Quality gate",
+                "desc": "Automated checks, reviews, and security basics on each release."
             },
             "scale_ready": {
-                "title": "Scale Ready",
-                "desc": "Cloud deployment and load stability monitoring."
+                "title": "Launch & support",
+                "desc": "Cloud deployment, monitoring, and post‑launch improvements."
             }
         }
     },
     "dashboard": {
-        "spotlight": "Product Spotlight",
+        "spotlight": "Own product",
         "title": "Live Studio",
-        "description": "Proprietary real-time platform built by the Filkx team. Demonstrating our expertise in stream processing and high-load APIs.",
-        "explore": "Explore Product",
+        "description": "A live streaming platform by Filkx: sub‑second latency, billing, analytics, and admin tools. Built and operated by us in production.",
+        "explore": "Open live.filkx.com",
         "features": {
             "stream": {
-                "label": "Latent-free streaming",
-                "desc": "Less than 100ms latency"
+                "label": "Sub‑second streaming",
+                "desc": "<100 ms end‑to‑end delay"
             },
             "mesh": {
-                "label": "Microservice Mesh",
-                "desc": "Fully Dockerized"
+                "label": "Operations ready",
+                "desc": "Billing, roles, and analytics"
             }
         }
     },
     "stack": {
         "badge": "Production Stack",
-        "title": "Technology for Enterprise Solutions.",
-        "description": "We don’t experiment on client projects. Our stack consists of proven tools that ensure rapid development without compromising quality or performance.",
+        "title": "Technology we trust in production",
+        "description": "We use proven tools only. This keeps delivery predictable without trading off quality or performance.",
         "cats": {
             "backend": "Backend Core",
             "frameworks": "Frameworks",
@@ -325,37 +325,37 @@ export default {
         }
     },
     "services": {
-        "title": "Our Competencies",
-        "description": "We specialize in building complex web systems where architectural reliability and data processing speed are the number one priority.",
+        "title": "What we do",
+        "description": "We deliver websites, SaaS, and internal platforms as complete products: scope, delivery, and support included.",
         "items": {
             "saas": {
-                "title": "SaaS Architecture",
-                "desc": "Design and development of multi-tenant platforms with isolated data and flexible subscription management."
+                "title": "SaaS platform",
+                "desc": "Multi‑tenant accounts, subscriptions, billing, and roles. From MVP to scale."
             },
             "api": {
-                "title": "API-First Engineering",
-                "desc": "Creation of stateless backends on Laravel/Symfony with full OAuth2, JWT support, and detailed documentation."
+                "title": "API as a product",
+                "desc": "Clean versioned API, auth, docs, and onboarding for your partners or apps."
             },
             "frontend": {
-                "title": "Modern Frontends",
-                "desc": "High-performance Vue 3 SPAs integrated with APIs via reactive stores and real-time connections."
+                "title": "Web app / website",
+                "desc": "Fast UX, SEO‑ready when needed, clear flows that convert."
             },
             "realtime": {
-                "title": "Real-time Systems",
-                "desc": "Real-time event processing via WebSockets and Redis, built on Node.js or Go for critical loads."
+                "title": "Real‑time features",
+                "desc": "Live updates, chats, dashboards, and streaming with predictable costs."
             },
             "devops": {
-                "title": "Infrastructure & DevOps",
-                "desc": "Docker containerization, Kubernetes orchestration, and CI/CD pipelines for Blue/Green deployment."
+                "title": "Launch & infrastructure",
+                "desc": "Cloud setup, CI/CD, monitoring, and cost control."
             },
             "backend": {
-                "title": "High-Load Backend",
-                "desc": "Optimization of complex business processes using queues (Redis/RabbitMQ) and background processing in PHP 8.3/Go."
+                "title": "Business logic",
+                "desc": "Reliable processing of core workflows, reporting, and integrations."
             }
         }
     },
     "footer": {
-        "studio_desc": "Elite software engineering studio. We build tools that we use ourselves.",
+        "studio_desc": "Web development studio. We build websites and platforms that run in production.",
         "sections": {
             "studio": "Studio",
             "ecosystem": "Ecosystem",
@@ -370,31 +370,50 @@ export default {
     },
     "contact": {
         "ai_column": {
-            "title": "AI Architect",
-            "desc": "Share your idea, and our AI will instantly generate a technical roadmap for your future product.",
-            "placeholder": "Example: Marketplace for AI models...",
+            "title": "Quick draft with AI",
+            "desc": "Describe your idea — get an instant outline of a possible solution and stack.",
+            "placeholder": "Example: B2B portal to manage partners and orders...",
             "button_analyze": "Designing...",
-            "button_generate": "Generate Strategy",
+            "button_generate": "Generate outline",
             "stack_label": "Tech Stack",
-            "strategy_label": "Scaling Strategy"
+            "strategy_label": "Approach"
         },
         "form_column": {
-            "success_title": "Received",
-            "success_desc": "Our architect will contact you within one business day for a deep-dive interview.",
-            "retry": "Send Again",
-            "title": "Start Cooperation",
+            "success_title": "Request received",
+            "success_desc": "We will get back within one business day to clarify details.",
+            "retry": "Send again",
+            "title": "Start a project",
             "labels": {
-                "name": "Your Name",
+                "name": "Your name",
                 "email": "Email",
-                "project": "About Project"
+                "project": "About the project"
             },
             "placeholders": {
                 "name": "Elon Musk",
                 "email": "elon{'@'}x.com",
-                "project": "Describe your business goals..."
+                "project": "Business goal, budget range, deadline..."
             },
-            "submit": "Send Request",
-            "disclaimer": "100% Confidentiality. NDA on request."
+            "submit": "Send request",
+            "disclaimer": "100% confidentiality. NDA on request."
         }
+    },
+    "why": {
+        "title": "Why Filkx",
+        "points": [
+            { "title": "Clear ownership and delivery", "desc": "You get a working product, documentation, and access — not a pile of code." },
+            { "title": "Predictable process", "desc": "Fixed scope per sprint, weekly demos, transparent budget." },
+            { "title": "Production mindset", "desc": "We operate our own product (live.filkx.com) and bring this experience to your project." },
+            { "title": "Support included", "desc": "Post‑launch stability help for six months." }
+        ],
+        "cta": "Discuss your task"
+    },
+    "cases": {
+        "title": "Selected experience",
+        "items": [
+            { "tag": "Streaming", "title": "Live Studio", "desc": "Live streaming platform: sub‑second latency, billing, analytics, and admin tools." },
+            { "tag": "B2B", "title": "Partner portals", "desc": "Order flows, roles, and reporting for distributors and resellers." },
+            { "tag": "SaaS", "title": "Subscription products", "desc": "Multi‑tenant architecture, payments, trials, and onboarding." }
+        ],
+        "cta": "Request a demo"
     }
 }

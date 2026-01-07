@@ -1,9 +1,11 @@
 <template>
   <div>
     <Hero />
-    <DashboardShowcase class="my-32" />
     <Services />
+    <DashboardShowcase class="my-32" />
+    <Why />
     <Approach />
+    <Cases />
     <TechStack />
     <Contact />
   </div>
