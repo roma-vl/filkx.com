@@ -10,13 +10,13 @@
               <h3 class="text-3xl font-display font-black text-white">{{ $t('contact.ai_column.title') }}</h3>
             </div>
             <p class="text-gray-400 mb-10 text-base leading-relaxed">{{ $t('contact.ai_column.desc') }}</p>
-            
+
             <textarea
               v-model="idea"
               :placeholder="$t('contact.ai_column.placeholder')"
               class="w-full bg-space-950/50 border border-white/10 rounded-3xl p-6 text-sm text-white focus:outline-none focus:border-indigo-500 h-44 transition-all"
             ></textarea>
-            
+
             <button
               @click="handleBrainstorm"
               :disabled="isAnalyzing || !idea"
@@ -26,7 +26,7 @@
               <Sparkles v-else :size="18" />
               {{ isAnalyzing ? $t('contact.ai_column.button_analyze') : $t('contact.ai_column.button_generate') }}
             </button>
-            
+
             <Transition name="fade">
               <div v-if="aiResponse" class="mt-10 p-8 rounded-3xl bg-white/5 border border-white/5 animate-fade-in">
                 <div class="space-y-6">
@@ -52,10 +52,10 @@
                 <p class="text-gray-400 text-lg">{{ $t('contact.form_column.success_desc') }}</p>
                 <button @click="isSubmitted = false" class="mt-8 text-indigo-400 text-sm font-bold uppercase tracking-widest hover:text-white transition-colors">{{ $t('contact.form_column.retry') }}</button>
               </div>
-              
+
               <form v-else @submit.prevent="onSubmit" class="space-y-8">
                 <h2 class="text-4xl font-display font-black text-white mb-4">{{ $t('contact.form_column.title') }}</h2>
-                
+
                 <div v-if="serverError" class="p-4 rounded-xl bg-red-500/10 border border-red-500/20 flex items-center gap-3 text-red-400 text-sm">
                   <AlertCircle :size="18" />
                   {{ serverError }}
@@ -89,11 +89,11 @@
                     <textarea v-model="message" rows="4" :placeholder="$t('contact.form_column.placeholders.project')" :class="[errors.message ? 'border-red-500/50' : 'border-white/10']" class="w-full bg-white/5 border rounded-2xl px-6 py-5 text-white focus:outline-none focus:border-indigo-500 transition-all duration-300 resize-none"></textarea>
                   </div>
                 </div>
-                
+
                 <button
                   type="submit"
                   :disabled="isLoading"
-                  class="w-full flex items-center justify-center gap-4 py-6 rounded-2xl bg-indigo-50/95 text-space-950 border border-transparent hover:border-indigo-500/50 hover:bg-indigo-950 hover:text-white font-black text-xl uppercase tracking-widest transition-all duration-500 shadow-xl active:scale-95 border-none cursor-pointer outline-none disabled:opacity-50"
+                  class="px-12 py-6 rounded-2xl bg-indigo-50/95 text-space-950 border border-transparent hover:border-indigo-500/50 hover:bg-indigo-950 hover:text-white font-black text-xl uppercase tracking-widest transition-all duration-500 active:scale-95 shadow-xl relative z-10 text-center w-full lg:w-auto outline-none cursor-pointer"
                 >
                   <Loader2 v-if="isLoading" class="animate-spin" />
                   <span v-else class="flex items-center gap-3">
@@ -118,28 +118,28 @@ const isAnalyzing = ref(false)
 const idea = ref('')
 const aiResponse = ref<any>(null)
 
-const { 
-  isSubmitted, 
-  isLoading, 
-  serverError, 
+const {
+  isSubmitted,
+  isLoading,
+  serverError,
   errors,
   name,
   email,
   message,
   honeypot,
-  onSubmit 
+  onSubmit
 } = useContactForm()
 
 const handleBrainstorm = async () => {
   if (!idea.value || idea.value.length < 10) return
   isAnalyzing.value = true
-  
+
   try {
     const { data } = await useFetch('/api/studio/brainstorm', {
       method: 'POST',
       body: { concept: idea.value }
     })
-    
+
     if (data.value) {
       aiResponse.value = {
         stack: (data.value as any).techStack.join(', '),
