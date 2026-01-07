@@ -28,16 +28,16 @@
 </template>
 
 <script setup lang="ts">
-const { tm } = useI18n()
+const { tm, rt } = useI18n()
 
 type TechItem = { name: string; desc: string }
 
-const tech = computed<TechItem[]>(() => {
-  // Preserve logical order
-  const items = tm('stack.items') as any
-  const order = ['php', 'frameworks', 'frontend', 'typescript', 'realtime', 'db', 'cache', 'infra']
-  return order
-    .map((k) => items?.[k])
-    .filter(Boolean)
+const tech = computed(() => {
+  const blocks = tm('stack.blocks') as any[]
+  if (!blocks) return []
+  return blocks.map(b => ({
+    name: rt(b.title),
+    desc: rt(b.text) // In locs I used "text" key for stack
+  }))
 })
 </script>

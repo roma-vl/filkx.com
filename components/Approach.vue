@@ -46,33 +46,19 @@
 <script setup lang="ts">
 import { CheckCircle2, Compass, PencilRuler, ShieldCheck, Rocket } from 'lucide-vue-next'
 
-const { t } = useI18n()
+const { tm, rt } = useI18n()
 const localePath = useLocalePath()
 
-const steps = computed(() => [
-  { 
-    title: t('approach.steps.discovery.title'), 
-    desc: t('approach.steps.discovery.desc'), 
-    status: '01',
-    icon: Compass 
-  },
-  { 
-    title: t('approach.steps.sprint.title'), 
-    desc: t('approach.steps.sprint.desc'), 
-    status: '02',
-    icon: PencilRuler 
-  },
-  { 
-    title: t('approach.steps.zero_defects.title'), 
-    desc: t('approach.steps.zero_defects.desc'), 
-    status: '03',
-    icon: ShieldCheck 
-  },
-  { 
-    title: t('approach.steps.scale_ready.title'), 
-    desc: t('approach.steps.scale_ready.desc'), 
-    status: '04',
-    icon: Rocket 
-  }
-])
+const icons = [Compass, PencilRuler, ShieldCheck, Rocket]
+
+const steps = computed(() => {
+  const blocks = tm('approach.blocks') as any[]
+  if (!blocks) return []
+  return blocks.map((b, i) => ({
+    title: rt(b.title),
+    desc: rt(b.desc), // In locs I used "desc" key for approach
+    status: `0${i + 1}`,
+    icon: icons[i] || CheckCircle2
+  }))
+})
 </script>

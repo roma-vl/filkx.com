@@ -128,12 +128,24 @@ export default {
     },
     "seo": {
         "index": {
-            "title": "Filkx Studio | Scaling SaaS Visions",
-            "desc": "High-end software engineering studio for scalable SaaS ecosystems."
+            "title": "Filkx Studio – Web Platforms and SaaS for Business",
+            "desc": "Filkx Studio creates web platforms and SaaS: fast launch, predictable scope, post-release support. Order site or platform development for your business.",
+            "h1": "Building Web Platforms and SaaS for Your Business",
+            "og_title": "Filkx Studio – Web Platforms and SaaS for Business",
+            "og_desc": "Filkx Studio creates web platforms and SaaS: fast launch, predictable scope, post-release support. Order site or platform development for your business.",
+            "og_image": "https://filkx.com/og-image.jpg",
+            "og_type": "website",
+            "og_site_name": "Filkx Studio",
+            "twitter_card": "summary_large_image",
+            "twitter_title": "Filkx Studio – Web Platforms and SaaS for Business",
+            "twitter_desc": "Filkx Studio creates web platforms and SaaS: fast launch, predictable scope, post-release support. Order site or platform development for your business.",
+            "twitter_image": "https://filkx.com/og-image.jpg",
+            "twitter_site": "@FilkxStudio",
+            "twitter_creator": "@FilkxStudio"
         },
-        "approach": { "title": "Approach | Filkx Studio" },
+        "approach": { "title": "Methodology | Filkx Studio" },
         "services": { "title": "Services | Filkx Studio" },
-        "stack": { "title": "Tech Stack | Filkx Studio" },
+        "stack": { "title": "Stack | Filkx Studio" },
         "book_call": { "title": "Book a Call | Filkx Studio" },
         "start_project": { "title": "Start Project | Filkx Studio" },
         "privacy": { "title": "Privacy Policy | Filkx Studio" },
@@ -260,11 +272,11 @@ export default {
     },
     "hero": {
         "badge": "Web platforms and SaaS that support business growth",
-        "title_prefix": "We build",
-        "title_suffix": "web platforms and SaaS",
-        "description": "We design and launch websites and SaaS platforms with clear scopes, predictable timelines, and support after launch. API‑first by default.",
-        "cta_start": "Start a project",
-        "cta_services": "What we do",
+        "title_prefix": "Building",
+        "title_suffix": "Web Platforms and SaaS for Business",
+        "description": "Filkx Studio creates web platforms and SaaS: fast launch, predictable scope, post-release support. Order site or platform development for your business.",
+        "cta_start": "Start Project",
+        "cta_services": "Our Services",
         "cards": {
             "laravel": "Laravel / Symfony",
             "vue": "Vue 3 SPA",
@@ -282,105 +294,52 @@ export default {
         }
     },
     "approach": {
-        "title": "How we work",
-        "guarantee_title": "6‑month stability support",
-        "guarantee_desc": "After launch we keep your system stable and help your team operate it.",
-        "book_call": "Discuss your task",
-        "steps": {
-            "discovery": {
-                "title": "Discovery",
-                "desc": "Define goals, users, and constraints. Establish fixed scope and budget."
-            },
-            "sprint": {
-                "title": "Design & Architecture",
-                "desc": "UX flows, prototypes, architecture, incremental releases every 1–2 weeks."
-            },
-            "zero_defects": {
-                "title": "QA & Security",
-                "desc": "Automated tests, reviews, basic security practices on every release."
-            },
-            "scale_ready": {
-                "title": "Launch & Support",
-                "desc": "CI/CD, cloud, monitoring, post-release improvements. Six months of stability support."
-            }
-        }
+        "title": "Methodology",
+        "guarantee_title": "6 Months Support",
+        "guarantee_desc": "After launch, we help the team and monitor system stability.",
+        "book_call": "Discuss Task",
+        "blocks": [
+            { "title": "Scope & Priorities", "desc": "We fix goals, users, constraints, budget, and success criteria." },
+            { "title": "Design & Development", "desc": "UX flows, architecture, incremental releases every 1–2 weeks, transparent demos." },
+            { "title": "Quality Control", "desc": "Automated tests, code reviews, and basic security practices on every release." },
+            { "title": "Launch & Support", "desc": "Cloud, CI/CD, monitoring, and post-release improvements. 6 months of stability support." }
+        ]
     },
     "dashboard": {
-        "spotlight": "Own product",
+        "spotlight": "Own Product",
         "title": "Live Studio",
-        "description": "A live streaming platform by Filkx: sub‑second latency, billing, analytics, and admin tools. We run it in production and bring that experience to client projects.",
+        "description": "Our own product live.filkx.com demonstrates stability and controlled cost of real-time functions.",
         "explore": "Open live.filkx.com",
         "features": {
             "stream": {
-                "label": "Sub‑second streaming",
-                "desc": "<100 ms end‑to‑end delay"
+                "label": "Sub-second Streaming",
+                "desc": "<100 ms end-to-end latency, billing, analytics."
             },
             "mesh": {
-                "label": "Operations ready",
-                "desc": "Billing, roles, and analytics"
+                "label": "Operations Ready",
+                "desc": "Billing, analytics, roles."
             }
         }
     },
     "stack": {
         "badge": "Production Stack",
-        "title": "Technology we trust in production",
-        "description": "We use proven tools only. This keeps delivery predictable without trading off quality or performance.",
-        "items": {
-            "php": { "name": "PHP 8.3", "desc": "reliable backend core" },
-            "frameworks": { "name": "Laravel / Symfony", "desc": "fast start and scaling" },
-            "frontend": { "name": "Vue 3 SPA", "desc": "interactive frontend" },
-            "typescript": { "name": "TypeScript", "desc": "safe code, fewer bugs" },
-            "realtime": { "name": "Go / Node.js", "desc": "real‑time and worker tasks" },
-            "db": { "name": "PostgreSQL", "desc": "data stability" },
-            "cache": { "name": "Redis", "desc": "fast cache and queues" },
-            "infra": { "name": "Docker / K8s", "desc": "stable infrastructure, cost control" }
-        },
-        "cats": {
-            "backend": "Backend Core",
-            "frameworks": "Frameworks",
-            "frontend": "Frontend",
-            "types": "Type Safety",
-            "realtime": "Real-time / Workers",
-            "db": "Databases",
-            "cache": "Caching / Queues",
-            "infra": "Infrastructure"
-        }
+        "title": "Stack",
+        "description": "Technologies we use.",
+        "blocks": [
+            { "title": "Backend", "text": "PHP 8.3, Laravel / Symfony, reliable business logic processing and API-first." },
+            { "title": "Frontend", "text": "Vue 3 SPA, TypeScript, fast UX, SEO-ready if needed." },
+            { "title": "Real-time / Workers", "text": "Go / Node.js, Redis Queues, Event Driven." },
+            { "title": "Databases & Infrastructure", "text": "PostgreSQL, Docker / K8s, CI/CD, monitoring, cost control." }
+        ]
     },
     "services": {
-        "title": "What we do",
-        "description": "We deliver websites, SaaS, and internal platforms as complete products: scope, delivery, and support included.",
-        "items": {
-            "saas": {
-                "title": "SaaS Platforms",
-                "desc": "From MVP to full SaaS: billing, roles, subscriptions. We ensure scaling doesn't break your product.",
-                "tech": "Stripe, Roles/Permissions, Queue"
-            },
-            "frontend": {
-                "title": "Websites & Apps",
-                "desc": "Fast UX, optimized scenarios, SEO-ready if needed. Texts and design for conversions.",
-                "tech": "Vue 3, Nuxt, SEO"
-            },
-            "api": {
-                "title": "API as a Product",
-                "desc": "Clear API, versioning, auth, and onboarding for partners or mobile apps.",
-                "tech": "REST, OpenAPI, OAuth2"
-            },
-            "realtime": {
-                "title": "Real-time Features",
-                "desc": "Chats, streaming, dashboards with live data. Cost control and reliability.",
-                "tech": "WebSockets, SSE, Redis"
-            },
-            "devops": {
-                "title": "Launch & Infrastructure",
-                "desc": "CI/CD, cloud, monitoring — your releases work stably.",
-                "tech": "Docker, K8s, AWS"
-            },
-            "backend": {
-                "title": "Business Logic & Integrations",
-                "desc": "Processing key processes, analytics, integrations with other systems.",
-                "tech": "Laravel, Go, SQL"
-            }
-        }
+        "title": "Services",
+        "subtitle": "We deliver comprehensive solutions.",
+        "blocks": [
+            { "title": "High Load & Security", "text": "We deliver websites and SaaS with thoughtful architecture for high load and security." },
+            { "title": "API-first & Production Ready", "text": "Reliable APIs, documentation, versioning, scalability, and post-release support." },
+            { "title": "Real-time & Interactivity", "text": "Chats, dashboards, streaming, and other live features with controlled costs." }
+        ]
     },
     "footer": {
         "studio_desc": "Web development studio. We build websites and platforms that run in production.",
@@ -398,30 +357,30 @@ export default {
     },
     "contact": {
         "ai_column": {
-            "title": "Quick draft with AI",
-            "desc": "Describe your idea — get an instant outline of a possible solution and stack.",
-            "placeholder": "Example: B2B portal to manage partners and orders...",
+            "title": "Solution Sketch",
+            "desc": "Provide your name, email, and project to get a solution sketch and possible stack. 100% confidentiality, NDA on request.",
+            "placeholder": "Example: B2B portal for partner management...",
             "button_analyze": "Designing...",
-            "button_generate": "Generate outline",
+            "button_generate": "Get Sketch",
             "stack_label": "Tech Stack",
             "strategy_label": "Approach"
         },
         "form_column": {
-            "success_title": "Request received",
-            "success_desc": "We will get back within one business day to clarify details.",
-            "retry": "Send again",
-            "title": "Start a project",
+            "success_title": "Request Received",
+            "success_desc": "We will reply within one business day.",
+            "retry": "Send Again",
+            "title": "Request Demo / Discuss",
             "labels": {
-                "name": "Your name",
+                "name": "Your Name",
                 "email": "Email",
-                "project": "About the project"
+                "project": "About Project"
             },
             "placeholders": {
-                "name": "Elon Musk",
-                "email": "elon{'@'}x.com",
-                "project": "Business goal, budget range, deadline..."
+                "name": "Your Name",
+                "email": "email@example.com",
+                "project": "Task description..."
             },
-            "submit": "Send request",
+            "submit": "Send Request",
             "disclaimer": "100% confidentiality. NDA on request."
         }
     },
